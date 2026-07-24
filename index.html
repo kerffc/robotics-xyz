@@ -1,0 +1,2101 @@
+<title>Robotics.xyz</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-row: #ffffff;
+    --bg-row-alt: #f7f8f9;
+    --bg-panel: #ffffff;
+    --bg-hero: #0b1220;
+    --ink: #10151d;
+    --ink-soft: #5b6472;
+    --ink-dim: #9aa2ad;
+    --line: #e3e6ea;
+    --accent: #0891a8;
+    --accent-dim: #0891a8;
+    --accent-ink: #ffffff;
+    --chip-bg: #eef1f3;
+    --pos: #0b8f5a;
+    --neg: #c23b32;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0d12;
+    --bg-row: #0e1218;
+    --bg-row-alt: #0b0f14;
+    --bg-panel: #0e1218;
+    --bg-hero: #060a10;
+    --ink: #e6e9ed;
+    --ink-soft: #8891a0;
+    --ink-dim: #4a5361;
+    --line: #1b2028;
+    --accent: #23b6cf;
+    --accent-dim: #178196;
+    --accent-ink: #04151a;
+    --chip-bg: #141a22;
+    --pos: #2fbf7a;
+    --neg: #e2645c;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .num { font-family: "SF Mono", "Menlo", "Consolas", monospace; font-variant-numeric: tabular-nums; }
+
+  /* ---- app shell / sidebar ---- */
+  .app { display: flex; align-items: stretch; min-height: 100%; }
+  .sidebar {
+    display: none;
+    width: 216px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--line);
+    background: var(--bg-panel);
+    padding: 1.3rem 1rem 1.5rem;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar .brand { padding: 0 0.4rem; margin-bottom: 1.6rem; }
+  .sidebar nav { display: flex; flex-direction: column; gap: 0.15rem; }
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-left: 2px solid transparent;
+  }
+  .sidebar nav a .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-dim); flex-shrink: 0; }
+  .sidebar nav a:hover { background: var(--chip-bg); color: var(--ink); }
+  .sidebar nav a.active { color: var(--accent); border-left-color: var(--accent); background: var(--chip-bg); }
+  .sidebar nav a.active .dot { background: var(--accent); }
+  .sidebar-subnav { display: flex; flex-direction: column; gap: 0.05rem; margin: 0.1rem 0 0.1rem 0.9rem; border-left: 1px solid var(--line); padding-left: 0.6rem; }
+  .sidebar-subnav a {
+    display: block;
+    padding: 0.32rem 0.5rem;
+    border-radius: 6px;
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 500;
+    border-left: none;
+  }
+  .sidebar-subnav a:hover { background: var(--chip-bg); color: var(--ink); }
+  .sidebar-subnav a.active { color: var(--accent); background: var(--chip-bg); font-weight: 700; }
+  .sidebar-subnav .count { color: var(--ink-dim); font-size: 0.68rem; }
+  .sidebar .side-foot {
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.72rem;
+    color: var(--ink-dim);
+    padding-left: 0.6rem;
+  }
+  .main { flex: 1; min-width: 0; }
+  @media (min-width: 860px) {
+    .sidebar { display: block; }
+    .topbar nav { display: none !important; }
+  }
+
+  /* ---- top bar ---- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-panel);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .brand .mark {
+    width: 20px; height: 20px; border-radius: 3px;
+    background: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--accent-ink); font-size: 0.72rem; font-weight: 800;
+    font-family: "SF Mono", "Menlo", monospace;
+  }
+  .topbar .sub {
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    border-left: 1px solid var(--line);
+    padding-left: 0.9rem;
+    display: none;
+  }
+  @media (min-width: 720px) { .topbar .sub { display: block; } }
+  .topbar nav {
+    display: none;
+    gap: 1.4rem;
+    margin-left: auto;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .topbar nav a { color: inherit; text-decoration: none; }
+  .topbar nav a:hover { color: var(--ink); }
+  @media (min-width: 860px) { .topbar nav { display: flex; } }
+
+  .global-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    border-radius: 4px;
+    padding: 0.38rem 0.6rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .global-search-btn:hover { border-color: var(--accent-dim); color: var(--ink); }
+  .global-search-btn kbd {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.66rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.05rem 0.3rem;
+    color: var(--ink-dim);
+  }
+  @media (min-width: 860px) { .global-search-btn { margin-left: 0.9rem; } }
+
+  /* ---- global search modal ---- */
+  .gsearch-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 10, 14, 0.55);
+    z-index: 50;
+    padding: 8vh 1rem 2rem;
+    overflow-y: auto;
+  }
+  .gsearch-overlay.open { display: block; }
+  .gsearch-modal {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    overflow: hidden;
+  }
+  .gsearch-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .gsearch-head h2 {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 0;
+  }
+  .gsearch-close {
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    border-radius: 4px;
+    width: 26px; height: 26px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .gsearch-close:hover { color: var(--ink); }
+  .gsearch-input-row { padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); }
+  .gsearch-input-row input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.65rem 0.8rem;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+  }
+  .gsearch-input-row input:focus { border-color: var(--accent-dim); }
+  .gsearch-section-label {
+    padding: 0.8rem 1.2rem 0.3rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    font-weight: 700;
+  }
+  .gsearch-results { max-height: 55vh; overflow-y: auto; padding-bottom: 0.6rem; }
+  .gsearch-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+  }
+  .gsearch-row:hover { background: var(--chip-bg); }
+  .gsearch-thumb {
+    width: 46px; height: 46px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "SF Mono", "Menlo", monospace;
+    font-weight: 800;
+    font-size: 0.72rem;
+    color: var(--accent);
+  }
+  .gsearch-thumb svg { width: 22px; height: 22px; }
+  .gsearch-row-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.15rem; }
+  .gsearch-row-meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .gsearch-empty { padding: 1.5rem 1.2rem; color: var(--ink-soft); font-size: 0.85rem; text-align: center; }
+
+  /* ---- product detail overlay ---- */
+  .pdetail-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 10, 14, 0.55);
+    z-index: 51;
+    padding: 4vh 1rem;
+    overflow-y: auto;
+  }
+  .pdetail-overlay.open { display: block; }
+  .pdetail-modal {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+  .pdetail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.4rem 1.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .pdetail-head .eyebrow2 {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .pdetail-icon {
+    width: 44px; height: 44px;
+    border-radius: 6px;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pdetail-icon svg { width: 24px; height: 24px; }
+  .pdetail-head-main { display: flex; align-items: center; gap: 0.9rem; }
+  .pdetail-head h2 { font-size: 1.4rem; font-weight: 800; margin: 0 0 0.2rem; letter-spacing: -0.01em; }
+  .pdetail-head .company-line { color: var(--ink-soft); font-size: 0.86rem; }
+  .pdetail-body { padding: 1.4rem 1.6rem 1.6rem; }
+  .pdetail-tagline { font-size: 0.95rem; color: var(--ink); margin: 0 0 1.3rem; max-width: 520px; }
+  .pdetail-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.9rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.3rem;
+  }
+  .pdetail-fact .label { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 0.25rem; }
+  .pdetail-fact .val { font-size: 0.86rem; font-weight: 600; }
+  .pdetail-fact .val a { color: var(--accent); text-decoration: none; }
+  .pdetail-fact .val a:hover { text-decoration: underline; }
+  .pdetail-section-title { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-dim); font-weight: 700; margin: 0 0 0.6rem; }
+  .pdetail-roles { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.3rem; }
+  .pdetail-similar { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.6rem; }
+  .pdetail-similar-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.7rem 0.85rem;
+    cursor: pointer;
+    background: var(--bg-row);
+    text-align: left;
+    font-family: inherit;
+  }
+  .pdetail-similar-card:hover { border-color: var(--accent-dim); }
+  .pdetail-similar-card .p-name { font-weight: 700; font-size: 0.84rem; }
+  .pdetail-similar-card .p-co { color: var(--ink-soft); font-size: 0.72rem; margin-top: 0.15rem; }
+  .pdetail-disclaimer { color: var(--ink-dim); font-size: 0.72rem; margin-top: 1.3rem; }
+
+  /* ---- hero (terminal-style header) ---- */
+  .hero {
+    background: var(--bg-hero);
+    border-bottom: 1px solid var(--line);
+    padding: 1.6rem 1.5rem;
+  }
+  .hero-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
+  .hero .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-family: "SF Mono", "Menlo", monospace;
+  }
+  .hero h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 0.3rem;
+    color: #f2f5f7;
+  }
+  .hero p {
+    color: #97a2b0;
+    max-width: 460px;
+    margin: 0;
+    font-size: 0.82rem;
+  }
+  .hero .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+  }
+  .hero .cta:hover { background: rgba(8, 145, 168, 0.12); filter: brightness(1.08); }
+
+  /* ---- world map ---- */
+  .map-section { max-width: 1180px; margin: 0 auto; padding: 2.2rem 1.5rem 0.5rem; }
+  .map-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .map-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+  .map-head p { color: var(--ink-soft); font-size: 0.85rem; margin: 0.25rem 0 0; max-width: 480px; }
+  .map-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; color: var(--ink-soft); }
+  .map-legend .swatch { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  .map-wrap {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg-panel);
+    overflow: hidden;
+  }
+  .map-wrap svg { display: block; width: 100%; height: auto; }
+  .map-dot { fill: var(--ink-dim); opacity: 0.55; }
+  .map-marker circle.ring {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1;
+    opacity: 0.35;
+  }
+  .map-marker circle.core {
+    fill: var(--accent);
+    stroke: var(--bg-panel);
+    stroke-width: 1;
+    cursor: pointer;
+  }
+  .map-marker text {
+    font-size: 6px;
+    font-weight: 700;
+    fill: var(--accent-ink);
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    font-family: "SF Mono", "Menlo", monospace;
+  }
+  .map-marker:hover circle.core { filter: brightness(1.15); }
+
+  .map-tip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.76rem;
+    max-width: 220px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    transition: opacity 0.1s ease;
+    z-index: 6;
+  }
+  .map-tip.show { opacity: 1; }
+  .map-tip .tip-city { font-weight: 700; margin-bottom: 0.25rem; }
+  .map-tip .tip-co { opacity: 0.85; }
+  .map-tip .tip-hint { margin-top: 0.3rem; font-size: 0.68rem; opacity: 0.6; }
+
+  /* ---- search ---- */
+  .search-row { padding: 0 1.5rem 0.9rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .search-box {
+    flex: 1 1 240px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--line);
+    background: var(--bg-panel);
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+  }
+  .search-box svg { flex-shrink: 0; color: var(--ink-dim); }
+  .search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-family: inherit;
+    width: 100%;
+  }
+  .search-box input::placeholder { color: var(--ink-dim); }
+  .search-clear {
+    display: none;
+    border: none;
+    background: var(--chip-bg);
+    color: var(--ink-soft);
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.76rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .search-clear.show { display: inline-block; }
+  .active-filter-row { padding: 0 1.5rem 0.9rem; }
+  .active-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--chip-bg);
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .active-filter-chip .x {
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-weight: 700;
+    padding: 0 0.15rem;
+    line-height: 1;
+  }
+  .active-filter-chip .x:hover { color: var(--neg); }
+  .career-select {
+    border: 1px solid var(--line);
+    background: var(--bg-panel);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.82rem;
+    font-family: inherit;
+  }
+  .search-row.tight { padding-bottom: 0.9rem; }
+  .sortable-th { cursor: pointer; }
+  .sortable-th .sort-icon { color: var(--ink-dim); }
+  .hidden { display: none; }
+  .table-empty { padding: 1.5rem 0.9rem; color: var(--ink-soft); text-align: center; }
+  .section-footnote { color: var(--ink-dim); font-size: 0.74rem; margin: 0.7rem 0 0; }
+
+  /* ---- stat strip ---- */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    padding: 1.1rem 1.5rem;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .stat {
+    flex: 1 1 160px;
+    padding: 1rem 1.15rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .stat .label {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+  .stat .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .stat .value.accent { color: var(--accent); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 0 4rem; }
+
+  h1.title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 1.6rem 1.5rem 0.25rem;
+  }
+  p.lede {
+    color: var(--ink-soft);
+    margin: 0 1.5rem 1.3rem;
+    max-width: 640px;
+    font-size: 0.88rem;
+  }
+
+  /* ---- category filter pills ---- */
+  .filters {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    padding: 0 1.5rem 1.1rem;
+  }
+  .pill {
+    border: 1px solid var(--line);
+    background: var(--bg-panel);
+    color: var(--ink-soft);
+    font-size: 0.76rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+  }
+  .pill:hover { border-color: var(--accent-dim); color: var(--ink); }
+  .pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+  }
+
+  /* ---- table ---- */
+  .table-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; min-width: 760px; }
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--bg-panel);
+    text-align: left;
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  thead th.num-col { text-align: right; }
+  tbody tr {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-row);
+  }
+  tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+  tbody tr:hover { background: var(--chip-bg); }
+  tbody td {
+    padding: 0.7rem 0.9rem;
+    vertical-align: top;
+  }
+  td.rank {
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+    width: 2.5rem;
+  }
+  td.company {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .co-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+  }
+  .co-link-btn:hover { color: var(--accent); border-bottom-color: var(--accent-dim); }
+  .unverified-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--chip-bg);
+    border: 1px solid var(--neg);
+    color: var(--neg);
+    font-size: 0.6rem;
+    font-weight: 800;
+    margin-left: 0.35rem;
+    cursor: help;
+    vertical-align: middle;
+  }
+  .co-link {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+  }
+  .co-link:hover { color: var(--accent); }
+  .job-link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .job-link:hover { color: var(--accent); border-bottom-color: var(--accent-dim); }
+  .job-link::after {
+    content: "↗";
+    font-size: 0.62em;
+    margin-left: 0.2em;
+    color: var(--ink-dim);
+    vertical-align: super;
+  }
+  td.company .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--accent);
+    font-size: 0.6rem;
+    font-weight: 800;
+    margin-right: 0.55rem;
+    vertical-align: middle;
+  }
+  td.company .logo svg { width: 13px; height: 13px; }
+  .cat-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 4px;
+    background: var(--chip-bg);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  td.hq { color: var(--ink-soft); white-space: nowrap; font-size: 0.82rem; }
+  td.raised { color: var(--ink); white-space: nowrap; font-size: 0.82rem; font-weight: 600; }
+  td.investors { color: var(--ink-soft); font-size: 0.8rem; min-width: 180px; }
+  td.roles { color: var(--ink-soft); font-size: 0.82rem; min-width: 260px; }
+  td.roles .role-chip {
+    display: inline-block;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.12rem 0.4rem;
+    margin: 0 0.28rem 0.28rem 0;
+    color: var(--ink);
+    font-size: 0.74rem;
+  }
+  td.flag { text-align: right; white-space: nowrap; }
+  .leader-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--chip-bg);
+    color: var(--pos);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .leader-badge::before { content: "●"; font-size: 0.55rem; }
+
+  /* ---- news ---- */
+  .news-section { max-width: 1180px; margin: 0 auto; padding: 2.6rem 1.5rem 1rem; border-top: 1px solid var(--line); }
+  .news-section h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 0.25rem; }
+  .news-section > p { color: var(--ink-soft); font-size: 0.85rem; margin: 0 0 1.3rem; }
+  .news-list { display: flex; flex-direction: column; gap: 0.85rem; }
+  .news-card {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: inherit;
+    background: var(--bg-panel);
+  }
+  .news-card:hover { border-color: var(--accent-dim); }
+  .news-meta {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+  .news-source {
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .news-card h3 { font-size: 0.98rem; font-weight: 700; margin: 0 0 0.35rem; letter-spacing: -0.005em; }
+  .news-card p { color: var(--ink-soft); font-size: 0.83rem; margin: 0; }
+
+  /* ---- careers ---- */
+  td.role-name { font-weight: 700; }
+
+  /* ---- fundraising monitor ---- */
+  .monitor-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pos);
+    font-weight: 700;
+    border: 1px solid var(--line);
+    background: var(--chip-bg);
+    border-radius: 20px;
+    padding: 0.28rem 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+  .monitor-live .blip { width: 6px; height: 6px; border-radius: 50%; background: var(--pos); animation: blip 1.6s ease-in-out infinite; }
+  @keyframes blip { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) { .monitor-live .blip { animation: none; } }
+  td.amount { font-weight: 700; color: var(--accent); white-space: nowrap; }
+  td.round-tag { white-space: nowrap; }
+  .round-pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.16rem 0.5rem;
+    border-radius: 20px;
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .monitor-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+  .monitor-stats .stat { flex: 1 1 150px; }
+  .monitor-week-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 1.6rem 0 0.6rem;
+  }
+  .monitor-week-head:first-child { margin-top: 0; }
+  .monitor-week-head h3 { font-size: 0.86rem; font-weight: 800; margin: 0; }
+  .monitor-week-head .n {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    background: var(--chip-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 0.1rem 0.55rem;
+  }
+  .monitor-count { color: var(--ink-dim); font-size: 0.76rem; margin: 1rem 0 0; }
+
+  /* ---- voices to follow ---- */
+  .voice-lane { margin-bottom: 1.6rem; }
+  .voice-lane:last-child { margin-bottom: 0; }
+  .voice-lane-head { display: flex; align-items: baseline; gap: 0.55rem; margin-bottom: 0.7rem; }
+  .voice-lane-head h3 { font-size: 0.86rem; font-weight: 800; margin: 0; }
+  .voice-lane-head p { color: var(--ink-soft); font-size: 0.76rem; margin: 0; }
+  .voice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.7rem; }
+  .voice-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    background: var(--bg-panel);
+  }
+  .voice-card .v-name { font-weight: 700; font-size: 0.9rem; }
+  .voice-card .v-name a { color: inherit; text-decoration: none; }
+  .voice-card .v-name a:hover { color: var(--accent); }
+  .voice-card .v-role { color: var(--ink-soft); font-size: 0.78rem; margin-top: 0.2rem; }
+
+  footer {
+    padding: 1.5rem 1.5rem 0;
+    color: var(--ink-dim);
+    font-size: 0.76rem;
+  }
+
+  @media (max-width: 640px) {
+    h1.title, p.lede, .filters { margin-left: 1rem; margin-right: 1rem; padding-left: 1rem; padding-right: 1rem; }
+    .topbar { padding: 0.75rem 1rem; }
+
+    /* main directory table -> stacked cards */
+    .main-table-wrap { overflow-x: visible; border-top: none; }
+    .main-table-wrap table { min-width: 0; }
+    .main-table-wrap thead { display: none; }
+    .main-table-wrap tbody, .main-table-wrap tr, .main-table-wrap td { display: block; width: 100%; }
+    .main-table-wrap tr {
+      border: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 4px;
+      margin: 0 1rem 0.75rem;
+      padding: 0.7rem 0.9rem;
+      background: var(--bg-row);
+    }
+    .main-table-wrap tr:nth-child(even) { background: var(--bg-row); }
+    .main-table-wrap td {
+      padding: 0.3rem 0;
+      white-space: normal;
+    }
+    .main-table-wrap td[data-label]:not([data-label=""])::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: 0.15rem;
+    }
+    .main-table-wrap td.rank { display: none; }
+    .main-table-wrap td.company { font-size: 1rem; padding-top: 0; }
+    .main-table-wrap td.flag:empty { display: none; }
+  }
+</style>
+
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span class="mark">R</span>Robotics.xyz</div>
+  <nav>
+    <a href="#top" class="active"><span class="dot"></span>Overview</a>
+    <a href="#map-section"><span class="dot"></span>World map</a>
+    <a href="#table"><span class="dot"></span>Companies</a>
+    <div class="sidebar-subnav" id="sidebarSubcats"></div>
+    <a href="#careers"><span class="dot"></span>Careers</a>
+    <a href="#monitor"><span class="dot"></span>Fundraising monitor</a>
+    <a href="#voices"><span class="dot"></span>Voices to follow</a>
+    <a href="#news"><span class="dot"></span>News</a>
+  </nav>
+  <div class="side-foot">Robotics market map<br/>Manually curated</div>
+</aside>
+<div class="main">
+
+<div class="topbar" id="top">
+  <div class="brand"><span class="mark">R</span>Robotics.xyz</div>
+  <div class="sub">signals from the robotics frontier</div>
+  <nav>
+    <a href="#table">Companies</a>
+    <a href="#table">Categories</a>
+    <a href="#news">News</a>
+  </nav>
+  <button class="global-search-btn" id="gsearchOpenBtn" type="button">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Search <kbd>⌘K</kbd>
+  </button>
+</div>
+
+<div class="gsearch-overlay" id="gsearchOverlay">
+  <div class="gsearch-modal">
+    <div class="gsearch-head">
+      <h2>Search Robotics.xyz</h2>
+      <button class="gsearch-close" id="gsearchCloseBtn" type="button">✕</button>
+    </div>
+    <div class="gsearch-input-row">
+      <input type="text" id="gsearchInput" placeholder="Search a product, company, or category…" autocomplete="off" />
+    </div>
+    <div class="gsearch-results" id="gsearchResults"></div>
+  </div>
+</div>
+
+<div class="pdetail-overlay" id="pdetailOverlay">
+  <div class="pdetail-modal" id="pdetailModal"></div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Robotics market map</div>
+      <h1>Every robot builder, mapped in one place</h1>
+      <p>Track who's building what across humanoids, industrial arms, AVs, and more — with funding, investors, and open roles.</p>
+    </div>
+    <button class="cta" onclick="document.getElementById('table').scrollIntoView({behavior:'smooth'})">View full directory →</button>
+  </div>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="map-section" id="map-section">
+  <div class="map-head">
+    <div>
+      <h2>Where robotics companies are based</h2>
+      <p>Dot size scales with how many companies share a headquarters city. Click a dot to filter the table below.</p>
+    </div>
+    <div class="map-legend"><span class="swatch"></span> Company HQ</div>
+  </div>
+  <div class="map-wrap" id="mapWrap">
+    <svg id="worldMap" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="map-tip" id="mapTip"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1 class="title" id="table">Robotics company landscape</h1>
+  <p class="lede">Every major robotics company, grouped by what it actually ships, with the roles it's typically hiring for. Search by name, filter by category, or click a dot on the map above.</p>
+
+  <div class="search-row">
+    <label class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search company or city…" autocomplete="off" />
+    </label>
+    <button class="search-clear" id="searchClear" type="button">Clear</button>
+  </div>
+
+  <div class="active-filter-row hidden" id="activeFilterRow">
+    <span class="active-filter-chip" id="activeFilterChip"></span>
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="table-wrap main-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="num-col">#</th>
+          <th>Company</th>
+          <th>Category</th>
+          <th>HQ</th>
+          <th id="raisedHeader" class="sortable-th">Raised <span id="raisedSortIcon" class="sort-icon">↕</span></th>
+          <th>Key investors</th>
+          <th>Hiring</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="news-section" id="careers">
+    <h2>Open roles, aggregated</h2>
+    <p>Every role type listed across the companies above. Filter by location or category, or search a role directly.</p>
+    <div class="search-row tight">
+      <label class="search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="careerSearch" placeholder="Search a role…" autocomplete="off" />
+      </label>
+      <select id="careerLocationFilter" class="career-select"><option value="">All locations</option></select>
+      <select id="careerCatFilter" class="career-select"><option value="">All categories</option></select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Company</th>
+            <th>Category</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody id="careersRows"></tbody>
+      </table>
+    </div>
+    <p class="section-footnote">Company links go to each company's general careers/jobs page, not a live posting for this specific role — search that page once you're there. Every URL was checked and resolves; a "*" means the direct careers-page path couldn't be confirmed, so it links to the company homepage instead.</p>
+  </div>
+
+  <div class="news-section" id="monitor">
+    <h2>Fundraising monitor</h2>
+    <p>Newly detected robotics funding rounds, grouped by week, most recent first.</p>
+    <div class="monitor-live"><span class="blip"></span>Latest rounds</div>
+    <div class="monitor-stats" id="monitorStats"></div>
+    <div id="monitorGroups"></div>
+    <p class="monitor-count" id="monitorCount"></p>
+  </div>
+
+  <div class="news-section" id="voices">
+    <h2>Voices to follow</h2>
+    <p>People worth reading on robotics — builders, researchers, and commentators. Grouped by lane so you know whose bias you're reading.</p>
+    <div id="voicesGroups"></div>
+  </div>
+
+  <div class="news-section" id="news">
+    <h2>Latest funding news</h2>
+    <p>Recent robotics fundraising headlines, added as they surface.</p>
+    <div class="news-list" id="newsList"></div>
+  </div>
+
+  <footer>Categories aren't mutually exclusive — some companies span more than one line of business, listed under their primary product. Funding figures are approximate cumulative totals from public reporting (or ownership status for subsidiaries/public companies) and may be out of date — verify before citing.</footer>
+</div>
+</div>
+</div>
+
+<script>
+    const DATA = [
+    { name: "Figure AI", cat: "Humanoid", hq: "Sunnyvale, US", lead: true, raised: "$854M+", investors: "Microsoft, OpenAI, NVIDIA, Bezos", roles: ["Controls eng", "Manipulation eng", "Embodied AI"] },
+    { name: "Tesla (Optimus)", cat: "Humanoid", hq: "Austin, US", raised: "Internal", investors: "Tesla (self-funded)", roles: ["Actuator eng", "Perception eng"] },
+    { name: "Boston Dynamics", cat: "Humanoid", hq: "Waltham, US", raised: "Owned", investors: "Hyundai Motor Group", roles: ["Locomotion eng", "Controls eng"] },
+    { name: "Agility Robotics", cat: "Humanoid", hq: "Corvallis, US", raised: "~$150M Series B", investors: "DCVC, Playground Global, Amazon", roles: ["Mechatronics eng", "Firmware eng"] },
+    { name: "1X Technologies", cat: "Humanoid", hq: "Moss, NO", raised: "~$135M Series B", investors: "OpenAI, EQT Ventures", roles: ["Robot learning eng", "Hardware eng"] },
+    { name: "Apptronik", cat: "Humanoid", hq: "Austin, US", raised: "~$403M Series A", investors: "B Capital, Google", roles: ["Systems eng", "Manipulation eng"] },
+    { name: "Unitree", cat: "Humanoid", hq: "Hangzhou, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Motor control eng", "Firmware eng"] },
+    { name: "Sunday Robotics", cat: "Humanoid", hq: "Palo Alto, US", raised: "$165M Series B ($1.15B valuation)", investors: "Coatue Management (lead), Tiger Global, Benchmark, Bain Capital Ventures", roles: ["Robot learning eng", "Hardware eng", "Applied ML eng"] },
+    { name: "Neura Robotics", cat: "Humanoid", hq: "Metzingen, DE", raised: "~€120M Series B (reported)", investors: "Lingotto, Fizimo, EIC Fund (reported)", roles: ["Robot learning eng", "Mechatronics eng", "Applied ML eng"] },
+    { name: "Walden Robotics", cat: "Humanoid", hq: "Cambridge, US", raised: "$300M seed", investors: "Toyota Motor Corp, Toyota Invention Partners, Toyota Ventures, Deviation Capital", roles: ["Robot learning eng", "Controls eng", "Applied ML eng"] },
+    { name: "Zeroth", cat: "Humanoid", hq: "Suzhou, CN", raised: "~$137M total (~$74M recent round)", investors: "Ant Group, Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital", roles: ["Robot learning eng", "Mechanical eng", "Manufacturing eng"] },
+    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot learning eng", "Hardware eng", "Embedded software eng"], verified: false },
+    { name: "Galbot", cat: "Humanoid", hq: "Beijing, CN", lead: true, raised: "~$1B+ total (incl. ¥2.5B/~$350M round)", investors: "Meituan, IDG Capital, SAIC, SenseTime, CATL, Sinopec, National AI Industry Fund", roles: ["Robot learning eng", "Mechanical eng", "Applied ML eng"] },
+    { name: "AgiBot (Zhiyuan Robotics)", cat: "Humanoid", hq: "Shanghai, CN", raised: "~$1B+ total", investors: "Not fully itemized in public reporting", roles: ["Robot learning eng", "Manufacturing eng", "Applied ML eng"] },
+    { name: "UBTECH Robotics", cat: "Humanoid", hq: "Shenzhen, CN", raised: "Public (HKEX: 9880)", investors: "Public shareholders", roles: ["Robot learning eng", "Mechanical eng", "Applications eng"] },
+    { name: "Fourier Intelligence", cat: "Exoskeletons", hq: "Shanghai, CN", raised: "$246M total (incl. ~¥800M/~$110M Series E)", investors: "Guoxin Investment, Prosperity7", roles: ["Mechanical eng", "Robot learning eng", "Clinical/regulatory eng"] },
+
+    { name: "FANUC", cat: "Industrial arms", hq: "Yamanashi, JP", lead: true, raised: "Public (TYO: 6954)", investors: "Public shareholders", roles: ["Applications eng", "Field service eng"] },
+    { name: "ABB Robotics", cat: "Industrial arms", hq: "Zurich, CH", raised: "Public (SIX: ABBN)", investors: "Public shareholders", roles: ["Motion control eng", "Automation sales"] },
+    { name: "KUKA", cat: "Industrial arms", hq: "Augsburg, DE", raised: "Owned", investors: "Midea Group", roles: ["Systems eng", "Applications eng"] },
+    { name: "Yaskawa", cat: "Industrial arms", hq: "Kitakyushu, JP", raised: "Public (TYO: 6506)", investors: "Public shareholders", roles: ["Controls eng", "Field service eng"] },
+    { name: "Universal Robots", cat: "Industrial arms", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Applications eng", "Solutions eng"] },
+    { name: "Robotiq", cat: "Industrial arms", hq: "Lévis, CA", raised: "Undisclosed", investors: "Private", roles: ["Mechanical eng", "Applications eng", "Software eng"] },
+    { name: "Standard Bots", cat: "Industrial arms", hq: "Glen Cove, US", raised: "~$275M total ($200M Series C)", investors: "Series C at ~$1B valuation; prior $63M Series B", roles: ["Robotics eng", "Applied ML eng", "Applications eng"] },
+
+    { name: "Amazon Robotics", cat: "Warehouse & logistics", hq: "North Reading, US", lead: true, raised: "Owned", investors: "Amazon (acquired Kiva, 2012)", roles: ["Fleet software eng", "CV eng"] },
+    { name: "Locus Robotics", cat: "Warehouse & logistics", hq: "Wilmington, US", raised: "~$430M total", investors: "Tiger Global, Bain Capital", roles: ["Deployment eng", "Software eng"] },
+    { name: "Berkshire Grey", cat: "Warehouse & logistics", hq: "Bedford, US", raised: "Taken private 2023", investors: "SoftBank Group", roles: ["CV eng (picking)", "Ops research"] },
+    { name: "GreyOrange", cat: "Warehouse & logistics", hq: "Singapore, SG", raised: "~$210M total", investors: "SoftBank Vision Fund, Mithril", roles: ["Solutions eng", "Fleet software eng"] },
+
+    { name: "Boston Dynamics (Stretch)", cat: "Autonomous mobile robots", hq: "Waltham, US", lead: true, raised: "Owned", investors: "Hyundai Motor Group", roles: ["Navigation eng", "Test eng"] },
+    { name: "Vecna Robotics", cat: "Autonomous mobile robots", hq: "Waltham, US", raised: "~$100M total", investors: "Prologis Ventures, Piva Capital", roles: ["SLAM eng", "Deployment eng"] },
+    { name: "OTTO Motors", cat: "Autonomous mobile robots", hq: "Kitchener, CA", raised: "Part of Clearpath", investors: "Rockwell Automation (Clearpath)", roles: ["Embedded eng", "SLAM eng"] },
+    { name: "MiR", cat: "Autonomous mobile robots", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Navigation eng", "Software eng"] },
+    { name: "Slamtec", cat: "Autonomous mobile robots", hq: "Shanghai, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["SLAM algorithm eng", "LiDAR hardware eng", "Firmware eng"] },
+    { name: "LionsBot", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "~$30M+ total", investors: "EDBI, Vulcan Capital", roles: ["Robotics eng", "Firmware eng", "Field service eng"] },
+    { name: "ST Engineering", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Public (SGX: S63)", investors: "Public shareholders", roles: ["Robotics systems eng", "Controls eng"] },
+    { name: "Transforma Robotics", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private / seed", roles: ["Robotics eng", "Software eng"] },
+
+    { name: "Waymo", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "$5.6B round (2024)", investors: "Alphabet, a16z, Fidelity, Silver Lake", roles: ["Perception eng", "Planning eng"] },
+    { name: "Aurora Innovation", cat: "Autonomous vehicles", hq: "Pittsburgh, US", raised: "Public (NASDAQ: AUR)", investors: "Public shareholders", roles: ["Simulation eng", "Safety eng"] },
+    { name: "Zoox", cat: "Autonomous vehicles", hq: "Foster City, US", raised: "Owned", investors: "Amazon (acquired 2020)", roles: ["Planning eng", "HD-mapping eng"] },
+    { name: "Nuro", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "~$2.1B total", investors: "SoftBank Vision Fund, Tiger Global", roles: ["Perception eng", "Controls eng"] },
+    { name: "Kodiak Robotics", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "Public (NASDAQ: KDK)", investors: "Public shareholders", roles: ["Planning eng", "Safety/validation"] },
+    { name: "Applied Intuition", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "~$600M+ total", investors: "Kleiner Perkins, Lux Capital, General Catalyst, Porsche, Toyota", roles: ["Simulation eng", "Software eng", "Applied ML eng"] },
+
+    { name: "John Deere (See & Spray)", cat: "Agricultural robotics", hq: "Moline, US", lead: true, raised: "Public (NYSE: DE)", investors: "Public shareholders", roles: ["CV eng (crop)", "Field robotics eng"] },
+    { name: "Naio Technologies", cat: "Agricultural robotics", hq: "Toulouse, FR", raised: "~€30M total", investors: "Bpifrance, Demeter", roles: ["Firmware eng", "Field robotics eng"] },
+    { name: "Carbon Robotics", cat: "Agricultural robotics", hq: "Seattle, US", raised: "~$107M Series C", investors: "Fuse VC, Anthos Capital", roles: ["CV eng", "Robotics eng"] },
+    { name: "FarmWise", cat: "Agricultural robotics", hq: "San Francisco, US", raised: "~$65M total", investors: "Yara Growth Ventures", roles: ["Agronomy software eng", "CV eng"] },
+
+    { name: "Intuitive Surgical", cat: "Medical & surgical", hq: "Sunnyvale, US", lead: true, raised: "Public (NASDAQ: ISRG)", investors: "Public shareholders", roles: ["R&D mech eng", "Regulatory eng"] },
+    { name: "Stryker (Mako)", cat: "Medical & surgical", hq: "Kalamazoo, US", raised: "Public (NYSE: SYK)", investors: "Public shareholders", roles: ["Clinical apps specialist", "Systems eng"] },
+    { name: "Medtronic (Hugo)", cat: "Medical & surgical", hq: "Dublin, IE", raised: "Public (NYSE: MDT)", investors: "Public shareholders", roles: ["Haptics eng", "R&D eng"] },
+    { name: "CMR Surgical", cat: "Medical & surgical", hq: "Cambridge, UK", raised: "~$800M total", investors: "SoftBank Vision Fund 2", roles: ["Mech eng", "Regulatory eng"] },
+
+    { name: "iRobot", cat: "Consumer & home", hq: "Bedford, US", lead: true, raised: "Public (NASDAQ: IRBT)", investors: "Public shareholders", roles: ["Embedded software eng", "PM"] },
+    { name: "Ecovacs", cat: "Consumer & home", hq: "Suzhou, CN", raised: "Public (SZSE: 603486)", investors: "Public shareholders", roles: ["Embedded eng", "Industrial designer"] },
+    { name: "Roborock", cat: "Consumer & home", hq: "Beijing, CN", raised: "Public (STAR: 688169)", investors: "Public shareholders", roles: ["CV eng", "Firmware eng"] },
+
+    { name: "DJI", cat: "Aerial & drone", hq: "Shenzhen, CN", lead: true, raised: "Self-funded, profitable", investors: "Founder-controlled", roles: ["Flight controls eng", "RF/comms eng"] },
+    { name: "Skydio", cat: "Aerial & drone", hq: "San Mateo, US", raised: "~$740M total", investors: "Baillie Gifford, Linse Capital", roles: ["Autonomy eng", "Perception eng"] },
+    { name: "Zipline", cat: "Aerial & drone", hq: "South San Francisco, US", raised: "~$500M+ total", investors: "Baillie Gifford, Fidelity", roles: ["Flight controls eng", "Ops specialist"] },
+    { name: "Wing (Alphabet)", cat: "Aerial & drone", hq: "Mountain View, US", raised: "Owned", investors: "Alphabet", roles: ["Autonomy eng", "Ops eng"] },
+
+    { name: "Physical Intelligence", cat: "Robotics AI / foundation models", hq: "San Francisco, US", lead: true, raised: "~$400M Series A", investors: "OpenAI, Jeff Bezos, Thrive Capital", roles: ["ML research eng", "Robot learning eng"] },
+    { name: "Skild AI", cat: "Robotics AI / foundation models", hq: "Pittsburgh, US", raised: "~$300M Series A", investors: "SoftBank, Coatue, Lightspeed", roles: ["Applied scientist", "Data pipeline eng"] },
+    { name: "Covariant", cat: "Robotics AI / foundation models", hq: "Emeryville, US", raised: "~$222M total", investors: "Index Ventures, Radical Ventures", roles: ["ML eng", "Robot learning eng"] },
+    { name: "NVIDIA (Isaac)", cat: "Robotics AI / foundation models", hq: "Santa Clara, US", raised: "Public (NASDAQ: NVDA)", investors: "Public shareholders", roles: ["Simulation eng", "ML research eng"] },
+    { name: "Genesis AI", cat: "Robotics AI / foundation models", hq: "San Francisco, US", raised: "$105M seed closed; ~$500M in talks (unclosed)", investors: "Eclipse Ventures, Khosla Ventures (seed); new round undisclosed", roles: ["ML research eng", "Robot learning eng", "Simulation eng"] },
+    { name: "Ropedia", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$30M total", investors: "Angels linked to Google, a16z, NVIDIA, Amazon", roles: ["Hardware eng (wearable capture)", "Data platform eng"] },
+    { name: "Luxonis", cat: "Robotics AI / foundation models", hq: "Denver, US", raised: "$14M Series A", investors: "Denali Growth Partners, Taiwania Capital", roles: ["Embedded vision eng", "Firmware eng", "Applied ML eng"] },
+    { name: "Eureka Robotics", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$15M total ($10.5M Series A)", investors: "B Capital (lead), Airbus Ventures, Maruka, G.K. Goh Ventures, UTEC, ATEQ", roles: ["Computer vision eng", "Applied ML eng", "Robotics eng"] },
+    { name: "SiMa.ai", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$355M total (Series C, ~$960M valuation)", investors: "Fidelity Investments, Maverick Capital, VentureTech Alliance", roles: ["ASIC/chip design eng", "Embedded ML eng", "Applied ML eng"] },
+    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["ML research eng", "Robot learning eng", "Applied ML eng"] },
+    { name: "Mind Robotics", cat: "Robotics AI / foundation models", hq: "Palo Alto, US", lead: true, raised: "$1B+ total ($115M seed, $500M Series A, $400M follow-on)", investors: "Accel, Andreessen Horowitz, Rivian (strategic)", roles: ["Robotics eng", "Applied ML eng", "Manufacturing automation eng"] },
+    { name: "HOPE Technik", cat: "Aerial & drone", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private", roles: ["Mechanical eng", "Robotics eng", "Systems eng"] },
+
+    { name: "Anduril Industries", cat: "Defense & security robotics", hq: "Costa Mesa, US", lead: true, raised: "~$2.7B+ total", investors: "Founders Fund, a16z, General Catalyst, Sands Capital", roles: ["Systems eng", "Software eng", "Manufacturing eng"] },
+    { name: "Shield AI", cat: "Defense & security robotics", hq: "San Diego, US", raised: "~$500M+ total", investors: "Andreessen Horowitz, Snowpoint Ventures", roles: ["Autonomy eng", "Software eng", "Flight test eng"] },
+    { name: "Ghost Robotics", cat: "Defense & security robotics", hq: "Philadelphia, US", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Robotics eng", "Controls eng"] },
+
+    { name: "Ekso Bionics", cat: "Exoskeletons", hq: "Richmond, US", lead: true, raised: "Public (NASDAQ: EKSO)", investors: "Public shareholders", roles: ["Mechanical eng", "Regulatory eng", "Clinical specialist"] },
+    { name: "Chengtian Technology", cat: "Exoskeletons", hq: "Hangzhou, CN", raised: "~¥100M Series B (2025)", investors: "Wuxi VC (lead)", roles: ["Mechanical eng", "Controls eng", "Clinical/regulatory eng"] },
+  ];
+
+  const NEWS = [
+    {
+      date: "2026-07-23",
+      source: "Bloomberg",
+      title: "Robotics Startup Genesis in Talks to Raise About $500 Million",
+      summary: "Genesis AI is reportedly in talks to raise roughly $500M for its physical-AI/robotics foundation model work. Full deal terms, valuation, and investor names weren't confirmable (article is paywalled) — treat the figure as a headline-stage report, not a closed round.",
+      url: "https://www.bloomberg.com/news/articles/2026-07-23/robotics-startup-genesis-in-talks-to-raise-about-500-million",
+    },
+    {
+      date: "2026-07-24",
+      source: "TechNode Global",
+      title: "Singapore's AI facilitator Ropedia raises $22M pre-Series A for physical AI data infrastructure, $30M in total",
+      summary: "Ropedia builds data infrastructure for physical AI/robotics, capturing multimodal human experience data via proprietary wearable hardware, serving 20+ robotics and foundation model companies across North America, China, and Singapore. Round backers weren't individually named; prior investors include angels linked to Google, a16z, NVIDIA, and Amazon. Funds go toward Southeast Asia/North America expansion and hardware manufacturing.",
+      url: "https://technode.global/2026/07/24/singapores-ai-facilitator-ropedia-raises-22m-pre-series-a-for-physical-ai-data-infrastructure-30m-in-total/",
+    },
+    {
+      date: "Undated",
+      source: "The a16z Show (YouTube)",
+      title: "Why Physical AI Is the Next Frontier",
+      summary: "a16z video/commentary on physical AI (robots and embodied systems operating in the real world) as an emerging investment and technology frontier.",
+      url: "https://www.youtube.com/watch?v=56XgWH9ch0U",
+    },
+  ];
+
+  const MONITOR_EVENTS = [
+    {
+      date: "2026-07-24",
+      company: "Ropedia",
+      round: "Pre-Series A",
+      amount: "$22M",
+      investors: "Angels linked to Google, a16z, NVIDIA, Amazon (prior)",
+      sourceName: "TechNode Global",
+      sourceUrl: "https://technode.global/2026/07/24/singapores-ai-facilitator-ropedia-raises-22m-pre-series-a-for-physical-ai-data-infrastructure-30m-in-total/",
+    },
+    {
+      date: "2026-07-23",
+      company: "Genesis AI",
+      round: "In talks (unclosed)",
+      amount: "~$500M",
+      investors: "Undisclosed — reported in talks",
+      sourceName: "Bloomberg",
+      sourceUrl: "https://www.bloomberg.com/news/articles/2026-07-23/robotics-startup-genesis-in-talks-to-raise-about-500-million",
+    },
+    {
+      date: "2026-07-15",
+      company: "Walden Robotics",
+      round: "Seed",
+      amount: "$300M",
+      investors: "Toyota Motor Corp, Toyota Ventures, Deviation Capital",
+      sourceName: "Bloomberg",
+      sourceUrl: "https://www.bloomberg.com/news/articles/2026-07-15/toyota-backed-robotics-startup-walden-launches-with-1-1-billion-valuation",
+    },
+    {
+      date: "2026-07-02",
+      company: "Luxonis",
+      round: "Series A",
+      amount: "$14M",
+      investors: "Denali Growth Partners, Taiwania Capital",
+      sourceName: "The Robot Report",
+      sourceUrl: "https://www.therobotreport.com/luxonis-closes-series-a-round-to-scale-physical-ai-perception-layer/",
+    },
+    {
+      date: "2026-07-01",
+      company: "Zeroth",
+      round: "Strategic round",
+      amount: "$73.6M",
+      investors: "Ant Group (lead), Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital",
+      sourceName: "CNBC",
+      sourceUrl: "https://www.cnbc.com/2026/07/01/alibaba-affiliate-ant-group-enters-the-humanoid-robot-market-with-12-deals.html",
+    },
+  ];
+
+  const WEBSITES = {
+    "Figure AI": "https://www.figure.ai",
+    "Tesla (Optimus)": "https://www.tesla.com/AI",
+    "Boston Dynamics": "https://bostondynamics.com",
+    "Agility Robotics": "https://agilityrobotics.com",
+    "1X Technologies": "https://www.1x.tech",
+    "Apptronik": "https://apptronik.com",
+    "Unitree": "https://www.unitree.com",
+    "FANUC": "https://www.fanuc.com",
+    "ABB Robotics": "https://new.abb.com/products/robotics",
+    "KUKA": "https://www.kuka.com",
+    "Yaskawa": "https://www.yaskawa.com",
+    "Universal Robots": "https://www.universal-robots.com",
+    "Robotiq": "https://robotiq.com",
+    "Standard Bots": "https://standardbots.com",
+    "Amazon Robotics": "https://www.amazonrobotics.com",
+    "Locus Robotics": "https://locusrobotics.com",
+    "Berkshire Grey": "https://www.berkshiregrey.com",
+    "GreyOrange": "https://www.greyorange.com",
+    "Boston Dynamics (Stretch)": "https://bostondynamics.com/products/stretch",
+    "Vecna Robotics": "https://www.vecnarobotics.com",
+    "OTTO Motors": "https://ottomotors.com",
+    "MiR": "https://www.mobile-industrial-robots.com",
+    "Slamtec": "https://www.slamtec.com/en",
+    "Waymo": "https://waymo.com",
+    "Aurora Innovation": "https://aurora.tech",
+    "Zoox": "https://zoox.com",
+    "Nuro": "https://www.nuro.ai",
+    "Kodiak Robotics": "https://kodiak.ai",
+    "Applied Intuition": "https://www.appliedintuition.com",
+    "John Deere (See & Spray)": "https://www.deere.com",
+    "Naio Technologies": "https://www.naio-technologies.com",
+    "Carbon Robotics": "https://carbonrobotics.com",
+    "FarmWise": "https://farmwise.io",
+    "Intuitive Surgical": "https://www.intuitive.com",
+    "Stryker (Mako)": "https://www.stryker.com",
+    "Medtronic (Hugo)": "https://www.medtronic.com",
+    "CMR Surgical": "https://cmrsurgical.com",
+    "iRobot": "https://www.irobot.com",
+    "Ecovacs": "https://www.ecovacs.com",
+    "Roborock": "https://www.roborock.com",
+    "DJI": "https://www.dji.com",
+    "Skydio": "https://www.skydio.com",
+    "Zipline": "https://www.flyzipline.com",
+    "Wing (Alphabet)": "https://wing.com",
+    "Physical Intelligence": "https://www.physicalintelligence.company",
+    "Skild AI": "https://www.skild.ai",
+    "Covariant": "https://covariant.ai",
+    "NVIDIA (Isaac)": "https://developer.nvidia.com/isaac",
+    "Ropedia": "https://ropedia.com",
+    "LionsBot": "https://www.lionsbot.com",
+    "ST Engineering": "https://www.stengg.com",
+    "Transforma Robotics": "https://www.transformarobotics.com",
+    "HOPE Technik": "https://www.hopetechnik.com",
+    "Neura Robotics": "https://neura-robotics.com",
+    "Anduril Industries": "https://www.anduril.com",
+    "Shield AI": "https://shield.ai",
+    "Ekso Bionics": "https://eksobionics.com",
+    "Ghost Robotics": "https://www.ghostrobotics.io",
+    "Luxonis": "https://www.luxonis.com",
+    "Eureka Robotics": "https://eurekarobotics.com",
+    "SiMa.ai": "https://sima.ai",
+    "Rhoda AI": "https://www.rhoda.ai",
+    "Mind Robotics": "https://www.mindrobotics.com",
+    "Chengtian Technology": "https://exoskeleton.roboct.com",
+    "Galbot": "https://www.galbot.com",
+    "AgiBot (Zhiyuan Robotics)": "https://www.agibot.com",
+    "UBTECH Robotics": "https://www.ubtrobot.com",
+    "Fourier Intelligence": "https://www.fftai.com",
+  };
+
+  const CAREERS_URLS = {
+    "Figure AI": "https://www.figure.ai/careers",
+    "Tesla (Optimus)": "https://www.tesla.com/careers",
+    "Boston Dynamics": "https://bostondynamics.com/careers",
+    "Agility Robotics": "https://agilityrobotics.com/careers",
+    "1X Technologies": "https://www.1x.tech/careers",
+    "Apptronik": null,
+    "Unitree": "https://www.unitree.com/about",
+    "FANUC": "https://www.fanucamerica.com/careers",
+    "ABB Robotics": "https://global.abb/group/en/careers",
+    "KUKA": "https://www.kuka.com/en-de/career",
+    "Yaskawa": null,
+    "Universal Robots": "https://www.universal-robots.com/about-universal-robots/careers/",
+    "Amazon Robotics": "https://www.amazonrobotics.com/careers",
+    "Locus Robotics": "https://locusrobotics.com/careers/",
+    "Berkshire Grey": "https://www.berkshiregrey.com/careers/",
+    "GreyOrange": "https://www.greyorange.com/careers",
+    "Boston Dynamics (Stretch)": "https://bostondynamics.com/careers",
+    "Vecna Robotics": "https://www.vecnarobotics.com/careers/",
+    "OTTO Motors": "https://ottomotors.com/careers",
+    "MiR": "https://www.mobile-industrial-robots.com/career",
+    "Slamtec": "https://www.slamtec.com/en/Careers",
+    "Waymo": "https://waymo.com/careers/",
+    "Aurora Innovation": "https://aurora.tech/careers",
+    "Zoox": "https://zoox.com/careers",
+    "Nuro": "https://www.nuro.ai/careers",
+    "Kodiak Robotics": "https://kodiak.ai/careers",
+    "Applied Intuition": "https://www.appliedintuition.com/careers",
+    "Robotiq": null,
+    "Standard Bots": "https://standardbots.com/careers",
+    "John Deere (See & Spray)": "https://www.deere.com/en/our-company/careers/",
+    "Naio Technologies": null,
+    "Carbon Robotics": "https://carbonrobotics.com/careers",
+    "FarmWise": "https://farmwise.io/careers",
+    "Intuitive Surgical": "https://www.intuitive.com/en-us/about-us/careers",
+    "Stryker (Mako)": "https://careers.stryker.com",
+    "Medtronic (Hugo)": null,
+    "CMR Surgical": "https://cmrsurgical.com/careers",
+    "iRobot": null,
+    "Ecovacs": "https://www.ecovacs.com/us",
+    "Roborock": null,
+    "DJI": "https://careers.dji.com",
+    "Skydio": "https://www.skydio.com/careers",
+    "Zipline": "https://www.flyzipline.com/careers",
+    "Wing (Alphabet)": "https://wing.com/careers/",
+    "Physical Intelligence": null,
+    "Skild AI": null,
+    "Covariant": null,
+    "NVIDIA (Isaac)": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+    "Genesis AI": null,
+    "Ropedia": null,
+    "LionsBot": "https://www.lionsbot.com/careers",
+    "ST Engineering": "https://www.stengg.com/en/careers/",
+    "Transforma Robotics": "https://www.transformarobotics.com/careers",
+    "HOPE Technik": "https://www.hopetechnik.com/careers",
+    "Neura Robotics": "https://neura-robotics.com/careers",
+    "Anduril Industries": "https://www.anduril.com/careers",
+    "Shield AI": "https://shield.ai/careers",
+    "Ekso Bionics": "https://eksobionics.com/careers",
+    "Ghost Robotics": "https://www.ghostrobotics.io/careers",
+    "Chengtian Technology": null,
+    "Galbot": null,
+    "AgiBot (Zhiyuan Robotics)": null,
+    "UBTECH Robotics": null,
+    "Fourier Intelligence": null,
+    "Walden Robotics": null,
+    "Zeroth": null,
+    "Yingzhi XBOT": null,
+    "Luxonis": "https://www.luxonis.com/careers",
+    "Eureka Robotics": null,
+    "SiMa.ai": "https://sima.ai/careers",
+    "Rhoda AI": null,
+    "Mind Robotics": null,
+  };
+
+  const PRODUCTS = {
+    "Figure AI": { product: "Figure 02", tagline: "General-purpose humanoid for warehouse and logistics tasks.", price: "Not publicly disclosed (enterprise pilot)" },
+    "Tesla (Optimus)": { product: "Optimus", tagline: "Bipedal humanoid for factory and, eventually, household tasks.", price: "Not publicly disclosed" },
+    "Boston Dynamics": { product: "Atlas", tagline: "Research/commercial humanoid for dynamic manipulation.", price: "Not publicly disclosed" },
+    "Agility Robotics": { product: "Digit", tagline: "Bipedal humanoid for warehouse tote-moving and logistics.", price: "Not publicly disclosed (enterprise lease)" },
+    "1X Technologies": { product: "NEO", tagline: "Biped home humanoid for household chores and assistance.", price: "~$20,000 early access, or ~$499/mo subscription (reported)" },
+    "Apptronik": { product: "Apollo", tagline: "General-purpose humanoid for industrial and logistics work.", price: "Not publicly disclosed (enterprise)" },
+    "Unitree": { product: "G1", tagline: "Compact humanoid platform for research and development.", price: "From ~$16,000 (reported starting price)" },
+    "FANUC": { product: "CRX collaborative arm series", tagline: "Collaborative industrial robot arms for manufacturing.", price: "Not publicly disclosed (dealer quote)" },
+    "ABB Robotics": { product: "IRB industrial arm series", tagline: "Industrial robot arms for welding, assembly, and material handling.", price: "Not publicly disclosed (dealer quote)" },
+    "KUKA": { product: "KR industrial arm series", tagline: "Industrial robot arms for automotive and general manufacturing.", price: "Not publicly disclosed (dealer quote)" },
+    "Yaskawa": { product: "Motoman arm series", tagline: "Industrial robot arms for welding and material handling.", price: "Not publicly disclosed (dealer quote)" },
+    "Universal Robots": { product: "UR10e", tagline: "Collaborative robot (cobot) arm for flexible automation.", price: "~$35,000–$50,000 (typical reported range)" },
+    "Amazon Robotics": { product: "Proteus", tagline: "Autonomous mobile robot for warehouse floor logistics.", price: "Not for sale (internal Amazon fleet)" },
+    "Locus Robotics": { product: "LocusBot", tagline: "Autonomous mobile robot for order picking in warehouses.", price: "Not publicly disclosed (robots-as-a-service)" },
+    "Berkshire Grey": { product: "Robotic Pick & Pack system", tagline: "Automated picking and fulfillment systems for warehouses.", price: "Not publicly disclosed" },
+    "GreyOrange": { product: "Ranger AMR", tagline: "Autonomous mobile robots for warehouse fulfillment.", price: "Not publicly disclosed" },
+    "Boston Dynamics (Stretch)": { product: "Stretch", tagline: "Mobile robot for warehouse case and box handling.", price: "Not publicly disclosed" },
+    "Vecna Robotics": { product: "Vecna AMR fleet", tagline: "Autonomous mobile robots for material transport.", price: "Not publicly disclosed" },
+    "OTTO Motors": { product: "OTTO 1500", tagline: "Autonomous mobile robot for heavy-payload material transport.", price: "Not publicly disclosed" },
+    "MiR": { product: "MiR1000", tagline: "Autonomous mobile robot for pallet and heavy-load transport.", price: "Not publicly disclosed (dealer quote)" },
+    "Slamtec": { product: "RPLIDAR", tagline: "LiDAR sensors and SLAM navigation modules for robots.", price: "From ~$99 (entry-level LiDAR units)" },
+    "LionsBot": { product: "LeoBot", tagline: "Autonomous commercial floor cleaning robot.", price: "Not publicly disclosed (lease model)" },
+    "ST Engineering": { product: "Robotics & autonomy portfolio", tagline: "Land, logistics, and defense robotics systems.", price: "Not publicly disclosed" },
+    "Transforma Robotics": { product: "Transforma mobile robot platform", tagline: "Mobile robots for commercial and telepresence use.", price: "Not publicly disclosed" },
+    "Waymo": { product: "Waymo Driver", tagline: "Autonomous driving system powering Waymo's robotaxi fleet.", price: "Not for sale — ride-hail service pricing only" },
+    "Aurora Innovation": { product: "Aurora Driver", tagline: "Self-driving system for freight trucks.", price: "Not publicly disclosed (freight partnership model)" },
+    "Zoox": { product: "Zoox robotaxi", tagline: "Purpose-built bidirectional autonomous robotaxi.", price: "Not for sale — ride-hail service pricing only" },
+    "Nuro": { product: "Nuro R3", tagline: "Autonomous, driverless delivery vehicle.", price: "Not publicly disclosed (delivery-as-a-service)" },
+    "Kodiak Robotics": { product: "Kodiak Driver", tagline: "Self-driving system for freight and off-road trucks.", price: "Not publicly disclosed" },
+    "John Deere (See & Spray)": { product: "See & Spray", tagline: "Computer-vision weed detection and targeted spraying system.", price: "Add-on package, price varies by dealer" },
+    "Naio Technologies": { product: "Ted", tagline: "Autonomous vineyard robot for weeding and soil work.", price: "Not publicly disclosed (dealer quote)" },
+    "Carbon Robotics": { product: "LaserWeeder", tagline: "Autonomous laser-based weeding machine for row crops.", price: "Reported ~$1.4M–$1.6M per unit" },
+    "FarmWise": { product: "Titan", tagline: "Autonomous mechanical weeding robot for vegetable farms.", price: "Not publicly disclosed (robots-as-a-service)" },
+    "Intuitive Surgical": { product: "da Vinci Surgical System", tagline: "Robotic-assisted minimally invasive surgery platform.", price: "~$1M–$2.5M per system (widely reported range)" },
+    "Stryker (Mako)": { product: "Mako SmartRobotics", tagline: "Robotic-arm assisted platform for joint replacement surgery.", price: "Not publicly disclosed" },
+    "Medtronic (Hugo)": { product: "Hugo RAS", tagline: "Robotic-assisted surgery system.", price: "Not publicly disclosed" },
+    "CMR Surgical": { product: "Versius", tagline: "Modular robotic-assisted surgery system.", price: "Not publicly disclosed" },
+    "iRobot": { product: "Roomba", tagline: "Robotic vacuum cleaner for home floor care.", price: "~$275–$1,400 depending on model" },
+    "Ecovacs": { product: "DEEBOT", tagline: "Robotic vacuum and mop for home floor care.", price: "~$300–$1,500 depending on model" },
+    "Roborock": { product: "Roborock S8 series", tagline: "Robotic vacuum and mop for home floor care.", price: "~$600–$1,800 depending on model" },
+    "DJI": { product: "Mavic series", tagline: "Consumer and prosumer camera drones.", price: "~$500–$3,000+ depending on model" },
+    "Skydio": { product: "Skydio X10", tagline: "Autonomous drone for enterprise and public-sector inspection.", price: "Reported starting around $12,000+" },
+    "Zipline": { product: "Zipline P2", tagline: "Autonomous delivery drone for medical and retail logistics.", price: "Not for sale — delivery-as-a-service" },
+    "Wing (Alphabet)": { product: "Wing delivery drone", tagline: "Autonomous drone for last-mile package delivery.", price: "Not for sale — delivery-as-a-service" },
+    "HOPE Technik": { product: "Custom robotics & defense platforms", tagline: "Engineering-led robotics, drones, and defense systems.", price: "Not publicly disclosed (bespoke engineering)" },
+    "Physical Intelligence": { product: "π0 (pi-zero)", tagline: "General-purpose robot foundation model.", price: "Not sold directly — research/licensing model" },
+    "Skild AI": { product: "Skild Brain", tagline: "General-purpose robot foundation model.", price: "Not sold directly — licensing model" },
+    "Covariant": { product: "RFM-1", tagline: "Robotics foundation model for warehouse manipulation.", price: "Not sold directly — enterprise licensing" },
+    "NVIDIA (Isaac)": { product: "Isaac GR00T", tagline: "Foundation model and simulation platform for humanoid robots.", price: "Platform pricing varies (NVIDIA enterprise licensing)" },
+    "Genesis AI": { product: "GENE / Eno", tagline: "Universal robotics foundation model trained on physics simulation plus real robot data; Eno is its semi-humanoid demo platform.", price: "Not sold directly — research/licensing model" },
+    "Ropedia": { product: "Ropedia capture wearable", tagline: "Wearable hardware for collecting physical-AI training data.", price: "Not publicly disclosed (enterprise data partnership)" },
+    "Robotiq": { product: "Adaptive Grippers (2F-85 / Hand-E)", tagline: "Adaptive grippers, force-torque sensors, and workcells for industrial robot arms.", price: "Not publicly disclosed (dealer quote)" },
+    "Applied Intuition": { product: "AV simulation & software platform", tagline: "Simulation, tooling, and software stack for autonomous vehicle and defense programs.", price: "Not publicly disclosed (enterprise licensing)" },
+    "Sunday Robotics": { product: "Memo", tagline: "Household humanoid robot for domestic chores — laundry, dishes, tidying.", price: "Not publicly disclosed" },
+    "Standard Bots": { product: "Spark / Core / Thor arms, Bolt mobile droid", tagline: "AI-native six-axis industrial arms, teachable by demonstration instead of code.", price: "Spark from $29,500 · Core from ~$37,000–$39,500 · Thor from $49,500" },
+    "Neura Robotics": { product: "4NE1", tagline: "Consumer/service-oriented humanoid robot from Germany.", price: "Not publicly disclosed" },
+    "Anduril Industries": { product: "Lattice / Ghost / Roadrunner platforms", tagline: "Autonomous defense systems — sensor towers, drones, and counter-drone interceptors.", price: "Not for sale — government contract pricing" },
+    "Shield AI": { product: "Hivemind / V-BAT", tagline: "AI autonomy software and autonomous drone systems for defense.", price: "Not for sale — government contract pricing" },
+    "Ghost Robotics": { product: "Vision 60", tagline: "Quadrupedal unmanned ground vehicle for defense and security.", price: "Not publicly disclosed" },
+    "Ekso Bionics": { product: "EksoNR", tagline: "Wearable exoskeleton for rehabilitation and mobility assistance.", price: "Not publicly disclosed (clinical purchase)" },
+    "Chengtian Technology": { product: "UGO (Yo-Hang)", tagline: "NMPA-approved medical exoskeleton for spinal cord injury, stroke, and lower-limb weakness rehab — in use at 200+ Chinese hospitals.", price: "Not publicly disclosed" },
+    "Walden Robotics": { product: "General-purpose factory robot (unnamed)", tagline: "Toyota-backed general-purpose robot doing dexterous factory tasks — loading, cleaning, kitting.", price: "Not for sale — deployed via manufacturing partnership" },
+    "Zeroth": { product: "Companion robot (unnamed)", tagline: "Companion robots for elder care, pet care, and children's education.", price: "Not publicly disclosed" },
+    "Yingzhi XBOT": { product: "XBOT X1 / C3 / I3", tagline: "Catering-focused humanoid and service robots — universal food service (X1), coffee (C3), ice cream (I3), on the XOS 3.0 embodied OS.", price: "Not publicly disclosed" },
+    "Galbot": { product: "Galbot G1", tagline: "Wheeled-base humanoid for logistics and retail manipulation tasks.", price: "Not publicly disclosed" },
+    "AgiBot (Zhiyuan Robotics)": { product: "Yuanzheng A2 / Lingxi X2", tagline: "General-purpose humanoid robots — among the highest-volume humanoid shippers globally by unit count (2025).", price: "Not publicly disclosed" },
+    "UBTECH Robotics": { product: "Walker S", tagline: "Industrial humanoid deployed on automotive assembly lines, including BYD factories.", price: "Not publicly disclosed (enterprise deployment)" },
+    "Fourier Intelligence": { product: "GR-2", tagline: "General-purpose humanoid robot; the company's lower-limb exoskeletons remain in clinical/rehab use.", price: "Not publicly disclosed" },
+    "Luxonis": { product: "OAK camera platform", tagline: "Multi-sensor camera modules with on-device compute for robot perception.", price: "OAK devices typically ~$150–$1,000 depending on model" },
+    "Rhoda AI": { product: "Direct Video-Action (DVA) model", tagline: "Foundation model pretrained on web-scale video, fine-tuned on a small amount of trajectory data for generalist industrial robot tasks.", price: "Not sold directly — enterprise licensing" },
+    "Eureka Robotics": { product: "3D vision + picking system", tagline: "NTU spinoff AI vision system for 3D bin picking, sorting, and stacking of randomly placed industrial parts.", price: "Not publicly disclosed — free 72-hour feasibility check offered" },
+    "SiMa.ai": { product: "Modalix MLSoC / Palette Neat", tagline: "Edge AI chip (50 TOPS under 10W) and software platform for deploying physical AI on drones, robots, and vehicles.", price: "DevKit available via store; production pricing not publicly disclosed" },
+    "Mind Robotics": { product: "AI-enabled industrial robotic systems (unnamed)", tagline: "Rivian spinoff building AI-enabled robots for factory assembly and material handling.", price: "Not publicly disclosed" },
+  };
+
+  const HQ_COORDS = {
+    "Sunnyvale, US": [37.37, -122.04],
+    "Austin, US": [30.27, -97.74],
+    "Waltham, US": [42.38, -71.24],
+    "Corvallis, US": [44.56, -123.26],
+    "Moss, NO": [59.43, 10.66],
+    "Hangzhou, CN": [30.27, 120.15],
+    "Yamanashi, JP": [35.66, 138.57],
+    "Zurich, CH": [47.37, 8.54],
+    "Augsburg, DE": [48.37, 10.90],
+    "Kitakyushu, JP": [33.88, 130.88],
+    "Odense, DK": [55.40, 10.38],
+    "North Reading, US": [42.58, -71.10],
+    "Wilmington, US": [42.55, -71.17],
+    "Bedford, US": [42.49, -71.28],
+    "Singapore, SG": [1.35, 103.82],
+    "Kitchener, CA": [43.45, -80.49],
+    "Lévis, CA": [46.81, -71.18],
+    "Glen Cove, US": [40.86, -73.63],
+    "Metzingen, DE": [48.54, 9.28],
+    "Costa Mesa, US": [33.66, -117.91],
+    "San Diego, US": [32.72, -117.16],
+    "Philadelphia, US": [39.95, -75.16],
+    "Richmond, US": [37.94, -122.35],
+    "Cambridge, US": [42.37, -71.11],
+    "Denver, US": [39.74, -104.99],
+    "San Jose, US": [37.34, -121.89],
+    "Shanghai, CN": [31.23, 121.47],
+    "Mountain View, US": [37.39, -122.08],
+    "Pittsburgh, US": [40.44, -79.99],
+    "Foster City, US": [37.56, -122.27],
+    "Moline, US": [41.51, -90.52],
+    "Toulouse, FR": [43.60, 1.44],
+    "Seattle, US": [47.61, -122.33],
+    "San Francisco, US": [37.77, -122.42],
+    "Palo Alto, US": [37.44, -122.14],
+    "Kalamazoo, US": [42.29, -85.59],
+    "Dublin, IE": [53.35, -6.26],
+    "Cambridge, UK": [52.20, 0.12],
+    "Suzhou, CN": [31.30, 120.62],
+    "Beijing, CN": [39.90, 116.41],
+    "Shenzhen, CN": [22.54, 114.06],
+    "San Mateo, US": [37.56, -122.32],
+    "South San Francisco, US": [37.66, -122.44],
+    "Santa Clara, US": [37.35, -121.95],
+    "Emeryville, US": [37.83, -122.29],
+  };
+
+  function baseName(name) {
+    return name.replace(/\s*\(.*?\)\s*/g, "").trim();
+  }
+
+  const CATS = [...new Set(DATA.map(d => d.cat))];
+  const uniqueCompanyCount = new Set(DATA.map(d => baseName(d.name))).size;
+  const statsEl = document.getElementById("stats");
+  statsEl.innerHTML = `
+    <div class="stat"><div class="label">Companies tracked</div><div class="value num">${uniqueCompanyCount}</div></div>
+    <div class="stat"><div class="label">Categories</div><div class="value num">${CATS.length}</div></div>
+    <div class="stat"><div class="label">Open role types</div><div class="value num accent">${new Set(DATA.flatMap(d => d.roles)).size}+</div></div>
+  `;
+
+  const filtersEl = document.getElementById("filters");
+  const rowsEl = document.getElementById("rows");
+  const searchInput = document.getElementById("searchInput");
+  const searchClear = document.getElementById("searchClear");
+  let active = "All";
+  let query = "";
+  let raisedSort = 0; // 0 = off, 1 = desc, -1 = asc
+
+  const activeFilterRow = document.getElementById("activeFilterRow");
+  const activeFilterChip = document.getElementById("activeFilterChip");
+  function setActiveFilter(label) {
+    if (!label) {
+      activeFilterRow.style.display = "none";
+      activeFilterChip.innerHTML = "";
+      return;
+    }
+    activeFilterRow.style.display = "block";
+    activeFilterChip.innerHTML = `Filtered: ${label} <span class="x" id="activeFilterClearBtn">✕</span>`;
+    document.getElementById("activeFilterClearBtn").addEventListener("click", () => {
+      searchInput.value = "";
+      query = "";
+      searchClear.classList.remove("show");
+      setActiveFilter(null);
+      render();
+    });
+  }
+
+  function initials(name) {
+    return name.replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+  }
+
+  const ICON_SVG_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">';
+  const CATEGORY_ICONS = {
+    "Humanoid": ICON_SVG_OPEN + '<circle cx="12" cy="5.5" r="2.5"/><path d="M8 12h8v6a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/><path d="M8 12l-2 5M16 12l2 5M9 20v2M15 20v2"/>' + '</svg>',
+    "Industrial arms": ICON_SVG_OPEN + '<path d="M4 20h4"/><path d="M6 20V14l6-4"/><circle cx="6" cy="20" r="1.4"/><circle cx="12" cy="10" r="1.4"/><path d="M12 10l7-2"/><circle cx="19" cy="8" r="1.4"/>' + '</svg>',
+    "Warehouse & logistics": ICON_SVG_OPEN + '<path d="M3 10l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>' + '</svg>',
+    "Autonomous mobile robots": ICON_SVG_OPEN + '<rect x="4" y="8" width="16" height="9" rx="2"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/><path d="M9 8V5h6v3"/>' + '</svg>',
+    "Autonomous vehicles": ICON_SVG_OPEN + '<path d="M3 16l1.5-5A2 2 0 0 1 6.4 9.5h11.2A2 2 0 0 1 19.5 11L21 16"/><path d="M3 16h18v2H3z"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/>' + '</svg>',
+    "Agricultural robotics": ICON_SVG_OPEN + '<path d="M12 21c-5-2-7-6-7-11 5 0 9 2 11 7"/><path d="M12 21c5-2 7-6 7-11-5 0-9 2-11 7"/><path d="M12 21V10"/>' + '</svg>',
+    "Medical & surgical": ICON_SVG_OPEN + '<circle cx="12" cy="12" r="8.5"/><path d="M12 8v8M8 12h8"/>' + '</svg>',
+    "Consumer & home": ICON_SVG_OPEN + '<path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/>' + '</svg>',
+    "Aerial & drone": ICON_SVG_OPEN + '<rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M4 4l5.5 5.5M20 4l-5.5 5.5M4 20l5.5-5.5M20 20l-5.5-5.5"/><circle cx="4" cy="4" r="1.6"/><circle cx="20" cy="4" r="1.6"/><circle cx="4" cy="20" r="1.6"/><circle cx="20" cy="20" r="1.6"/>' + '</svg>',
+    "Robotics AI / foundation models": ICON_SVG_OPEN + '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2.2"/><path d="M7.6 7.2l3 3M16.4 7.2l-3 3M7.6 16.8l3-3M16.4 16.8l-3-3"/>' + '</svg>',
+    "Defense & security robotics": ICON_SVG_OPEN + '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/>' + '</svg>',
+    "Exoskeletons": ICON_SVG_OPEN + '<path d="M8 3v18M16 3v18M8 8h8M8 16h8"/><circle cx="8" cy="12" r="1.3"/><circle cx="16" cy="12" r="1.3"/>' + '</svg>',
+  };
+  function categoryIcon(cat) {
+    return CATEGORY_ICONS[cat] || CATEGORY_ICONS["Robotics AI / foundation models"];
+  }
+
+  function parseRaised(str) {
+    const m = str.match(/([\d.]+)\s*([MB])/i);
+    if (!m) return -1; // non-numeric (public/owned/internal/undisclosed) sorts last
+    const n = parseFloat(m[1]);
+    return m[2].toUpperCase() === "B" ? n * 1000 : n;
+  }
+
+  function render() {
+    let list = (active === "All" ? DATA : DATA.filter(d => d.cat === active));
+    if (query) {
+      const q = query.toLowerCase();
+      list = list.filter(d => d.name.toLowerCase().includes(q) || d.hq.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q) || d.roles.some(r => r.toLowerCase().includes(q)));
+    }
+    if (raisedSort !== 0) {
+      list = [...list].sort((a, b) => raisedSort * (parseRaised(b.raised) - parseRaised(a.raised)));
+    }
+    rowsEl.innerHTML = list.length ? list.map((d, i) => `
+      <tr>
+        <td class="rank num" data-label="#">${i + 1}</td>
+        <td class="company" data-label="Company"><span class="logo" title="${d.cat}">${categoryIcon(d.cat)}</span><button type="button" class="co-link-btn" data-company="${d.name}">${d.name}</button>${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""} ${WEBSITES[d.name] ? `<a href="${WEBSITES[d.name]}" target="_blank" rel="noopener" class="co-link" title="Visit website">↗</a>` : ""}</td>
+        <td data-label="Category"><span class="cat-tag">${d.cat}</span></td>
+        <td class="hq" data-label="HQ">${d.hq}</td>
+        <td class="raised num" data-label="Raised">${d.raised}</td>
+        <td class="investors" data-label="Key investors">${d.investors}</td>
+        <td class="roles" data-label="Hiring">${d.roles.map(r => `<span class="role-chip">${r}</span>`).join("")}</td>
+        <td class="flag" data-label="">${d.lead ? '<span class="leader-badge">Leader</span>' : ""}</td>
+      </tr>
+    `).join("") : `<tr><td colspan="8" class="table-empty">No companies match "${query}".</td></tr>`;
+  }
+
+  filtersEl.innerHTML = ["All", ...CATS].map(c =>
+    `<button class="pill${c === "All" ? " active" : ""}" data-cat="${c}">${c}${c !== "All" ? ` (${DATA.filter(d => d.cat === c).length})` : ""}</button>`
+  ).join("");
+
+  const sidebarSubcatsEl = document.getElementById("sidebarSubcats");
+  sidebarSubcatsEl.innerHTML = CATS.map(c =>
+    `<a href="#table" data-cat="${c}">${c} <span class="count">(${DATA.filter(d => d.cat === c).length})</span></a>`
+  ).join("");
+
+  function setCategory(cat) {
+    active = cat;
+    [...filtersEl.children].forEach(b => b.classList.toggle("active", b.dataset.cat === cat));
+    [...sidebarSubcatsEl.children].forEach(a => a.classList.toggle("active", a.dataset.cat === cat));
+    setActiveFilter(null);
+    render();
+  }
+
+  rowsEl.addEventListener("click", e => {
+    const btn = e.target.closest(".co-link-btn");
+    if (!btn) return;
+    openProductDetail(btn.dataset.company);
+  });
+
+  filtersEl.addEventListener("click", e => {
+    const btn = e.target.closest(".pill");
+    if (!btn) return;
+    setCategory(btn.dataset.cat);
+  });
+
+  sidebarSubcatsEl.addEventListener("click", e => {
+    const link = e.target.closest("a");
+    if (!link) return;
+    setCategory(link.dataset.cat);
+  });
+
+  searchInput.addEventListener("input", () => {
+    query = searchInput.value.trim();
+    searchClear.classList.toggle("show", !!query);
+    setActiveFilter(null);
+    render();
+  });
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    query = "";
+    searchClear.classList.remove("show");
+    setActiveFilter(null);
+    render();
+  });
+
+  const raisedHeader = document.getElementById("raisedHeader");
+  const raisedSortIcon = document.getElementById("raisedSortIcon");
+  raisedHeader.addEventListener("click", () => {
+    raisedSort = raisedSort === 1 ? -1 : raisedSort === -1 ? 0 : 1;
+    raisedSortIcon.textContent = raisedSort === 1 ? "↓" : raisedSort === -1 ? "↑" : "↕";
+    render();
+  });
+
+  render();
+
+  /* ---- product detail overlay ---- */
+  const pdetailOverlay = document.getElementById("pdetailOverlay");
+  const pdetailModal = document.getElementById("pdetailModal");
+
+  function closeProductDetail() {
+    pdetailOverlay.classList.remove("open");
+  }
+
+  function openProductDetail(companyName) {
+    const d = DATA.find(x => x.name === companyName);
+    if (!d) return;
+    const p = PRODUCTS[d.name] || { product: d.name, tagline: "", price: "Not publicly disclosed" };
+    const site = WEBSITES[d.name];
+    const similar = DATA.filter(x => x.cat === d.cat && x.name !== d.name).slice(0, 6);
+
+    pdetailModal.innerHTML = `
+      <div class="pdetail-head">
+        <div class="pdetail-head-main">
+          <span class="pdetail-icon" title="${d.cat}">${categoryIcon(d.cat)}</span>
+          <div>
+            <div class="eyebrow2">${d.cat}</div>
+            <h2>${p.product}</h2>
+            <div class="company-line">by ${d.name}${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+          </div>
+        </div>
+        <button class="gsearch-close" id="pdetailCloseBtn" type="button">✕</button>
+      </div>
+      <div class="pdetail-body">
+        <p class="pdetail-tagline">${p.tagline}</p>
+        <div class="pdetail-facts">
+          <div class="pdetail-fact"><div class="label">Company</div><div class="val">${d.name}</div></div>
+          <div class="pdetail-fact"><div class="label">HQ</div><div class="val">${d.hq}</div></div>
+          <div class="pdetail-fact"><div class="label">Website</div><div class="val">${site ? `<a href="${site}" target="_blank" rel="noopener">${site.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗</a>` : "—"}</div></div>
+          <div class="pdetail-fact"><div class="label">Raised</div><div class="val">${d.raised}</div></div>
+          <div class="pdetail-fact"><div class="label">Key investors</div><div class="val">${d.investors}</div></div>
+          <div class="pdetail-fact"><div class="label">Cost</div><div class="val">${p.price}</div></div>
+        </div>
+        <div class="pdetail-section-title">Hiring for</div>
+        <div class="pdetail-roles">${d.roles.map(r => `<span class="role-chip">${r}</span>`).join("")}</div>
+        ${similar.length ? `
+        <div class="pdetail-section-title">Similar products</div>
+        <div class="pdetail-similar">
+          ${similar.map(s => {
+            const sp = PRODUCTS[s.name] || { product: s.name };
+            return `<button class="pdetail-similar-card" data-company="${s.name}"><div class="p-name">${sp.product}</div><div class="p-co">${s.name}</div></button>`;
+          }).join("")}
+        </div>` : ""}
+        <p class="pdetail-disclaimer">Product info compiled from general knowledge, not a live scrape of the company's site — verify specs and pricing directly with the company before relying on them.</p>
+      </div>
+    `;
+
+    document.getElementById("pdetailCloseBtn").addEventListener("click", closeProductDetail);
+    pdetailModal.querySelectorAll(".pdetail-similar-card").forEach(card => {
+      card.addEventListener("click", () => openProductDetail(card.dataset.company));
+    });
+
+    document.getElementById("gsearchOverlay").classList.remove("open");
+    pdetailOverlay.classList.add("open");
+  }
+
+  pdetailOverlay.addEventListener("click", e => {
+    if (e.target === pdetailOverlay) closeProductDetail();
+  });
+
+  /* ---- global search ---- */
+  (function buildGlobalSearch() {
+    const openBtn = document.getElementById("gsearchOpenBtn");
+    const overlay = document.getElementById("gsearchOverlay");
+    const closeBtn = document.getElementById("gsearchCloseBtn");
+    const input = document.getElementById("gsearchInput");
+    const resultsEl = document.getElementById("gsearchResults");
+
+    const INDEX = DATA.map(d => {
+      const p = PRODUCTS[d.name] || { product: d.name, tagline: "" };
+      return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
+    });
+
+    function openSearch() {
+      overlay.classList.add("open");
+      input.value = "";
+      renderResults("");
+      setTimeout(() => input.focus(), 30);
+    }
+    function closeSearch() { overlay.classList.remove("open"); }
+
+    function renderResults(q) {
+      const query = q.trim().toLowerCase();
+      const list = query
+        ? INDEX.filter(r => r.product.toLowerCase().includes(query) || r.company.toLowerCase().includes(query) || r.cat.toLowerCase().includes(query))
+        : INDEX;
+      if (!list.length) {
+        resultsEl.innerHTML = `<div class="gsearch-empty">No products match "${q}".</div>`;
+        return;
+      }
+      resultsEl.innerHTML = `<div class="gsearch-section-label">Products</div>` + list.slice(0, 30).map(r => `
+        <button class="gsearch-row" data-company="${r.company}">
+          <span class="gsearch-thumb" title="${r.cat}">${categoryIcon(r.cat)}</span>
+          <span>
+            <div class="gsearch-row-name">${r.product}${!r.verified ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+            <div class="gsearch-row-meta">Product · ${r.cat} · ${r.company}</div>
+          </span>
+        </button>
+      `).join("");
+      resultsEl.querySelectorAll(".gsearch-row").forEach(row => {
+        row.addEventListener("click", () => {
+          closeSearch();
+          openProductDetail(row.dataset.company);
+        });
+      });
+    }
+
+    openBtn.addEventListener("click", openSearch);
+    closeBtn.addEventListener("click", closeSearch);
+    overlay.addEventListener("click", e => { if (e.target === overlay) closeSearch(); });
+    input.addEventListener("input", () => renderResults(input.value));
+    document.addEventListener("keydown", e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        overlay.classList.contains("open") ? closeSearch() : openSearch();
+      }
+      if (e.key === "Escape") {
+        closeSearch();
+        closeProductDetail();
+      }
+    });
+  })();
+
+  /* ---- careers ---- */
+  (function buildCareers() {
+    const JOBS = [];
+    DATA.forEach(d => {
+      const country = d.hq.split(",").pop().trim();
+      d.roles.forEach(r => JOBS.push({ role: r, company: d.name, cat: d.cat, hq: d.hq, country }));
+    });
+
+    const rowsEl = document.getElementById("careersRows");
+    const searchEl = document.getElementById("careerSearch");
+    const locEl = document.getElementById("careerLocationFilter");
+    const catEl = document.getElementById("careerCatFilter");
+
+    const countries = [...new Set(JOBS.map(j => j.country))].sort();
+    locEl.innerHTML += countries.map(c => `<option value="${c}">${c}</option>`).join("");
+    catEl.innerHTML += CATS.map(c => `<option value="${c}">${c}</option>`).join("");
+
+    function renderJobs() {
+      const q = searchEl.value.trim().toLowerCase();
+      const loc = locEl.value;
+      const cat = catEl.value;
+      const list = JOBS.filter(j =>
+        (!q || j.role.toLowerCase().includes(q) || j.company.toLowerCase().includes(q)) &&
+        (!loc || j.country === loc) &&
+        (!cat || j.cat === cat)
+      ).sort((a, b) => a.role.localeCompare(b.role));
+
+      rowsEl.innerHTML = list.length ? list.map(j => {
+        const careersUrl = CAREERS_URLS[j.company];
+        const url = careersUrl || WEBSITES[j.company];
+        const isFallback = !careersUrl && !!url;
+        const companyCell = url
+          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : ""}>${j.company}${isFallback ? " *" : ""}</a>`
+          : j.company;
+        return `
+        <tr>
+          <td class="role-name">${j.role}</td>
+          <td>${companyCell}</td>
+          <td><span class="cat-tag">${j.cat}</span></td>
+          <td class="hq">${j.hq}</td>
+        </tr>
+      `;
+      }).join("") : `<tr><td colspan="4" class="table-empty">No open roles match these filters.</td></tr>`;
+    }
+
+    searchEl.addEventListener("input", renderJobs);
+    locEl.addEventListener("change", renderJobs);
+    catEl.addEventListener("change", renderJobs);
+    renderJobs();
+  })();
+
+  /* ---- fundraising monitor ---- */
+  (function buildMonitor() {
+    function weekStart(dateStr) {
+      const d = new Date(dateStr + "T00:00:00Z");
+      const day = d.getUTCDay();
+      const diff = (day === 0 ? -6 : 1) - day; // back to Monday
+      d.setUTCDate(d.getUTCDate() + diff);
+      return d.toISOString().slice(0, 10);
+    }
+    function fmtWeek(dateStr) {
+      const d = new Date(dateStr + "T00:00:00Z");
+      return "Week of " + d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    }
+
+    const sorted = [...MONITOR_EVENTS].sort((a, b) => b.date.localeCompare(a.date));
+    const groups = {};
+    sorted.forEach(m => {
+      const wk = weekStart(m.date);
+      (groups[wk] = groups[wk] || []).push(m);
+    });
+    const weekKeys = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+
+    const numericAmounts = MONITOR_EVENTS.map(m => {
+      const match = m.amount.match(/([\d.]+)\s*([MB])/i);
+      if (!match) return 0;
+      const n = parseFloat(match[1]);
+      return match[2].toUpperCase() === "B" ? n * 1000 : n;
+    });
+    const totalM = numericAmounts.reduce((a, b) => a + b, 0);
+    const totalDisplay = totalM >= 1000 ? `$${(totalM / 1000).toFixed(1)}B` : `$${Math.round(totalM)}M`;
+
+    document.getElementById("monitorStats").innerHTML = `
+      <div class="stat"><div class="label">Rounds tracked</div><div class="value num">${MONITOR_EVENTS.length}</div></div>
+      <div class="stat"><div class="label">Combined amount</div><div class="value num accent">${totalDisplay}</div></div>
+      <div class="stat"><div class="label">Weeks covered</div><div class="value num">${weekKeys.length}</div></div>
+    `;
+
+    document.getElementById("monitorGroups").innerHTML = weekKeys.map(wk => `
+      <div class="monitor-week-head">
+        <h3>${fmtWeek(wk)}</h3>
+        <span class="n">${groups[wk].length} round${groups[wk].length > 1 ? "s" : ""}</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Company</th>
+              <th>Round</th>
+              <th>Amount</th>
+              <th>Investors</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${groups[wk].map(m => `
+              <tr>
+                <td class="hq num">${m.date}</td>
+                <td class="company">${m.company}</td>
+                <td class="round-tag"><span class="round-pill">${m.round}</span></td>
+                <td class="amount num">${m.amount}</td>
+                <td class="investors">${m.investors}</td>
+                <td><a href="${m.sourceUrl}" target="_blank" rel="noopener" class="job-link">${m.sourceName}</a></td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `).join("");
+
+    document.getElementById("monitorCount").textContent = `1 to ${MONITOR_EVENTS.length} of ${MONITOR_EVENTS.length} results`;
+  })();
+
+  /* ---- voices to follow ---- */
+  const VOICE_LANES = [
+    {
+      key: "builders",
+      title: "Builders & operators",
+      desc: "Founders and execs actually shipping robots — highest signal, also the most bias.",
+      people: [
+        { name: "Brett Adcock", role: "Founder/CEO, Figure AI", url: WEBSITES["Figure AI"] },
+        { name: "Marc Raibert", role: "Founder, Boston Dynamics; head of Boston Dynamics AI Institute", url: WEBSITES["Boston Dynamics"] },
+        { name: "Bernt Bornich", role: "CEO, 1X Technologies", url: WEBSITES["1X Technologies"] },
+        { name: "RJ Scaringe", role: "Co-founder/Chairman, Mind Robotics (Rivian founder)", url: WEBSITES["Mind Robotics"] },
+        { name: "Peter Chen", role: "Co-founder, Covariant", url: WEBSITES["Covariant"] },
+        { name: "Russ Tedrake", role: "MIT professor; leads Walden Robotics", url: WEBSITES["Walden Robotics"] },
+      ],
+    },
+    {
+      key: "researchers",
+      title: "Researchers & academics",
+      desc: "Technical depth on robot learning and embodied AI, less hype-driven.",
+      people: [
+        { name: "Sergey Levine", role: "Co-founder, Physical Intelligence; UC Berkeley", url: WEBSITES["Physical Intelligence"] },
+        { name: "Chelsea Finn", role: "Co-founder, Physical Intelligence; Stanford", url: WEBSITES["Physical Intelligence"] },
+        { name: "Rodney Brooks", role: "Co-founder, iRobot & Rethink Robotics; MIT professor emeritus", url: "https://rodneybrooks.com" },
+        { name: "Gill Pratt", role: "CEO, Toyota Research Institute", url: null },
+      ],
+    },
+    {
+      key: "media",
+      title: "Media & commentary",
+      desc: "Curate and interpret the space rather than build in it.",
+      people: [
+        { name: "The Robot Report", role: "Trade press covering robotics deals and product news", url: "https://www.therobotreport.com" },
+        { name: "Robots & Startups", role: "Newsletter tracking monthly robotics funding rounds", url: "https://robotsandstartups.substack.com" },
+        { name: "Humanoid Index", role: "Funding tracker dedicated to humanoid robotics", url: "https://humanoidindex.org" },
+      ],
+    },
+  ];
+
+  document.getElementById("voicesGroups").innerHTML = VOICE_LANES.map(lane => `
+    <div class="voice-lane">
+      <div class="voice-lane-head">
+        <h3>${lane.title}</h3>
+        <p>— ${lane.desc}</p>
+      </div>
+      <div class="voice-grid">
+        ${lane.people.map(p => `
+          <div class="voice-card">
+            <div class="v-name">${p.url ? `<a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>` : p.name}</div>
+            <div class="v-role">${p.role}</div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  /* ---- news ---- */
+  document.getElementById("newsList").innerHTML = NEWS.map(n => `
+    <a class="news-card" href="${n.url}" target="_blank" rel="noopener">
+      <div class="news-meta"><span class="news-source">${n.source}</span><span>${n.date}</span></div>
+      <h3>${n.title}</h3>
+      <p>${n.summary}</p>
+    </a>
+  `).join("");
+
+  /* ---- world map ---- */
+  (function buildMap() {
+    const W = 720, H = 360;
+    const svg = document.getElementById("worldMap");
+    const tip = document.getElementById("mapTip");
+    const mapWrap = document.getElementById("mapWrap");
+
+    function project(lat, lon) {
+      const x = (lon + 180) / 360 * W;
+      const y = (90 - lat) / 180 * H;
+      return [x, y];
+    }
+
+    // finer continent bounding regions for a more accurate dot-matrix basemap
+    const LAND = [
+      // North America
+      [48, 72, -168, -128],   // Alaska / NW Canada
+      [42, 68, -128, -95],    // Canada west/central
+      [42, 62, -95, -52],     // Canada east / Quebec / Labrador
+      [25, 49, -125, -95],    // US west & central
+      [25, 45, -95, -66],     // US east
+      [24, 33, -113, -104],   // Baja California / NW Mexico
+      [14, 24, -107, -90],    // Mexico core
+      [7, 18, -93, -77],      // Central America
+      [58, 83, -62, -18],     // Greenland
+      // South America
+      [-56, -34, -75, -63],   // Patagonia / Argentina south
+      [-34, -4, -78, -34],    // Brazil / Argentina / Paraguay core
+      [-4, 13, -82, -50],     // Colombia / Venezuela / Guyanas
+      [-20, -4, -82, -68],    // Peru / Ecuador coast
+      // Europe
+      [55, 71, 4, 32],        // Scandinavia
+      [46, 55, -9, 30],       // Central Europe
+      [36, 46, -9, 28],       // Southern Europe / Iberia / Italy / Balkans
+      [55, 61, -9, 2],        // UK / Ireland
+      // Africa
+      [15, 37, -18, 34],      // North Africa / Sahara
+      [-5, 15, -18, 45],      // Central Africa / Horn
+      [-35, -5, 10, 41],      // Southern Africa
+      [-26, -12, 43, 51],     // Madagascar
+      // Middle East / South Asia
+      [12, 37, 34, 62],       // Arabian peninsula / Iran
+      [6, 32, 62, 90],        // Indian subcontinent
+      [20, 45, 44, 62],       // Iran / Caucasus
+      // Asia
+      [50, 78, 26, 180],      // Siberia
+      [30, 50, 62, 135],      // Central & East Asia (China/Mongolia/Korea)
+      [18, 30, 95, 122],      // South China / SE Asia mainland
+      [-10, 20, 95, 141],     // Maritime SE Asia (Indonesia/Philippines)
+      [30, 46, 128, 146],     // Japan
+      [33, 43, 124, 131],     // Korea
+      // Oceania
+      [-45, -10, 112, 154],   // Australia
+      [-47, -34, 166, 179],   // New Zealand
+    ];
+    function isLand(lat, lon) {
+      return LAND.some(([lat0, lat1, lon0, lon1]) => lat >= lat0 && lat <= lat1 && lon >= lon0 && lon <= lon1);
+    }
+
+    let dots = "";
+    const step = 2.5;
+    for (let lat = -80; lat <= 80; lat += step) {
+      for (let lon = -180; lon <= 180; lon += step) {
+        if (!isLand(lat, lon)) continue;
+        if (Math.random() < 0.08) continue; // organic edge texture
+        const [x, y] = project(lat, lon);
+        dots += `<circle class="map-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="0.85"/>`;
+      }
+    }
+
+    // group companies by HQ
+    const byHQ = {};
+    DATA.forEach(d => {
+      const coords = HQ_COORDS[d.hq];
+      if (!coords) return;
+      if (!byHQ[d.hq]) byHQ[d.hq] = { coords, companies: [] };
+      byHQ[d.hq].companies.push(d.name);
+    });
+
+    let markers = "";
+    Object.entries(byHQ).forEach(([hq, info]) => {
+      const [lat, lon] = info.coords;
+      const [x, y] = project(lat, lon);
+      const n = info.companies.length;
+      const r = Math.min(11, 5 + Math.sqrt(n) * 2.2);
+      markers += `
+        <g class="map-marker" data-hq="${hq}" data-x="${x.toFixed(1)}" data-y="${y.toFixed(1)}">
+          ${n > 1 ? `<circle class="ring" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r + 4).toFixed(1)}"/>` : ""}
+          <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>
+          ${n > 1 ? `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}">${n}</text>` : ""}
+        </g>`;
+    });
+
+    svg.innerHTML = dots + markers;
+
+    svg.querySelectorAll(".map-marker").forEach(g => {
+      const hq = g.dataset.hq;
+      const info = byHQ[hq];
+      g.addEventListener("mouseenter", () => {
+        const rect = mapWrap.getBoundingClientRect();
+        const svgRect = svg.getBoundingClientRect();
+        const scale = svgRect.width / W;
+        const px = svgRect.left - rect.left + parseFloat(g.dataset.x) * scale;
+        const py = svgRect.top - rect.top + parseFloat(g.dataset.y) * scale;
+        const uniqueNames = [...new Set(info.companies.map(baseName))];
+        tip.innerHTML = `<div class="tip-city">${hq}</div><div class="tip-co">${uniqueNames.join(", ")}</div><div class="tip-hint">Click to filter table</div>`;
+        tip.style.left = px + "px";
+        tip.style.top = (py - 8) + "px";
+        tip.classList.add("show");
+      });
+      g.addEventListener("mouseleave", () => tip.classList.remove("show"));
+      g.addEventListener("click", () => {
+        searchInput.value = hq.split(",")[0];
+        query = searchInput.value;
+        searchClear.classList.add("show");
+        setActiveFilter(hq);
+        render();
+        document.getElementById("table").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  })();
+</script>
