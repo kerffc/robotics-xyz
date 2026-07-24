@@ -1,0 +1,42 @@
+name: Queue submitted company for approval
+
+on:
+  repository_dispatch:
+    types: [add-company]
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Company URL to research and queue"
+        required: true
+
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Research company + send for approval
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMPANY_URL: ${{ github.event.client_payload.url || github.event.inputs.url }}
+        run: python scripts/add_company.py "$COMPANY_URL"
+
+      - name: Commit pending queue
+        run: |
+          git config user.name "robotics-news-bot"
+          git config user.email "actions@github.com"
+          git add scripts/pending_companies.json
+          git diff --staged --quiet && exit 0
+          git commit -m "Auto: queue company submission for approval"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((RANDOM % 10 + 1))
+          done
+          exit 1

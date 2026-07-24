@@ -1,0 +1,16 @@
+name = "robotics-xyz-add-company"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+GH_REPO = "kerffc/robotics-xyz"
+
+# Optional: bind a KV namespace for per-IP rate limiting.
+# Create with: wrangler kv namespace create RATE_LIMIT_KV
+# Then uncomment and fill in the id below.
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# GH_TOKEN is set as a secret, not a var:
+#   wrangler secret put GH_TOKEN

@@ -17,6 +17,7 @@ PENDING_LOG = os.path.join(REPO_ROOT, "scripts", "pending.json")
 POSTED_LOG = os.path.join(REPO_ROOT, "scripts", "posted.json")
 OFFSET_LOG = os.path.join(REPO_ROOT, "scripts", "tg_offset.json")
 INDEX_HTML = os.path.join(REPO_ROOT, "index.html")
+PENDING_COMPANIES_LOG = os.path.join(REPO_ROOT, "scripts", "pending_companies.json")
 
 
 def tg_call(method, payload):
@@ -76,15 +77,61 @@ def append_to_news_array(title, link, date, summary):
         f.write(html)
 
 
+def insert_before_marker(html, marker, entry):
+    idx = html.index(marker) + len(marker)
+    return html[:idx] + entry + html[idx:]
+
+
+def insert_company(company):
+    with open(INDEX_HTML, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    roles_js = ", ".join(json.dumps(r) for r in company["roles"])
+    data_entry = (
+        f'\n    {{ name: {json.dumps(company["name"])}, cat: {json.dumps(company["cat"])}, '
+        f'hq: {json.dumps(company["hq"])}, raised: {json.dumps(company["raised"])}, '
+        f'investors: {json.dumps(company["investors"])}, roles: [{roles_js}] }},'
+    )
+    html = insert_before_marker(html, "const DATA = [", data_entry)
+
+    website_entry = f'\n    {json.dumps(company["name"])}: {json.dumps(company["website"])},'
+    html = insert_before_marker(html, "const WEBSITES = {", website_entry)
+
+    careers_val = json.dumps(company["careers_url"]) if company.get("careers_url") else "null"
+    careers_entry = f'\n    {json.dumps(company["name"])}: {careers_val},'
+    html = insert_before_marker(html, "const CAREERS_URLS = {", careers_entry)
+
+    if company.get("hq") and f'"{company["hq"]}"' not in html.split("const HQ_COORDS = {", 1)[1].split("};", 1)[0]:
+        coords_entry = f'\n    {json.dumps(company["hq"])}: [{company["lat"]}, {company["lng"]}],'
+        html = insert_before_marker(html, "const HQ_COORDS = {", coords_entry)
+
+    with open(INDEX_HTML, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
+def load_pending_companies():
+    if os.path.exists(PENDING_COMPANIES_LOG):
+        with open(PENDING_COMPANIES_LOG) as f:
+            return json.load(f)
+    return {}
+
+
+def save_pending_companies(pending):
+    with open(PENDING_COMPANIES_LOG, "w") as f:
+        json.dump(pending, f, indent=2)
+
+
 def main():
     offset_data = load_json(OFFSET_LOG, {"offset": 0})
     pending = load_json(PENDING_LOG, {})
     posted = set(load_json(POSTED_LOG, []))
+    pending_companies = load_pending_companies()
 
     def checkpoint():
         save_json(OFFSET_LOG, offset_data)
         save_json(PENDING_LOG, pending)
         save_json(POSTED_LOG, sorted(posted))
+        save_pending_companies(pending_companies)
 
     def safe_tg_call(method, payload):
         # best-effort UI feedback (ack spinner, button relabel) — must never
@@ -109,6 +156,37 @@ def main():
             checkpoint()
             continue
         action, pending_id = data.split(":", 1)
+
+        if action in ("addco", "rejectco"):
+            company = pending_companies.get(pending_id)
+            if not company:
+                safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Already handled."})
+                checkpoint()
+                continue
+            if action == "addco":
+                insert_company(company)
+                del pending_companies[pending_id]
+                checkpoint()  # the real action succeeded — persist before any best-effort UI calls
+                safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Added to site."})
+                safe_tg_call("editMessageReplyMarkup", {
+                    "chat_id": cq["message"]["chat"]["id"],
+                    "message_id": cq["message"]["message_id"],
+                    "reply_markup": {"inline_keyboard": [[{"text": "✅ Added", "callback_data": "noop"}]]},
+                })
+                print(f"added company: {company['name']}")
+            else:
+                del pending_companies[pending_id]
+                checkpoint()
+                safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Rejected."})
+                safe_tg_call("editMessageReplyMarkup", {
+                    "chat_id": cq["message"]["chat"]["id"],
+                    "message_id": cq["message"]["message_id"],
+                    "reply_markup": {"inline_keyboard": [[{"text": "❌ Rejected", "callback_data": "noop"}]]},
+                })
+                print(f"rejected company: {company['name']}")
+            resolved += 1
+            time.sleep(1)
+            continue
 
         item = pending.get(pending_id)
         if not item:

@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "robotics-news-bot"
           git config user.email "actions@github.com"
-          git add index.html scripts/pending.json scripts/posted.json scripts/tg_offset.json
+          git add index.html scripts/pending.json scripts/posted.json scripts/tg_offset.json scripts/pending_companies.json
           git diff --staged --quiet && exit 0
           git commit -m "Auto: resolve news approvals"
           for i in 1 2 3 4 5; do

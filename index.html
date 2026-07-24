@@ -542,6 +542,31 @@
     font-family: inherit;
   }
   .search-clear.show { display: inline-block; }
+
+  /* ---- add company form ---- */
+  .add-co-row { padding: 0 1.5rem 1.1rem; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .add-co-row .search-box { flex: 1 1 320px; }
+  .add-co-submit {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 4px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .add-co-submit:hover { filter: brightness(1.08); }
+  .add-co-submit:disabled { opacity: 0.55; cursor: default; }
+  .add-co-status {
+    flex-basis: 100%;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .add-co-status.ok { color: var(--accent); }
+  .add-co-status.err { color: #c94a3a; }
   .active-filter-row { padding: 0 1.5rem 0.9rem; }
   .active-filter-chip {
     display: inline-flex;
@@ -1084,6 +1109,15 @@
 <div class="panel wrap" id="table">
   <h1 class="title">Robotics company landscape</h1>
   <p class="lede">Every major robotics company, grouped by what it actually ships, with the roles it's typically hiring for. Search by name, filter by category, or click a dot on the map above.</p>
+
+  <div class="add-co-row">
+    <label class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757M10.81 15.312a4.5 4.5 0 0 1-1.242-7.244l4.5-4.5a4.5 4.5 0 0 1 6.364 6.364l-1.757 1.757"/></svg>
+      <input type="url" id="addCoInput" placeholder="Missing a company? Paste its website URL…" autocomplete="off" />
+    </label>
+    <button class="add-co-submit" id="addCoSubmit" type="button">Submit for review</button>
+    <div class="add-co-status" id="addCoStatus"></div>
+  </div>
 
   <div class="search-row">
     <label class="search-box">
@@ -1878,6 +1912,49 @@
     searchClear.classList.remove("show");
     setActiveFilter(null);
     render();
+  });
+
+  const ADD_COMPANY_ENDPOINT = "https://robotics-xyz-add-company.YOUR-SUBDOMAIN.workers.dev";
+  const addCoInput = document.getElementById("addCoInput");
+  const addCoSubmit = document.getElementById("addCoSubmit");
+  const addCoStatus = document.getElementById("addCoStatus");
+
+  function setAddCoStatus(text, kind) {
+    addCoStatus.textContent = text;
+    addCoStatus.className = "add-co-status" + (kind ? ` ${kind}` : "");
+  }
+
+  async function submitCompanyUrl() {
+    const url = addCoInput.value.trim();
+    if (!url) {
+      setAddCoStatus("Paste a company URL first.", "err");
+      return;
+    }
+    addCoSubmit.disabled = true;
+    setAddCoStatus("Submitting…", "");
+    try {
+      const resp = await fetch(ADD_COMPANY_ENDPOINT, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        setAddCoStatus(data.error || "Something went wrong. Try again.", "err");
+      } else {
+        setAddCoStatus(data.message || "Queued for review!", "ok");
+        addCoInput.value = "";
+      }
+    } catch (e) {
+      setAddCoStatus("Couldn't reach the submission service. Try again shortly.", "err");
+    } finally {
+      addCoSubmit.disabled = false;
+    }
+  }
+
+  addCoSubmit.addEventListener("click", submitCompanyUrl);
+  addCoInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") submitCompanyUrl();
   });
 
   const raisedHeader = document.getElementById("raisedHeader");
