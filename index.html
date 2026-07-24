@@ -801,6 +801,8 @@
 
   /* ---- careers ---- */
   td.role-name { font-weight: 700; }
+  tr.job-row { cursor: pointer; }
+  tr.job-row:hover { background: var(--chip-bg); }
 
   /* ---- fundraising monitor ---- */
   .monitor-live {
@@ -875,6 +877,7 @@
   .learn-card h3 { font-size: 0.98rem; font-weight: 800; margin: 0 0 0.5rem; }
   .learn-card p { color: var(--ink-soft); font-size: 0.83rem; line-height: 1.55; margin: 0; }
   .learn-card p strong { color: var(--ink); }
+  .learn-card.glossary-highlight { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); transition: box-shadow 0.3s, border-color 0.3s; }
 
   /* ---- voices to follow ---- */
   .voice-lane { margin-bottom: 1.6rem; }
@@ -948,6 +951,7 @@
     <a href="#overview" data-goto="overview" class="active"><span class="dot"></span>Overview</a>
     <a href="#map-section" data-goto="map-section"><span class="dot"></span>World map</a>
     <a href="#learn" data-goto="learn"><span class="dot"></span>Learn: hardware 101</a>
+    <a href="#glossary" data-goto="glossary"><span class="dot"></span>Glossary</a>
     <a href="#table" data-goto="table"><span class="dot"></span>Companies</a>
     <div class="sidebar-subnav" id="sidebarSubcats"></div>
     <a href="#careers" data-goto="careers"><span class="dot"></span>Careers</a>
@@ -1040,6 +1044,18 @@
     </div>
   </div>
   <p class="section-footnote">Simplified summary — for the full technical deep-dive (PID tuning, transmission types, sensor fusion, a real hardware teardown), read the original at <a href="https://interlatent.com" target="_blank" rel="noopener" class="job-link">Interlatent</a>.</p>
+</div>
+
+<div class="panel news-section" id="glossary">
+  <h2>Glossary</h2>
+  <p>The terms that come up constantly in robotics coverage, explained in plain language. Search any of these from the global search (⌘K) and you'll land here on the right entry.</p>
+  <div class="search-row tight">
+    <label class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="glossarySearch" placeholder="Search a term…" autocomplete="off" />
+    </label>
+  </div>
+  <div class="learn-grid" id="glossaryGrid"></div>
 </div>
 
 <div class="panel wrap" id="table">
@@ -1144,7 +1160,7 @@
     { name: "Neura Robotics", cat: "Humanoid", hq: "Metzingen, DE", raised: "~€120M Series B (reported)", investors: "Lingotto, Fizimo, EIC Fund (reported)", roles: ["Robot Learning Engineer", "Mechatronics Engineer", "Applied Machine Learning Engineer"] },
     { name: "Walden Robotics", cat: "Humanoid", hq: "Cambridge, US", raised: "$300M seed", investors: "Toyota Motor Corp, Toyota Invention Partners, Toyota Ventures, Deviation Capital", roles: ["Robot Learning Engineer", "Controls Engineer", "Applied Machine Learning Engineer"] },
     { name: "Zeroth", cat: "Humanoid", hq: "Suzhou, CN", raised: "~$137M total (~$74M recent round)", investors: "Ant Group, Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Manufacturing Engineer"] },
-    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot Learning Engineer", "Hardware Engineer", "Embedded software Engineer"], verified: false },
+    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot Learning Engineer", "Hardware Engineer", "Embedded software Engineer"], unverified: ["raised", "HQ"] },
     { name: "Galbot", cat: "Humanoid", hq: "Beijing, CN", lead: true, raised: "~$1B+ total (incl. ¥2.5B/~$350M round)", investors: "Meituan, IDG Capital, SAIC, SenseTime, CATL, Sinopec, National AI Industry Fund", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applied Machine Learning Engineer"] },
     { name: "AgiBot (Zhiyuan Robotics)", cat: "Humanoid", hq: "Shanghai, CN", raised: "~$1B+ total", investors: "Not fully itemized in public reporting", roles: ["Robot Learning Engineer", "Manufacturing Engineer", "Applied Machine Learning Engineer"] },
     { name: "UBTECH Robotics", cat: "Humanoid", hq: "Shenzhen, CN", raised: "Public (HKEX: 9880)", investors: "Public shareholders", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applications Engineer"] },
@@ -1208,7 +1224,7 @@
     { name: "Eureka Robotics", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$15M total ($10.5M Series A)", investors: "B Capital (lead), Airbus Ventures, Maruka, G.K. Goh Ventures, UTEC, ATEQ", roles: ["Computer vision Engineer", "Applied Machine Learning Engineer", "Robotics Engineer"] },
     { name: "SiMa.ai", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$355M total (Series C, ~$960M valuation)", investors: "Fidelity Investments, Maverick Capital, VentureTech Alliance", roles: ["ASIC/chip design Engineer", "Embedded Machine Learning Engineer", "Applied Machine Learning Engineer"] },
     { name: "Generalist AI", cat: "Robotics AI / foundation models", hq: "San Mateo, US", lead: true, raised: "$400M Series C ($2B valuation, $500M+ total)", investors: "Radical Ventures (lead), NVIDIA (NVentures), Bezos Expeditions, 8VC, Union Square Ventures, Spark Capital", roles: ["Robot Learning Engineer", "Applied Machine Learning Engineer", "Simulation Engineer"] },
-    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Applied Machine Learning Engineer"], unverified: ["HQ"] },
     { name: "Mind Robotics", cat: "Robotics AI / foundation models", hq: "Palo Alto, US", lead: true, raised: "$1B+ total ($115M seed, $500M Series A, $400M follow-on)", investors: "Accel, Andreessen Horowitz, Rivian (strategic)", roles: ["Robotics Engineer", "Applied Machine Learning Engineer", "Manufacturing automation Engineer"] },
     { name: "HOPE Technik", cat: "Aerial & drone", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private", roles: ["Mechanical Engineer", "Robotics Engineer", "Systems Engineer"] },
 
@@ -1606,6 +1622,12 @@
     });
   }
 
+  function unverifiedBadge(d) {
+    if (!d.unverified || !d.unverified.length) return "";
+    const fields = d.unverified.join(" and ");
+    return `<span class="unverified-flag" title="Best-effort data — ${fields} not independently verified">!</span>`;
+  }
+
   function initials(name) {
     return name.replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 2).map(w => w[0]).join("").toUpperCase();
   }
@@ -1650,7 +1672,7 @@
     rowsEl.innerHTML = list.length ? list.map((d, i) => `
       <tr>
         <td class="rank num" data-label="#">${i + 1}</td>
-        <td class="company" data-label="Company"><span class="logo" title="${d.cat}">${categoryIcon(d.cat)}</span><button type="button" class="co-link-btn" data-company="${d.name}">${d.name}</button>${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""} ${WEBSITES[d.name] ? `<a href="${WEBSITES[d.name]}" target="_blank" rel="noopener" class="co-link" title="Visit website">↗</a>` : ""}</td>
+        <td class="company" data-label="Company"><span class="logo" title="${d.cat}">${categoryIcon(d.cat)}</span><button type="button" class="co-link-btn" data-company="${d.name}">${d.name}</button>${unverifiedBadge(d)} ${WEBSITES[d.name] ? `<a href="${WEBSITES[d.name]}" target="_blank" rel="noopener" class="co-link" title="Visit website">↗</a>` : ""}</td>
         <td data-label="Category"><span class="cat-tag">${d.cat}</span></td>
         <td class="hq" data-label="HQ">${d.hq}</td>
         <td class="raised num" data-label="Raised">${d.raised}</td>
@@ -1781,7 +1803,7 @@
           <div>
             <div class="eyebrow2">${d.cat}</div>
             <h2>${p.product}</h2>
-            <div class="company-line">by ${d.name}${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+            <div class="company-line">by ${d.name}${unverifiedBadge(d)}</div>
           </div>
         </div>
         <button class="gsearch-close" id="pdetailCloseBtn" type="button">✕</button>
@@ -1833,7 +1855,7 @@
 
     const INDEX = DATA.map(d => {
       const p = PRODUCTS[d.name] || { product: d.name, tagline: "" };
-      return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
+      return { company: d.name, product: p.product, cat: d.cat, unverified: d.unverified || [] };
     });
 
     const GLOSSARY = [
@@ -1858,6 +1880,41 @@
         if (g.aliases.some(a => hay.includes(a))) return g;
       }
       return null;
+    }
+
+    function glossarySlug(term) { return "gloss-" + term.toLowerCase().replace(/[^a-z0-9]+/g, "-"); }
+
+    function renderGlossaryGrid(filterQ) {
+      const grid = document.getElementById("glossaryGrid");
+      if (!grid) return;
+      const q = (filterQ || "").trim().toLowerCase();
+      const terms = q
+        ? GLOSSARY.filter(g => g.term.toLowerCase().includes(q) || g.aliases.some(a => a.includes(q)) || g.def.toLowerCase().includes(q))
+        : GLOSSARY;
+      grid.innerHTML = terms.length ? terms.map(g => `
+        <div class="learn-card" id="${glossarySlug(g.term)}">
+          <h3>${g.term}</h3>
+          <p>${g.def}</p>
+        </div>
+      `).join("") : `<div class="gsearch-empty">No terms match "${filterQ}".</div>`;
+    }
+    renderGlossaryGrid("");
+    const glossarySearchInput = document.getElementById("glossarySearch");
+    if (glossarySearchInput) glossarySearchInput.addEventListener("input", e => renderGlossaryGrid(e.target.value));
+
+    function jumpToGlossary(term) {
+      closeSearch();
+      window.showPanel("glossary");
+      renderGlossaryGrid("");
+      if (glossarySearchInput) glossarySearchInput.value = "";
+      setTimeout(() => {
+        const el = document.getElementById(glossarySlug(term));
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          el.classList.add("glossary-highlight");
+          setTimeout(() => el.classList.remove("glossary-highlight"), 1800);
+        }
+      }, 30);
     }
 
     const COUNTRY_NAMES = {
@@ -1950,13 +2007,13 @@
       const glossaryHit = query ? findGlossaryMatch(query) : null;
       const glossaryRow = glossaryHit ? `
         <div class="gsearch-section-label">What is this?</div>
-        <div class="gsearch-row" style="cursor: default; align-items: flex-start;">
+        <button class="gsearch-row" id="gsearchGlossaryJump" style="align-items: flex-start;">
           <span class="gsearch-thumb" title="Glossary">${ICON_SVG_OPEN}<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
           <span>
             <div class="gsearch-row-name">${glossaryHit.term}</div>
             <div class="gsearch-row-meta">${glossaryHit.def}</div>
           </span>
-        </div>
+        </button>
       ` : "";
 
       if (!list.length && !jobsRow && !glossaryRow) {
@@ -1968,7 +2025,7 @@
         <button class="gsearch-row" data-company="${r.company}">
           <span class="gsearch-thumb" title="${r.cat}">${categoryIcon(r.cat)}</span>
           <span>
-            <div class="gsearch-row-name">${r.product}${!r.verified ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+            <div class="gsearch-row-name">${r.product}${r.unverified.length ? `<span class="unverified-flag" title="Best-effort data — ${r.unverified.join(" and ")} not independently verified">!</span>` : ""}</div>
             <div class="gsearch-row-meta">Product · ${r.cat} · ${r.company}</div>
           </span>
         </button>
@@ -1976,6 +2033,9 @@
 
       const jumpBtn = document.getElementById("gsearchJobsJump");
       if (jumpBtn) jumpBtn.addEventListener("click", () => jumpToJobs(locMatch));
+
+      const glossJumpBtn = document.getElementById("gsearchGlossaryJump");
+      if (glossJumpBtn) glossJumpBtn.addEventListener("click", () => jumpToGlossary(glossaryHit.term));
 
       resultsEl.querySelectorAll(".gsearch-row[data-company]").forEach(row => {
         row.addEventListener("click", () => {
@@ -2032,12 +2092,16 @@
         const careersUrl = CAREERS_URLS[j.company];
         const url = careersUrl || WEBSITES[j.company];
         const isFallback = !careersUrl && !!url;
+        const fallbackTitle = isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : "";
+        const roleCell = url
+          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.role}</a>`
+          : j.role;
         const companyCell = url
-          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : ""}>${j.company}${isFallback ? " *" : ""}</a>`
+          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.company}${isFallback ? " *" : ""}</a>`
           : j.company;
         return `
-        <tr>
-          <td class="role-name">${j.role}</td>
+        <tr class="${url ? "job-row" : ""}" ${url ? `data-job-url="${url}"` : ""}>
+          <td class="role-name">${roleCell}</td>
           <td>${companyCell}</td>
           <td><span class="cat-tag">${j.cat}</span></td>
           <td class="hq">${j.hq}</td>
@@ -2049,6 +2113,11 @@
     searchEl.addEventListener("input", renderJobs);
     locEl.addEventListener("change", renderJobs);
     catEl.addEventListener("change", renderJobs);
+    rowsEl.addEventListener("click", e => {
+      if (e.target.closest("a")) return; // let the link itself handle it
+      const row = e.target.closest("tr.job-row");
+      if (row) window.open(row.dataset.jobUrl, "_blank", "noopener");
+    });
     renderJobs();
   })();
 
