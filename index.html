@@ -801,6 +801,8 @@
 
   /* ---- careers ---- */
   td.role-name { font-weight: 700; }
+  tr.job-row { cursor: pointer; }
+  tr.job-row:hover { background: var(--chip-bg); }
 
   /* ---- fundraising monitor ---- */
   .monitor-live {
@@ -1996,12 +1998,16 @@
         const careersUrl = CAREERS_URLS[j.company];
         const url = careersUrl || WEBSITES[j.company];
         const isFallback = !careersUrl && !!url;
+        const fallbackTitle = isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : "";
+        const roleCell = url
+          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.role}</a>`
+          : j.role;
         const companyCell = url
-          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : ""}>${j.company}${isFallback ? " *" : ""}</a>`
+          ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.company}${isFallback ? " *" : ""}</a>`
           : j.company;
         return `
-        <tr>
-          <td class="role-name">${j.role}</td>
+        <tr class="${url ? "job-row" : ""}" ${url ? `data-job-url="${url}"` : ""}>
+          <td class="role-name">${roleCell}</td>
           <td>${companyCell}</td>
           <td><span class="cat-tag">${j.cat}</span></td>
           <td class="hq">${j.hq}</td>
@@ -2013,6 +2019,11 @@
     searchEl.addEventListener("input", renderJobs);
     locEl.addEventListener("change", renderJobs);
     catEl.addEventListener("change", renderJobs);
+    rowsEl.addEventListener("click", e => {
+      if (e.target.closest("a")) return; // let the link itself handle it
+      const row = e.target.closest("tr.job-row");
+      if (row) window.open(row.dataset.jobUrl, "_blank", "noopener");
+    });
     renderJobs();
   })();
 
