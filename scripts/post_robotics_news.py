@@ -118,6 +118,57 @@ def post_to_telegram(text, link):
         return json.loads(r.read())
 
 
+def call_claude_reads(title, summary, link):
+    prompt = f"""Decide if this article belongs in a "Good reads" section of a robotics
+market-map site — i.e. it's a substantive deep dive, teardown, or essay, NOT
+routine funding/product news.
+
+If it qualifies, respond with exactly two lines:
+<one-line summary, no markdown, factual tone, under 160 characters>
+<source name, e.g. "IEEE Spectrum">
+
+If it's routine news (funding round, product launch blurb, earnings), respond with exactly SKIP.
+
+Article title: {title}
+Article summary: {summary}
+Article URL: {link}"""
+
+    body = json.dumps({
+        "model": "claude-sonnet-5",
+        "max_tokens": 200,
+        "messages": [{"role": "user", "content": prompt}],
+    }).encode()
+
+    req = urllib.request.Request(
+        "https://api.anthropic.com/v1/messages",
+        data=body,
+        headers={
+            "content-type": "application/json",
+            "x-api-key": ANTHROPIC_KEY,
+            "anthropic-version": "2023-06-01",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as r:
+        resp = json.loads(r.read())
+    return resp["content"][0]["text"].strip()
+
+
+def append_to_reads_array(source, title, link, summary):
+    with open(INDEX_HTML, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    marker = "const READS = ["
+    idx = html.index(marker) + len(marker)
+    entry = (
+        f'\n    {{ source: {json.dumps(source)}, title: {json.dumps(title)}, '
+        f'url: {json.dumps(link)}, summary: {json.dumps(summary[:200])} }},'
+    )
+    html = html[:idx] + entry + html[idx:]
+
+    with open(INDEX_HTML, "w", encoding="utf-8") as f:
+        f.write(html)
+
+
 def append_to_news_array(title, link, date, summary):
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
         html = f.read()
@@ -153,7 +204,21 @@ def main():
         for item in items:
             if item["link"] in posted:
                 continue
+
             if not FUNDING_KEYWORDS.search(item["title"] + " " + item["summary"]):
+                # not funding/routine news — consider it for the Good Reads section instead
+                posted.add(item["link"])
+                try:
+                    verdict = call_claude_reads(item["title"], item["summary"], item["link"])
+                except Exception as e:
+                    print(f"claude reads call failed for {item['link']}: {e}")
+                    continue
+                if verdict.strip() == "SKIP" or "\n" not in verdict:
+                    continue
+                summary_line, source_line = verdict.strip().split("\n", 1)
+                append_to_reads_array(source_line.strip(), item["title"], item["link"], summary_line.strip())
+                print(f"added to reads: {item['title']}")
+                time.sleep(2)
                 continue
 
             try:

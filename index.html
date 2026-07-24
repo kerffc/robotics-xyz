@@ -1,5 +1,12 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotics.xyz</title>
+<meta name="description" content="A manually curated market map of the robotics industry — companies, funding, open roles, a glossary, and good reads, all in one place.">
+<meta property="og:title" content="Robotics.xyz">
+<meta property="og:description" content="A manually curated market map of the robotics industry — companies, funding, open roles, a glossary, and good reads, all in one place.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23a8541c'/%3E%3Ctext x='12' y='17' font-size='14' font-family='Georgia,serif' fill='white' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #ffffff;
@@ -972,6 +979,7 @@
     <a href="#careers" data-goto="careers"><span class="dot"></span>Careers</a>
     <a href="#monitor" data-goto="monitor"><span class="dot"></span>Fundraising monitor</a>
     <a href="#voices" data-goto="voices"><span class="dot"></span>Voices to follow</a>
+    <a href="#reads" data-goto="reads"><span class="dot"></span>Good reads</a>
     <a href="#news" data-goto="news"><span class="dot"></span>News</a>
   </nav>
   <div class="side-foot">Robotics market map<br/>Manually curated</div>
@@ -1150,6 +1158,12 @@
   <h2>Voices to follow</h2>
   <p>People worth reading on robotics — builders, researchers, and commentators. Grouped by lane so you know whose bias you're reading. Click a name for more.</p>
   <div id="voicesGroups"></div>
+</div>
+
+<div class="panel news-section" id="reads">
+  <h2>Good reads</h2>
+  <p>Longer-form pieces worth your time — deep dives, teardowns, and essays on robotics, not just news headlines.</p>
+  <div class="news-list" id="readsList"></div>
 </div>
 
 <div class="panel news-section" id="news">
@@ -2301,6 +2315,19 @@
       <div class="news-meta"><span class="news-source">${n.source}</span><span>${n.date}</span></div>
       <h3>${n.title}</h3>
       <p>${n.summary}</p>
+    </a>
+  `).join("");
+
+  /* ---- good reads ---- */
+  const READS = [
+    { source: "Interlatent", title: "Interlatent", url: "https://interlatent.com", summary: "Deep-dive technical writing on robotics hardware — the source for the site's hardware-101 primer." },
+  ];
+
+  document.getElementById("readsList").innerHTML = READS.map(r => `
+    <a class="news-card" href="${r.url}" target="_blank" rel="noopener">
+      <div class="news-meta"><span class="news-source">${r.source}</span></div>
+      <h3>${r.title}</h3>
+      <p>${r.summary}</p>
     </a>
   `).join("");
 
