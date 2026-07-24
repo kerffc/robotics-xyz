@@ -81,6 +81,19 @@ def main():
     pending = load_json(PENDING_LOG, {})
     posted = set(load_json(POSTED_LOG, []))
 
+    def checkpoint():
+        save_json(OFFSET_LOG, offset_data)
+        save_json(PENDING_LOG, pending)
+        save_json(POSTED_LOG, sorted(posted))
+
+    def safe_tg_call(method, payload):
+        # best-effort UI feedback (ack spinner, button relabel) — must never
+        # crash the run or roll back a real action that already happened
+        try:
+            tg_call(method, payload)
+        except Exception as e:
+            print(f"non-fatal: {method} failed: {e}")
+
     updates = tg_call("getUpdates", {"offset": offset_data["offset"], "timeout": 0})["result"]
 
     resolved = 0
@@ -88,17 +101,20 @@ def main():
         offset_data["offset"] = u["update_id"] + 1
         cq = u.get("callback_query")
         if not cq:
+            checkpoint()
             continue
 
         data = cq.get("data", "")
         if ":" not in data:
+            checkpoint()
             continue
         action, pending_id = data.split(":", 1)
 
         item = pending.get(pending_id)
         if not item:
             # unknown/already-resolved id — just ack so the button stops spinning
-            tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Already handled."})
+            safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Already handled."})
+            checkpoint()
             continue
 
         if action == "approve":
@@ -110,32 +126,35 @@ def main():
             })
             append_to_news_array(item["title"], item["link"], item["date"], item["summary"])
             posted.add(item["link"])
-            tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Posted to @dailyrobotics."})
-            tg_call("editMessageReplyMarkup", {
+            del pending[pending_id]
+            checkpoint()  # the real action succeeded — persist before any best-effort UI calls
+            safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Posted to @dailyrobotics."})
+            safe_tg_call("editMessageReplyMarkup", {
                 "chat_id": cq["message"]["chat"]["id"],
                 "message_id": cq["message"]["message_id"],
                 "reply_markup": {"inline_keyboard": [[{"text": "✅ Posted", "callback_data": "noop"}]]},
             })
             print(f"approved + posted: {item['title']}")
+            resolved += 1
         elif action == "reject":
             posted.add(item["link"])  # don't re-draft a rejected item
-            tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Rejected."})
-            tg_call("editMessageReplyMarkup", {
+            del pending[pending_id]
+            checkpoint()
+            safe_tg_call("answerCallbackQuery", {"callback_query_id": cq["id"], "text": "Rejected."})
+            safe_tg_call("editMessageReplyMarkup", {
                 "chat_id": cq["message"]["chat"]["id"],
                 "message_id": cq["message"]["message_id"],
                 "reply_markup": {"inline_keyboard": [[{"text": "❌ Rejected", "callback_data": "noop"}]]},
             })
             print(f"rejected: {item['title']}")
+            resolved += 1
         else:
+            checkpoint()
             continue
 
-        del pending[pending_id]
-        resolved += 1
         time.sleep(1)
 
-    save_json(OFFSET_LOG, offset_data)
-    save_json(PENDING_LOG, pending)
-    save_json(POSTED_LOG, sorted(posted))
+    checkpoint()
     print(f"done. {resolved} resolved.")
 
 
