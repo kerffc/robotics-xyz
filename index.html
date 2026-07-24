@@ -1836,6 +1836,30 @@
       return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
     });
 
+    const GLOSSARY = [
+      { term: "SLAM", aliases: ["simultaneous localization and mapping", "slam navigation", "slam module"], def: "Simultaneous Localization and Mapping — how a robot builds a map of an unknown space while tracking its own position inside it, using sensors like LiDAR, cameras, or depth sensors." },
+      { term: "End effector", aliases: ["gripper", "end-effector"], def: "The tool at the end of a robot arm that interacts with the world — a gripper, suction cup, or specialized tool for the task at hand." },
+      { term: "Actuator", aliases: ["actuators"], def: "The component that converts energy (electric, hydraulic, pneumatic) into physical motion — motors, hydraulic cylinders, or pneumatic pistons that move a robot's joints." },
+      { term: "Degrees of freedom", aliases: ["dof"], def: "The number of independent ways a robot (or joint) can move — e.g. a human arm has roughly 7 DOF at the shoulder/elbow/wrist." },
+      { term: "Teleoperation", aliases: ["teleop"], def: "Remote human control of a robot, often used to collect training data or handle edge cases current autonomy can't." },
+      { term: "Physical AI", aliases: ["embodied ai", "embodied intelligence"], def: "AI models that perceive and act in the physical world (robots, autonomous vehicles) rather than only processing text/images — the current framing for robotics foundation models." },
+      { term: "Foundation model", aliases: ["robotics foundation model"], def: "A large model pretrained on broad data (often across many robot types/tasks) and fine-tuned for specific robots or tasks, mirroring the LLM playbook applied to robotics." },
+      { term: "Sim-to-real", aliases: ["sim2real"], def: "Training a robot policy in simulation, then transferring it to a physical robot — cheaper and safer than training on hardware directly, but prone to a 'reality gap.'" },
+      { term: "LiDAR", aliases: ["lidar sensor"], def: "Light Detection and Ranging — a sensor that measures distance by timing reflected laser pulses, used for mapping and obstacle detection." },
+      { term: "Inverse kinematics", aliases: ["ik"], def: "The math of computing joint angles needed to place a robot's end effector at a target position and orientation." },
+      { term: "Humanoid", aliases: ["humanoid robot"], def: "A robot built with a roughly human body plan (two arms, two legs, torso, head) so it can operate in spaces and use tools designed for people." },
+      { term: "Manipulation", aliases: ["dexterous manipulation"], def: "The general robotics term for grasping, moving, and interacting with objects — a core unsolved problem for general-purpose robots." },
+    ];
+
+    function findGlossaryMatch(q) {
+      const hay = q.toLowerCase();
+      for (const g of GLOSSARY) {
+        if (hay.includes(g.term.toLowerCase())) return g;
+        if (g.aliases.some(a => hay.includes(a))) return g;
+      }
+      return null;
+    }
+
     const COUNTRY_NAMES = {
       US: "United States", CN: "China", SG: "Singapore", JP: "Japan", CH: "Switzerland",
       DE: "Germany", DK: "Denmark", CA: "Canada", FR: "France", UK: "United Kingdom",
@@ -1923,12 +1947,24 @@
         ? INDEX.filter(r => r.product.toLowerCase().includes(query) || r.company.toLowerCase().includes(query) || r.cat.toLowerCase().includes(query))
         : INDEX;
 
-      if (!list.length && !jobsRow) {
+      const glossaryHit = query ? findGlossaryMatch(query) : null;
+      const glossaryRow = glossaryHit ? `
+        <div class="gsearch-section-label">What is this?</div>
+        <div class="gsearch-row" style="cursor: default; align-items: flex-start;">
+          <span class="gsearch-thumb" title="Glossary">${ICON_SVG_OPEN}<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+          <span>
+            <div class="gsearch-row-name">${glossaryHit.term}</div>
+            <div class="gsearch-row-meta">${glossaryHit.def}</div>
+          </span>
+        </div>
+      ` : "";
+
+      if (!list.length && !jobsRow && !glossaryRow) {
         resultsEl.innerHTML = `<div class="gsearch-empty">No products match "${q}".</div>`;
         return;
       }
 
-      resultsEl.innerHTML = jobsRow + (list.length ? `<div class="gsearch-section-label">Products</div>` + list.slice(0, 30).map(r => `
+      resultsEl.innerHTML = jobsRow + glossaryRow + (list.length ? `<div class="gsearch-section-label">Products</div>` + list.slice(0, 30).map(r => `
         <button class="gsearch-row" data-company="${r.company}">
           <span class="gsearch-thumb" title="${r.cat}">${categoryIcon(r.cat)}</span>
           <span>
