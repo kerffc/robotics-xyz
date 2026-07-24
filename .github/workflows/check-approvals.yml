@@ -1,0 +1,36 @@
+name: Check robotics-news approvals
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check for approvals
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        run: python scripts/check_approvals.py
+
+      - name: Commit resolved state
+        run: |
+          git config user.name "robotics-news-bot"
+          git config user.email "actions@github.com"
+          git add index.html scripts/pending.json scripts/posted.json scripts/tg_offset.json
+          git diff --staged --quiet && exit 0
+          git commit -m "Auto: resolve news approvals"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((RANDOM % 10 + 1))
+          done
+          exit 1

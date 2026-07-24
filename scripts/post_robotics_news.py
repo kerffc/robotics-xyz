@@ -15,10 +15,12 @@ import xml.etree.ElementTree as ET
 
 TG_TOKEN = os.environ["TG_BOT_TOKEN"]
 TG_CHAT = "@dailyrobotics"
+KERF_CHAT_ID = 221930844  # Kerf's Telegram user id, for approval DMs
 ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTED_LOG = os.path.join(REPO_ROOT, "scripts", "posted.json")
+PENDING_LOG = os.path.join(REPO_ROOT, "scripts", "pending.json")
 INDEX_HTML = os.path.join(REPO_ROOT, "index.html")
 
 FEEDS = [
@@ -65,19 +67,18 @@ def save_posted(posted):
 
 
 def call_claude(title, summary, link):
-    prompt = f"""Write a Telegram post about this robotics/AI funding or industry news item, in this exact format:
+    prompt = f"""Write a SHORT Telegram post about this robotics/AI funding or industry news item, in this exact format:
 
-<Headline as a plain sentence, no markdown>
+<Headline as a plain sentence, no markdown, under 100 characters>
 
-• <bullet 1: the key fact/number>
-• <bullet 2: context or what it means>
-• <bullet 3: a caveat, risk, or unconfirmed detail if any — omit if none exists>
+• <the single most important fact/number>
+• <one caveat or bit of context, only if it materially changes the read — omit this bullet entirely otherwise>
 
 Article title: {title}
 Article summary: {summary}
 Article URL: {link}
 
-Rules: no em dashes, no marketing language, be factual and slightly skeptical like a analyst brief. If the article isn't about funding/a notable robotics development, respond with exactly SKIP."""
+Rules: no em dashes, no marketing language, be factual and slightly skeptical like an analyst brief. Maximum 2 bullets, prefer 1. Keep the whole thing under 400 characters total. If the article isn't about funding/a notable robotics development, respond with exactly SKIP."""
 
     body = json.dumps({
         "model": "claude-sonnet-5",
@@ -102,20 +103,65 @@ Rules: no em dashes, no marketing language, be factual and slightly skeptical li
     return text_blocks[0].strip()
 
 
-def post_to_telegram(text, link):
-    full_text = f"{text}\n\nSource: {link}"
-    body = json.dumps({
-        "chat_id": TG_CHAT,
-        "text": full_text,
-        "disable_web_page_preview": False,
-    }).encode()
+def escape_html(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def to_html(formatted_text, link):
+    lines = formatted_text.strip().split("\n", 1)
+    headline = lines[0].strip()
+    rest = lines[1].strip() if len(lines) > 1 else ""
+    html = f"<b>{escape_html(headline)}</b>"
+    if rest:
+        html += f"\n\n{escape_html(rest)}"
+    html += f"\n\nSource: {escape_html(link)}"
+    return html
+
+
+def tg_call(method, payload):
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(
-        f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage",
+        f"https://api.telegram.org/bot{TG_TOKEN}/{method}",
         data=body,
         headers={"content-type": "application/json"},
     )
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read())
+
+
+def post_to_telegram(text, link):
+    return tg_call("sendMessage", {
+        "chat_id": TG_CHAT,
+        "text": to_html(text, link),
+        "parse_mode": "HTML",
+        "disable_web_page_preview": False,
+    })
+
+
+def send_for_approval(pending_id, text, link):
+    return tg_call("sendMessage", {
+        "chat_id": KERF_CHAT_ID,
+        "text": to_html(text, link),
+        "parse_mode": "HTML",
+        "reply_markup": {
+            "inline_keyboard": [[
+                {"text": "✅ Approve", "callback_data": f"approve:{pending_id}"},
+                {"text": "❌ Reject", "callback_data": f"reject:{pending_id}"},
+            ]]
+        },
+    })
+
+
+def load_pending():
+    if os.path.exists(PENDING_LOG):
+        with open(PENDING_LOG) as f:
+            return json.load(f)
+    return {}
+
+
+def save_pending(pending):
+    with open(PENDING_LOG, "w") as f:
+        json.dump(pending, f, indent=2)
 
 
 def call_claude_reads(title, summary, link):
@@ -195,6 +241,8 @@ def append_to_news_array(title, link, date, summary):
 
 def main():
     posted = load_posted()
+    pending = load_pending()
+    pending_links = {p["link"] for p in pending.values()}
     new_posts = 0
 
     for feed_url in FEEDS:
@@ -205,7 +253,7 @@ def main():
             continue
 
         for item in items:
-            if item["link"] in posted:
+            if item["link"] in posted or item["link"] in pending_links:
                 continue
 
             if not FUNDING_KEYWORDS.search(item["title"] + " " + item["summary"]):
@@ -235,23 +283,29 @@ def main():
                 posted.add(item["link"])  # not news we want, don't reconsider it
                 continue
 
+            pending_id = str(abs(hash(item["link"])) % 10**8)
             try:
-                post_to_telegram(formatted, item["link"])
-                print(f"posted: {item['title']}")
+                send_for_approval(pending_id, formatted, item["link"])
+                print(f"sent for approval: {item['title']}")
                 new_posts += 1
             except Exception as e:
-                print(f"telegram post failed for {item['link']}: {e}")
+                print(f"approval DM failed for {item['link']}: {e}")
                 continue  # transient failure, retry next run — do not mark seen
 
-            posted.add(item["link"])  # only mark seen once actually posted
-            date = time.strftime("%Y-%m-%d")
-            headline = formatted.split("\n")[0].strip()
-            append_to_news_array(headline, item["link"], date, item["summary"])
+            pending[pending_id] = {
+                "link": item["link"],
+                "title": item["title"],
+                "formatted": formatted,
+                "summary": item["summary"],
+                "date": time.strftime("%Y-%m-%d"),
+            }
+            pending_links.add(item["link"])
 
             time.sleep(2)  # avoid hammering telegram / claude
 
     save_posted(posted)
-    print(f"done. {new_posts} new posts.")
+    save_pending(pending)
+    print(f"done. {new_posts} sent for approval.")
 
 
 if __name__ == "__main__":
