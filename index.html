@@ -108,6 +108,8 @@
     padding-left: 0.6rem;
   }
   .main { flex: 1; min-width: 0; }
+  .panel { display: none; }
+  .panel.active { display: block; }
   @media (min-width: 860px) {
     .sidebar { display: block; }
     .topbar nav { display: none !important; }
@@ -886,10 +888,14 @@
     border-radius: 4px;
     padding: 0.85rem 1rem;
     background: var(--bg-panel);
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.12s ease;
   }
-  .voice-card .v-name { font-weight: 700; font-size: 0.9rem; }
-  .voice-card .v-name a { color: inherit; text-decoration: none; }
-  .voice-card .v-name a:hover { color: var(--accent); }
+  .voice-card:hover { border-color: var(--accent-dim); }
+  .voice-card .v-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
   .voice-card .v-role { color: var(--ink-soft); font-size: 0.78rem; margin-top: 0.2rem; }
 
   footer {
@@ -938,16 +944,16 @@
 <div class="app">
 <aside class="sidebar">
   <div class="brand"><span class="mark">R</span>Robotics.xyz</div>
-  <nav>
-    <a href="#top" class="active"><span class="dot"></span>Overview</a>
-    <a href="#map-section"><span class="dot"></span>World map</a>
-    <a href="#learn"><span class="dot"></span>Learn: hardware 101</a>
-    <a href="#table"><span class="dot"></span>Companies</a>
+  <nav id="sidebarNav">
+    <a href="#overview" data-goto="overview" class="active"><span class="dot"></span>Overview</a>
+    <a href="#map-section" data-goto="map-section"><span class="dot"></span>World map</a>
+    <a href="#learn" data-goto="learn"><span class="dot"></span>Learn: hardware 101</a>
+    <a href="#table" data-goto="table"><span class="dot"></span>Companies</a>
     <div class="sidebar-subnav" id="sidebarSubcats"></div>
-    <a href="#careers"><span class="dot"></span>Careers</a>
-    <a href="#monitor"><span class="dot"></span>Fundraising monitor</a>
-    <a href="#voices"><span class="dot"></span>Voices to follow</a>
-    <a href="#news"><span class="dot"></span>News</a>
+    <a href="#careers" data-goto="careers"><span class="dot"></span>Careers</a>
+    <a href="#monitor" data-goto="monitor"><span class="dot"></span>Fundraising monitor</a>
+    <a href="#voices" data-goto="voices"><span class="dot"></span>Voices to follow</a>
+    <a href="#news" data-goto="news"><span class="dot"></span>News</a>
   </nav>
   <div class="side-foot">Robotics market map<br/>Manually curated</div>
 </aside>
@@ -957,9 +963,9 @@
   <div class="brand"><span class="mark">R</span>Robotics.xyz</div>
   <div class="sub">signals from the robotics frontier</div>
   <nav>
-    <a href="#table">Companies</a>
-    <a href="#table">Categories</a>
-    <a href="#news">News</a>
+    <a href="#table" data-goto="table">Companies</a>
+    <a href="#table" data-goto="table">Categories</a>
+    <a href="#news" data-goto="news">News</a>
   </nav>
   <button class="global-search-btn" id="gsearchOpenBtn" type="button">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -984,20 +990,22 @@
   <div class="pdetail-modal" id="pdetailModal"></div>
 </div>
 
-<div class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="eyebrow">Robotics market map</div>
-      <h1>Every robot builder, mapped in one place</h1>
-      <p>A living directory of the companies building robots today.</p>
+<div class="panel active" id="overview">
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Robotics market map</div>
+        <h1>Every robot builder, mapped in one place</h1>
+        <p>A living directory of the companies building robots today.</p>
+      </div>
+      <button class="cta" data-goto="table">View directory →</button>
     </div>
-    <button class="cta" onclick="document.getElementById('table').scrollIntoView({behavior:'smooth'})">View directory →</button>
   </div>
+
+  <div class="stats" id="stats"></div>
 </div>
 
-<div class="stats" id="stats"></div>
-
-<div class="map-section" id="map-section">
+<div class="panel map-section" id="map-section">
   <div class="map-head">
     <div>
       <h2>Where robotics companies are based</h2>
@@ -1011,7 +1019,7 @@
   </div>
 </div>
 
-<div class="news-section" id="learn">
+<div class="panel news-section" id="learn">
   <h2>Learn: robot hardware in three parts</h2>
   <p>A quick primer if you're new to the space — every robot's hardware boils down to three cooperating systems.</p>
   <div class="learn-grid">
@@ -1034,8 +1042,8 @@
   <p class="section-footnote">Simplified summary — for the full technical deep-dive (PID tuning, transmission types, sensor fusion, a real hardware teardown), read the original at <a href="https://interlatent.com" target="_blank" rel="noopener" class="job-link">Interlatent</a>.</p>
 </div>
 
-<div class="wrap">
-  <h1 class="title" id="table">Robotics company landscape</h1>
+<div class="panel wrap" id="table">
+  <h1 class="title">Robotics company landscape</h1>
   <p class="lede">Every major robotics company, grouped by what it actually ships, with the roles it's typically hiring for. Search by name, filter by category, or click a dot on the map above.</p>
 
   <div class="search-row">
@@ -1069,8 +1077,9 @@
       <tbody id="rows"></tbody>
     </table>
   </div>
+</div>
 
-  <div class="news-section" id="careers">
+<div class="panel news-section" id="careers">
     <h2>Open roles, aggregated</h2>
     <p>Every role type listed across the companies above. Filter by location or category, or search a role directly.</p>
     <div class="search-row tight">
@@ -1095,120 +1104,120 @@
       </table>
     </div>
     <p class="section-footnote">Company links go to each company's general careers/jobs page, not a live posting for this specific role — search that page once you're there. Every URL was checked and resolves; a "*" means the direct careers-page path couldn't be confirmed, so it links to the company homepage instead.</p>
-  </div>
-
-  <div class="news-section" id="monitor">
-    <h2>Fundraising monitor</h2>
-    <p>Newly detected robotics funding rounds, grouped by week, most recent first.</p>
-    <div class="monitor-live"><span class="blip"></span>Latest rounds</div>
-    <div class="monitor-stats" id="monitorStats"></div>
-    <div id="monitorGroups"></div>
-    <p class="monitor-count" id="monitorCount"></p>
-  </div>
-
-  <div class="news-section" id="voices">
-    <h2>Voices to follow</h2>
-    <p>People worth reading on robotics — builders, researchers, and commentators. Grouped by lane so you know whose bias you're reading.</p>
-    <div id="voicesGroups"></div>
-  </div>
-
-  <div class="news-section" id="news">
-    <h2>Latest funding news</h2>
-    <p>Recent robotics fundraising headlines, added as they surface.</p>
-    <div class="news-list" id="newsList"></div>
-  </div>
-
-  <footer>Categories aren't mutually exclusive — some companies span more than one line of business, listed under their primary product. Funding figures are approximate cumulative totals from public reporting (or ownership status for subsidiaries/public companies) and may be out of date — verify before citing.</footer>
 </div>
+
+<div class="panel news-section" id="monitor">
+  <h2>Fundraising monitor</h2>
+  <p>Newly detected robotics funding rounds, grouped by week, most recent first.</p>
+  <div class="monitor-live"><span class="blip"></span>Latest rounds</div>
+  <div class="monitor-stats" id="monitorStats"></div>
+  <div id="monitorGroups"></div>
+  <p class="monitor-count" id="monitorCount"></p>
+</div>
+
+<div class="panel news-section" id="voices">
+  <h2>Voices to follow</h2>
+  <p>People worth reading on robotics — builders, researchers, and commentators. Grouped by lane so you know whose bias you're reading. Click a name for more.</p>
+  <div id="voicesGroups"></div>
+</div>
+
+<div class="panel news-section" id="news">
+  <h2>Latest funding news</h2>
+  <p>Recent robotics fundraising headlines, added as they surface.</p>
+  <div class="news-list" id="newsList"></div>
+</div>
+
+<footer>Categories aren't mutually exclusive — some companies span more than one line of business, listed under their primary product. Funding figures are approximate cumulative totals from public reporting (or ownership status for subsidiaries/public companies) and may be out of date — verify before citing.</footer>
 </div>
 </div>
 
 <script>
     const DATA = [
-    { name: "Figure AI", cat: "Humanoid", hq: "Sunnyvale, US", lead: true, raised: "$854M+", investors: "Microsoft, OpenAI, NVIDIA, Bezos", roles: ["Controls eng", "Manipulation eng", "Embodied AI"] },
-    { name: "Tesla (Optimus)", cat: "Humanoid", hq: "Austin, US", raised: "Internal", investors: "Tesla (self-funded)", roles: ["Actuator eng", "Perception eng"] },
-    { name: "Boston Dynamics", cat: "Humanoid", hq: "Waltham, US", raised: "Owned", investors: "Hyundai Motor Group", roles: ["Locomotion eng", "Controls eng"] },
-    { name: "Agility Robotics", cat: "Humanoid", hq: "Corvallis, US", raised: "~$150M Series B", investors: "DCVC, Playground Global, Amazon", roles: ["Mechatronics eng", "Firmware eng"] },
-    { name: "1X Technologies", cat: "Humanoid", hq: "Moss, NO", raised: "~$135M Series B", investors: "OpenAI, EQT Ventures", roles: ["Robot learning eng", "Hardware eng"] },
-    { name: "Apptronik", cat: "Humanoid", hq: "Austin, US", raised: "~$403M Series A", investors: "B Capital, Google", roles: ["Systems eng", "Manipulation eng"] },
-    { name: "Unitree", cat: "Humanoid", hq: "Hangzhou, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Motor control eng", "Firmware eng"] },
-    { name: "Sunday Robotics", cat: "Humanoid", hq: "Palo Alto, US", raised: "$165M Series B ($1.15B valuation)", investors: "Coatue Management (lead), Tiger Global, Benchmark, Bain Capital Ventures", roles: ["Robot learning eng", "Hardware eng", "Applied ML eng"] },
-    { name: "Neura Robotics", cat: "Humanoid", hq: "Metzingen, DE", raised: "~€120M Series B (reported)", investors: "Lingotto, Fizimo, EIC Fund (reported)", roles: ["Robot learning eng", "Mechatronics eng", "Applied ML eng"] },
-    { name: "Walden Robotics", cat: "Humanoid", hq: "Cambridge, US", raised: "$300M seed", investors: "Toyota Motor Corp, Toyota Invention Partners, Toyota Ventures, Deviation Capital", roles: ["Robot learning eng", "Controls eng", "Applied ML eng"] },
-    { name: "Zeroth", cat: "Humanoid", hq: "Suzhou, CN", raised: "~$137M total (~$74M recent round)", investors: "Ant Group, Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital", roles: ["Robot learning eng", "Mechanical eng", "Manufacturing eng"] },
-    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot learning eng", "Hardware eng", "Embedded software eng"], verified: false },
-    { name: "Galbot", cat: "Humanoid", hq: "Beijing, CN", lead: true, raised: "~$1B+ total (incl. ¥2.5B/~$350M round)", investors: "Meituan, IDG Capital, SAIC, SenseTime, CATL, Sinopec, National AI Industry Fund", roles: ["Robot learning eng", "Mechanical eng", "Applied ML eng"] },
-    { name: "AgiBot (Zhiyuan Robotics)", cat: "Humanoid", hq: "Shanghai, CN", raised: "~$1B+ total", investors: "Not fully itemized in public reporting", roles: ["Robot learning eng", "Manufacturing eng", "Applied ML eng"] },
-    { name: "UBTECH Robotics", cat: "Humanoid", hq: "Shenzhen, CN", raised: "Public (HKEX: 9880)", investors: "Public shareholders", roles: ["Robot learning eng", "Mechanical eng", "Applications eng"] },
-    { name: "Fourier Intelligence", cat: "Exoskeletons", hq: "Shanghai, CN", raised: "$246M total (incl. ~¥800M/~$110M Series E)", investors: "Guoxin Investment, Prosperity7", roles: ["Mechanical eng", "Robot learning eng", "Clinical/regulatory eng"] },
+    { name: "Figure AI", cat: "Humanoid", hq: "Sunnyvale, US", lead: true, raised: "$854M+", investors: "Microsoft, OpenAI, NVIDIA, Bezos", roles: ["Controls Engineer", "Manipulation Engineer", "Embodied AI"] },
+    { name: "Tesla (Optimus)", cat: "Humanoid", hq: "Austin, US", raised: "Internal", investors: "Tesla (self-funded)", roles: ["Actuator Engineer", "Perception Engineer"] },
+    { name: "Boston Dynamics", cat: "Humanoid", hq: "Waltham, US", raised: "Owned", investors: "Hyundai Motor Group", roles: ["Locomotion Engineer", "Controls Engineer"] },
+    { name: "Agility Robotics", cat: "Humanoid", hq: "Corvallis, US", raised: "~$150M Series B", investors: "DCVC, Playground Global, Amazon", roles: ["Mechatronics Engineer", "Firmware Engineer"] },
+    { name: "1X Technologies", cat: "Humanoid", hq: "Moss, NO", raised: "~$135M Series B", investors: "OpenAI, EQT Ventures", roles: ["Robot Learning Engineer", "Hardware Engineer"] },
+    { name: "Apptronik", cat: "Humanoid", hq: "Austin, US", raised: "~$403M Series A", investors: "B Capital, Google", roles: ["Systems Engineer", "Manipulation Engineer"] },
+    { name: "Unitree", cat: "Humanoid", hq: "Hangzhou, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Motor control Engineer", "Firmware Engineer"] },
+    { name: "Sunday Robotics", cat: "Humanoid", hq: "Palo Alto, US", raised: "$165M Series B ($1.15B valuation)", investors: "Coatue Management (lead), Tiger Global, Benchmark, Bain Capital Ventures", roles: ["Robot Learning Engineer", "Hardware Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Neura Robotics", cat: "Humanoid", hq: "Metzingen, DE", raised: "~€120M Series B (reported)", investors: "Lingotto, Fizimo, EIC Fund (reported)", roles: ["Robot Learning Engineer", "Mechatronics Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Walden Robotics", cat: "Humanoid", hq: "Cambridge, US", raised: "$300M seed", investors: "Toyota Motor Corp, Toyota Invention Partners, Toyota Ventures, Deviation Capital", roles: ["Robot Learning Engineer", "Controls Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Zeroth", cat: "Humanoid", hq: "Suzhou, CN", raised: "~$137M total (~$74M recent round)", investors: "Ant Group, Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Manufacturing Engineer"] },
+    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot Learning Engineer", "Hardware Engineer", "Embedded software Engineer"], verified: false },
+    { name: "Galbot", cat: "Humanoid", hq: "Beijing, CN", lead: true, raised: "~$1B+ total (incl. ¥2.5B/~$350M round)", investors: "Meituan, IDG Capital, SAIC, SenseTime, CATL, Sinopec, National AI Industry Fund", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applied Machine Learning Engineer"] },
+    { name: "AgiBot (Zhiyuan Robotics)", cat: "Humanoid", hq: "Shanghai, CN", raised: "~$1B+ total", investors: "Not fully itemized in public reporting", roles: ["Robot Learning Engineer", "Manufacturing Engineer", "Applied Machine Learning Engineer"] },
+    { name: "UBTECH Robotics", cat: "Humanoid", hq: "Shenzhen, CN", raised: "Public (HKEX: 9880)", investors: "Public shareholders", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applications Engineer"] },
+    { name: "Fourier Intelligence", cat: "Exoskeletons", hq: "Shanghai, CN", raised: "$246M total (incl. ~¥800M/~$110M Series E)", investors: "Guoxin Investment, Prosperity7", roles: ["Mechanical Engineer", "Robot Learning Engineer", "Clinical/regulatory Engineer"] },
 
-    { name: "FANUC", cat: "Industrial arms", hq: "Yamanashi, JP", lead: true, raised: "Public (TYO: 6954)", investors: "Public shareholders", roles: ["Applications eng", "Field service eng"] },
-    { name: "ABB Robotics", cat: "Industrial arms", hq: "Zurich, CH", raised: "Public (SIX: ABBN)", investors: "Public shareholders", roles: ["Motion control eng", "Automation sales"] },
-    { name: "KUKA", cat: "Industrial arms", hq: "Augsburg, DE", raised: "Owned", investors: "Midea Group", roles: ["Systems eng", "Applications eng"] },
-    { name: "Yaskawa", cat: "Industrial arms", hq: "Kitakyushu, JP", raised: "Public (TYO: 6506)", investors: "Public shareholders", roles: ["Controls eng", "Field service eng"] },
-    { name: "Universal Robots", cat: "Industrial arms", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Applications eng", "Solutions eng"] },
-    { name: "Robotiq", cat: "Industrial arms", hq: "Lévis, CA", raised: "Undisclosed", investors: "Private", roles: ["Mechanical eng", "Applications eng", "Software eng"] },
-    { name: "Standard Bots", cat: "Industrial arms", hq: "Glen Cove, US", raised: "~$275M total ($200M Series C)", investors: "Series C at ~$1B valuation; prior $63M Series B", roles: ["Robotics eng", "Applied ML eng", "Applications eng"] },
+    { name: "FANUC", cat: "Industrial arms", hq: "Yamanashi, JP", lead: true, raised: "Public (TYO: 6954)", investors: "Public shareholders", roles: ["Applications Engineer", "Field service Engineer"] },
+    { name: "ABB Robotics", cat: "Industrial arms", hq: "Zurich, CH", raised: "Public (SIX: ABBN)", investors: "Public shareholders", roles: ["Motion control Engineer", "Automation sales"] },
+    { name: "KUKA", cat: "Industrial arms", hq: "Augsburg, DE", raised: "Owned", investors: "Midea Group", roles: ["Systems Engineer", "Applications Engineer"] },
+    { name: "Yaskawa", cat: "Industrial arms", hq: "Kitakyushu, JP", raised: "Public (TYO: 6506)", investors: "Public shareholders", roles: ["Controls Engineer", "Field service Engineer"] },
+    { name: "Universal Robots", cat: "Industrial arms", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Applications Engineer", "Solutions Engineer"] },
+    { name: "Robotiq", cat: "Industrial arms", hq: "Lévis, CA", raised: "Undisclosed", investors: "Private", roles: ["Mechanical Engineer", "Applications Engineer", "Software Engineer"] },
+    { name: "Standard Bots", cat: "Industrial arms", hq: "Glen Cove, US", raised: "~$275M total ($200M Series C)", investors: "Series C at ~$1B valuation; prior $63M Series B", roles: ["Robotics Engineer", "Applied Machine Learning Engineer", "Applications Engineer"] },
 
-    { name: "Amazon Robotics", cat: "Warehouse & logistics", hq: "North Reading, US", lead: true, raised: "Owned", investors: "Amazon (acquired Kiva, 2012)", roles: ["Fleet software eng", "CV eng"] },
-    { name: "Locus Robotics", cat: "Warehouse & logistics", hq: "Wilmington, US", raised: "~$430M total", investors: "Tiger Global, Bain Capital", roles: ["Deployment eng", "Software eng"] },
-    { name: "Berkshire Grey", cat: "Warehouse & logistics", hq: "Bedford, US", raised: "Taken private 2023", investors: "SoftBank Group", roles: ["CV eng (picking)", "Ops research"] },
-    { name: "GreyOrange", cat: "Warehouse & logistics", hq: "Singapore, SG", raised: "~$210M total", investors: "SoftBank Vision Fund, Mithril", roles: ["Solutions eng", "Fleet software eng"] },
+    { name: "Amazon Robotics", cat: "Warehouse & logistics", hq: "North Reading, US", lead: true, raised: "Owned", investors: "Amazon (acquired Kiva, 2012)", roles: ["Fleet software Engineer", "Computer Vision Engineer"] },
+    { name: "Locus Robotics", cat: "Warehouse & logistics", hq: "Wilmington, US", raised: "~$430M total", investors: "Tiger Global, Bain Capital", roles: ["Deployment Engineer", "Software Engineer"] },
+    { name: "Berkshire Grey", cat: "Warehouse & logistics", hq: "Bedford, US", raised: "Taken private 2023", investors: "SoftBank Group", roles: ["Computer Vision Engineer (picking)", "Operations Research Analyst"] },
+    { name: "GreyOrange", cat: "Warehouse & logistics", hq: "Singapore, SG", raised: "~$210M total", investors: "SoftBank Vision Fund, Mithril", roles: ["Solutions Engineer", "Fleet software Engineer"] },
 
-    { name: "Boston Dynamics (Stretch)", cat: "Autonomous mobile robots", hq: "Waltham, US", lead: true, raised: "Owned", investors: "Hyundai Motor Group", roles: ["Navigation eng", "Test eng"] },
-    { name: "Vecna Robotics", cat: "Autonomous mobile robots", hq: "Waltham, US", raised: "~$100M total", investors: "Prologis Ventures, Piva Capital", roles: ["SLAM eng", "Deployment eng"] },
-    { name: "OTTO Motors", cat: "Autonomous mobile robots", hq: "Kitchener, CA", raised: "Part of Clearpath", investors: "Rockwell Automation (Clearpath)", roles: ["Embedded eng", "SLAM eng"] },
-    { name: "MiR", cat: "Autonomous mobile robots", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Navigation eng", "Software eng"] },
-    { name: "Slamtec", cat: "Autonomous mobile robots", hq: "Shanghai, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["SLAM algorithm eng", "LiDAR hardware eng", "Firmware eng"] },
-    { name: "LionsBot", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "~$30M+ total", investors: "EDBI, Vulcan Capital", roles: ["Robotics eng", "Firmware eng", "Field service eng"] },
-    { name: "ST Engineering", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Public (SGX: S63)", investors: "Public shareholders", roles: ["Robotics systems eng", "Controls eng"] },
-    { name: "Transforma Robotics", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private / seed", roles: ["Robotics eng", "Software eng"] },
+    { name: "Boston Dynamics (Stretch)", cat: "Autonomous mobile robots", hq: "Waltham, US", lead: true, raised: "Owned", investors: "Hyundai Motor Group", roles: ["Navigation Engineer", "Test Engineer"] },
+    { name: "Vecna Robotics", cat: "Autonomous mobile robots", hq: "Waltham, US", raised: "~$100M total", investors: "Prologis Ventures, Piva Capital", roles: ["SLAM Engineer", "Deployment Engineer"] },
+    { name: "OTTO Motors", cat: "Autonomous mobile robots", hq: "Kitchener, CA", raised: "Part of Clearpath", investors: "Rockwell Automation (Clearpath)", roles: ["Embedded Engineer", "SLAM Engineer"] },
+    { name: "MiR", cat: "Autonomous mobile robots", hq: "Odense, DK", raised: "Owned", investors: "Teradyne", roles: ["Navigation Engineer", "Software Engineer"] },
+    { name: "Slamtec", cat: "Autonomous mobile robots", hq: "Shanghai, CN", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["SLAM algorithm Engineer", "LiDAR hardware Engineer", "Firmware Engineer"] },
+    { name: "LionsBot", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "~$30M+ total", investors: "EDBI, Vulcan Capital", roles: ["Robotics Engineer", "Firmware Engineer", "Field service Engineer"] },
+    { name: "ST Engineering", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Public (SGX: S63)", investors: "Public shareholders", roles: ["Robotics systems Engineer", "Controls Engineer"] },
+    { name: "Transforma Robotics", cat: "Autonomous mobile robots", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private / seed", roles: ["Robotics Engineer", "Software Engineer"] },
 
-    { name: "Waymo", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "$5.6B round (2024)", investors: "Alphabet, a16z, Fidelity, Silver Lake", roles: ["Perception eng", "Planning eng"] },
-    { name: "Aurora Innovation", cat: "Autonomous vehicles", hq: "Pittsburgh, US", raised: "Public (NASDAQ: AUR)", investors: "Public shareholders", roles: ["Simulation eng", "Safety eng"] },
-    { name: "Zoox", cat: "Autonomous vehicles", hq: "Foster City, US", raised: "Owned", investors: "Amazon (acquired 2020)", roles: ["Planning eng", "HD-mapping eng"] },
-    { name: "Nuro", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "~$2.1B total", investors: "SoftBank Vision Fund, Tiger Global", roles: ["Perception eng", "Controls eng"] },
-    { name: "Kodiak Robotics", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "Public (NASDAQ: KDK)", investors: "Public shareholders", roles: ["Planning eng", "Safety/validation"] },
-    { name: "Applied Intuition", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "~$600M+ total", investors: "Kleiner Perkins, Lux Capital, General Catalyst, Porsche, Toyota", roles: ["Simulation eng", "Software eng", "Applied ML eng"] },
+    { name: "Waymo", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "$5.6B round (2024)", investors: "Alphabet, a16z, Fidelity, Silver Lake", roles: ["Perception Engineer", "Planning Engineer"] },
+    { name: "Aurora Innovation", cat: "Autonomous vehicles", hq: "Pittsburgh, US", raised: "Public (NASDAQ: AUR)", investors: "Public shareholders", roles: ["Simulation Engineer", "Safety Engineer"] },
+    { name: "Zoox", cat: "Autonomous vehicles", hq: "Foster City, US", raised: "Owned", investors: "Amazon (acquired 2020)", roles: ["Planning Engineer", "HD-mapping Engineer"] },
+    { name: "Nuro", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "~$2.1B total", investors: "SoftBank Vision Fund, Tiger Global", roles: ["Perception Engineer", "Controls Engineer"] },
+    { name: "Kodiak Robotics", cat: "Autonomous vehicles", hq: "Mountain View, US", raised: "Public (NASDAQ: KDK)", investors: "Public shareholders", roles: ["Planning Engineer", "Safety/validation"] },
+    { name: "Applied Intuition", cat: "Autonomous vehicles", hq: "Mountain View, US", lead: true, raised: "~$600M+ total", investors: "Kleiner Perkins, Lux Capital, General Catalyst, Porsche, Toyota", roles: ["Simulation Engineer", "Software Engineer", "Applied Machine Learning Engineer"] },
 
-    { name: "John Deere (See & Spray)", cat: "Agricultural robotics", hq: "Moline, US", lead: true, raised: "Public (NYSE: DE)", investors: "Public shareholders", roles: ["CV eng (crop)", "Field robotics eng"] },
-    { name: "Naio Technologies", cat: "Agricultural robotics", hq: "Toulouse, FR", raised: "~€30M total", investors: "Bpifrance, Demeter", roles: ["Firmware eng", "Field robotics eng"] },
-    { name: "Carbon Robotics", cat: "Agricultural robotics", hq: "Seattle, US", raised: "~$107M Series C", investors: "Fuse VC, Anthos Capital", roles: ["CV eng", "Robotics eng"] },
-    { name: "FarmWise", cat: "Agricultural robotics", hq: "San Francisco, US", raised: "~$65M total", investors: "Yara Growth Ventures", roles: ["Agronomy software eng", "CV eng"] },
+    { name: "John Deere (See & Spray)", cat: "Agricultural robotics", hq: "Moline, US", lead: true, raised: "Public (NYSE: DE)", investors: "Public shareholders", roles: ["Computer Vision Engineer (crop)", "Field robotics Engineer"] },
+    { name: "Naio Technologies", cat: "Agricultural robotics", hq: "Toulouse, FR", raised: "~€30M total", investors: "Bpifrance, Demeter", roles: ["Firmware Engineer", "Field robotics Engineer"] },
+    { name: "Carbon Robotics", cat: "Agricultural robotics", hq: "Seattle, US", raised: "~$107M Series C", investors: "Fuse VC, Anthos Capital", roles: ["Computer Vision Engineer", "Robotics Engineer"] },
+    { name: "FarmWise", cat: "Agricultural robotics", hq: "San Francisco, US", raised: "~$65M total", investors: "Yara Growth Ventures", roles: ["Agronomy software Engineer", "Computer Vision Engineer"] },
 
-    { name: "Intuitive Surgical", cat: "Medical & surgical", hq: "Sunnyvale, US", lead: true, raised: "Public (NASDAQ: ISRG)", investors: "Public shareholders", roles: ["R&D mech eng", "Regulatory eng"] },
-    { name: "Stryker (Mako)", cat: "Medical & surgical", hq: "Kalamazoo, US", raised: "Public (NYSE: SYK)", investors: "Public shareholders", roles: ["Clinical apps specialist", "Systems eng"] },
-    { name: "Medtronic (Hugo)", cat: "Medical & surgical", hq: "Dublin, IE", raised: "Public (NYSE: MDT)", investors: "Public shareholders", roles: ["Haptics eng", "R&D eng"] },
-    { name: "CMR Surgical", cat: "Medical & surgical", hq: "Cambridge, UK", raised: "~$800M total", investors: "SoftBank Vision Fund 2", roles: ["Mech eng", "Regulatory eng"] },
+    { name: "Intuitive Surgical", cat: "Medical & surgical", hq: "Sunnyvale, US", lead: true, raised: "Public (NASDAQ: ISRG)", investors: "Public shareholders", roles: ["R&D Mechanical Engineer", "Regulatory Engineer"] },
+    { name: "Stryker (Mako)", cat: "Medical & surgical", hq: "Kalamazoo, US", raised: "Public (NYSE: SYK)", investors: "Public shareholders", roles: ["Clinical apps specialist", "Systems Engineer"] },
+    { name: "Medtronic (Hugo)", cat: "Medical & surgical", hq: "Dublin, IE", raised: "Public (NYSE: MDT)", investors: "Public shareholders", roles: ["Haptics Engineer", "R&D Engineer"] },
+    { name: "CMR Surgical", cat: "Medical & surgical", hq: "Cambridge, UK", raised: "~$800M total", investors: "SoftBank Vision Fund 2", roles: ["Mech Engineer", "Regulatory Engineer"] },
 
-    { name: "iRobot", cat: "Consumer & home", hq: "Bedford, US", lead: true, raised: "Public (NASDAQ: IRBT)", investors: "Public shareholders", roles: ["Embedded software eng", "PM"] },
-    { name: "Ecovacs", cat: "Consumer & home", hq: "Suzhou, CN", raised: "Public (SZSE: 603486)", investors: "Public shareholders", roles: ["Embedded eng", "Industrial designer"] },
-    { name: "Roborock", cat: "Consumer & home", hq: "Beijing, CN", raised: "Public (STAR: 688169)", investors: "Public shareholders", roles: ["CV eng", "Firmware eng"] },
+    { name: "iRobot", cat: "Consumer & home", hq: "Bedford, US", lead: true, raised: "Public (NASDAQ: IRBT)", investors: "Public shareholders", roles: ["Embedded software Engineer", "Product Manager"] },
+    { name: "Ecovacs", cat: "Consumer & home", hq: "Suzhou, CN", raised: "Public (SZSE: 603486)", investors: "Public shareholders", roles: ["Embedded Engineer", "Industrial designer"] },
+    { name: "Roborock", cat: "Consumer & home", hq: "Beijing, CN", raised: "Public (STAR: 688169)", investors: "Public shareholders", roles: ["Computer Vision Engineer", "Firmware Engineer"] },
 
-    { name: "DJI", cat: "Aerial & drone", hq: "Shenzhen, CN", lead: true, raised: "Self-funded, profitable", investors: "Founder-controlled", roles: ["Flight controls eng", "RF/comms eng"] },
-    { name: "Skydio", cat: "Aerial & drone", hq: "San Mateo, US", raised: "~$740M total", investors: "Baillie Gifford, Linse Capital", roles: ["Autonomy eng", "Perception eng"] },
-    { name: "Zipline", cat: "Aerial & drone", hq: "South San Francisco, US", raised: "~$500M+ total", investors: "Baillie Gifford, Fidelity", roles: ["Flight controls eng", "Ops specialist"] },
-    { name: "Wing (Alphabet)", cat: "Aerial & drone", hq: "Mountain View, US", raised: "Owned", investors: "Alphabet", roles: ["Autonomy eng", "Ops eng"] },
+    { name: "DJI", cat: "Aerial & drone", hq: "Shenzhen, CN", lead: true, raised: "Self-funded, profitable", investors: "Founder-controlled", roles: ["Flight controls Engineer", "RF/comms Engineer"] },
+    { name: "Skydio", cat: "Aerial & drone", hq: "San Mateo, US", raised: "~$740M total", investors: "Baillie Gifford, Linse Capital", roles: ["Autonomy Engineer", "Perception Engineer"] },
+    { name: "Zipline", cat: "Aerial & drone", hq: "South San Francisco, US", raised: "~$500M+ total", investors: "Baillie Gifford, Fidelity", roles: ["Flight controls Engineer", "Operations Specialist"] },
+    { name: "Wing (Alphabet)", cat: "Aerial & drone", hq: "Mountain View, US", raised: "Owned", investors: "Alphabet", roles: ["Autonomy Engineer", "Operations Engineer"] },
 
-    { name: "Physical Intelligence", cat: "Robotics AI / foundation models", hq: "San Francisco, US", lead: true, raised: "~$400M Series A", investors: "OpenAI, Jeff Bezos, Thrive Capital", roles: ["ML research eng", "Robot learning eng"] },
-    { name: "Skild AI", cat: "Robotics AI / foundation models", hq: "Pittsburgh, US", raised: "~$300M Series A", investors: "SoftBank, Coatue, Lightspeed", roles: ["Applied scientist", "Data pipeline eng"] },
-    { name: "Covariant", cat: "Robotics AI / foundation models", hq: "Emeryville, US", raised: "~$222M total", investors: "Index Ventures, Radical Ventures", roles: ["ML eng", "Robot learning eng"] },
-    { name: "NVIDIA (Isaac)", cat: "Robotics AI / foundation models", hq: "Santa Clara, US", raised: "Public (NASDAQ: NVDA)", investors: "Public shareholders", roles: ["Simulation eng", "ML research eng"] },
-    { name: "Genesis AI", cat: "Robotics AI / foundation models", hq: "San Francisco, US", raised: "$105M seed closed; ~$500M in talks (unclosed)", investors: "Eclipse Ventures, Khosla Ventures (seed); new round undisclosed", roles: ["ML research eng", "Robot learning eng", "Simulation eng"] },
-    { name: "Ropedia", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$30M total", investors: "Angels linked to Google, a16z, NVIDIA, Amazon", roles: ["Hardware eng (wearable capture)", "Data platform eng"] },
-    { name: "Luxonis", cat: "Robotics AI / foundation models", hq: "Denver, US", raised: "$14M Series A", investors: "Denali Growth Partners, Taiwania Capital", roles: ["Embedded vision eng", "Firmware eng", "Applied ML eng"] },
-    { name: "Eureka Robotics", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$15M total ($10.5M Series A)", investors: "B Capital (lead), Airbus Ventures, Maruka, G.K. Goh Ventures, UTEC, ATEQ", roles: ["Computer vision eng", "Applied ML eng", "Robotics eng"] },
-    { name: "SiMa.ai", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$355M total (Series C, ~$960M valuation)", investors: "Fidelity Investments, Maverick Capital, VentureTech Alliance", roles: ["ASIC/chip design eng", "Embedded ML eng", "Applied ML eng"] },
-    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["ML research eng", "Robot learning eng", "Applied ML eng"] },
-    { name: "Mind Robotics", cat: "Robotics AI / foundation models", hq: "Palo Alto, US", lead: true, raised: "$1B+ total ($115M seed, $500M Series A, $400M follow-on)", investors: "Accel, Andreessen Horowitz, Rivian (strategic)", roles: ["Robotics eng", "Applied ML eng", "Manufacturing automation eng"] },
-    { name: "HOPE Technik", cat: "Aerial & drone", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private", roles: ["Mechanical eng", "Robotics eng", "Systems eng"] },
+    { name: "Physical Intelligence", cat: "Robotics AI / foundation models", hq: "San Francisco, US", lead: true, raised: "~$400M Series A", investors: "OpenAI, Jeff Bezos, Thrive Capital", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer"] },
+    { name: "Skild AI", cat: "Robotics AI / foundation models", hq: "Pittsburgh, US", raised: "~$300M Series A", investors: "SoftBank, Coatue, Lightspeed", roles: ["Applied scientist", "Data pipeline Engineer"] },
+    { name: "Covariant", cat: "Robotics AI / foundation models", hq: "Emeryville, US", raised: "~$222M total", investors: "Index Ventures, Radical Ventures", roles: ["Machine Learning Engineer", "Robot Learning Engineer"] },
+    { name: "NVIDIA (Isaac)", cat: "Robotics AI / foundation models", hq: "Santa Clara, US", raised: "Public (NASDAQ: NVDA)", investors: "Public shareholders", roles: ["Simulation Engineer", "Machine Learning Research Engineer"] },
+    { name: "Genesis AI", cat: "Robotics AI / foundation models", hq: "San Francisco, US", raised: "$105M seed closed; ~$500M in talks (unclosed)", investors: "Eclipse Ventures, Khosla Ventures (seed); new round undisclosed", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Simulation Engineer"] },
+    { name: "Ropedia", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$30M total", investors: "Angels linked to Google, a16z, NVIDIA, Amazon", roles: ["Hardware Engineer (wearable capture)", "Data platform Engineer"] },
+    { name: "Luxonis", cat: "Robotics AI / foundation models", hq: "Denver, US", raised: "$14M Series A", investors: "Denali Growth Partners, Taiwania Capital", roles: ["Embedded vision Engineer", "Firmware Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Eureka Robotics", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$15M total ($10.5M Series A)", investors: "B Capital (lead), Airbus Ventures, Maruka, G.K. Goh Ventures, UTEC, ATEQ", roles: ["Computer vision Engineer", "Applied Machine Learning Engineer", "Robotics Engineer"] },
+    { name: "SiMa.ai", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$355M total (Series C, ~$960M valuation)", investors: "Fidelity Investments, Maverick Capital, VentureTech Alliance", roles: ["ASIC/chip design Engineer", "Embedded Machine Learning Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Generalist AI", cat: "Robotics AI / foundation models", hq: "San Mateo, US", lead: true, raised: "$400M Series C ($2B valuation, $500M+ total)", investors: "Radical Ventures (lead), NVIDIA (NVentures), Bezos Expeditions, 8VC, Union Square Ventures, Spark Capital", roles: ["Robot Learning Engineer", "Applied Machine Learning Engineer", "Simulation Engineer"] },
+    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Mind Robotics", cat: "Robotics AI / foundation models", hq: "Palo Alto, US", lead: true, raised: "$1B+ total ($115M seed, $500M Series A, $400M follow-on)", investors: "Accel, Andreessen Horowitz, Rivian (strategic)", roles: ["Robotics Engineer", "Applied Machine Learning Engineer", "Manufacturing automation Engineer"] },
+    { name: "HOPE Technik", cat: "Aerial & drone", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private", roles: ["Mechanical Engineer", "Robotics Engineer", "Systems Engineer"] },
 
-    { name: "Anduril Industries", cat: "Defense & security robotics", hq: "Costa Mesa, US", lead: true, raised: "~$2.7B+ total", investors: "Founders Fund, a16z, General Catalyst, Sands Capital", roles: ["Systems eng", "Software eng", "Manufacturing eng"] },
-    { name: "Shield AI", cat: "Defense & security robotics", hq: "San Diego, US", raised: "~$500M+ total", investors: "Andreessen Horowitz, Snowpoint Ventures", roles: ["Autonomy eng", "Software eng", "Flight test eng"] },
-    { name: "Ghost Robotics", cat: "Defense & security robotics", hq: "Philadelphia, US", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Robotics eng", "Controls eng"] },
+    { name: "Anduril Industries", cat: "Defense & security robotics", hq: "Costa Mesa, US", lead: true, raised: "~$2.7B+ total", investors: "Founders Fund, a16z, General Catalyst, Sands Capital", roles: ["Systems Engineer", "Software Engineer", "Manufacturing Engineer"] },
+    { name: "Shield AI", cat: "Defense & security robotics", hq: "San Diego, US", raised: "~$500M+ total", investors: "Andreessen Horowitz, Snowpoint Ventures", roles: ["Autonomy Engineer", "Software Engineer", "Flight test Engineer"] },
+    { name: "Ghost Robotics", cat: "Defense & security robotics", hq: "Philadelphia, US", raised: "Undisclosed", investors: "Not publicly detailed", roles: ["Robotics Engineer", "Controls Engineer"] },
 
-    { name: "Ekso Bionics", cat: "Exoskeletons", hq: "Richmond, US", lead: true, raised: "Public (NASDAQ: EKSO)", investors: "Public shareholders", roles: ["Mechanical eng", "Regulatory eng", "Clinical specialist"] },
-    { name: "Chengtian Technology", cat: "Exoskeletons", hq: "Hangzhou, CN", raised: "~¥100M Series B (2025)", investors: "Wuxi VC (lead)", roles: ["Mechanical eng", "Controls eng", "Clinical/regulatory eng"] },
+    { name: "Ekso Bionics", cat: "Exoskeletons", hq: "Richmond, US", lead: true, raised: "Public (NASDAQ: EKSO)", investors: "Public shareholders", roles: ["Mechanical Engineer", "Regulatory Engineer", "Clinical specialist"] },
+    { name: "Chengtian Technology", cat: "Exoskeletons", hq: "Hangzhou, CN", raised: "~¥100M Series B (2025)", investors: "Wuxi VC (lead)", roles: ["Mechanical Engineer", "Controls Engineer", "Clinical/regulatory Engineer"] },
   ];
 
   const NEWS = [
@@ -1345,6 +1354,7 @@
     "Luxonis": "https://www.luxonis.com",
     "Eureka Robotics": "https://eurekarobotics.com",
     "SiMa.ai": "https://sima.ai",
+    "Generalist AI": "https://generalistai.com",
     "Rhoda AI": "https://www.rhoda.ai",
     "Mind Robotics": "https://www.mindrobotics.com",
     "Chengtian Technology": "https://exoskeleton.roboct.com",
@@ -1425,6 +1435,7 @@
     "Luxonis": "https://www.luxonis.com/careers",
     "Eureka Robotics": null,
     "SiMa.ai": "https://sima.ai/careers",
+    "Generalist AI": "https://generalistai.com/careers",
     "Rhoda AI": null,
     "Mind Robotics": null,
   };
@@ -1502,6 +1513,7 @@
     "Rhoda AI": { product: "Direct Video-Action (DVA) model", tagline: "Foundation model pretrained on web-scale video, fine-tuned on a small amount of trajectory data for generalist industrial robot tasks.", price: "Not sold directly — enterprise licensing" },
     "Eureka Robotics": { product: "3D vision + picking system", tagline: "NTU spinoff AI vision system for 3D bin picking, sorting, and stacking of randomly placed industrial parts.", price: "Not publicly disclosed — free 72-hour feasibility check offered" },
     "SiMa.ai": { product: "Modalix MLSoC / Palette Neat", tagline: "Edge AI chip (50 TOPS under 10W) and software platform for deploying physical AI on drones, robots, and vehicles.", price: "DevKit available via store; production pricing not publicly disclosed" },
+    "Generalist AI": { product: "GEN-1", tagline: "Robot foundation model for dexterous manipulation, reporting 99% task reliability and up to 3x faster execution than prior systems.", price: "Not sold directly — enterprise licensing" },
     "Mind Robotics": { product: "AI-enabled industrial robotic systems (unnamed)", tagline: "Rivian spinoff building AI-enabled robots for factory assembly and material handling.", price: "Not publicly disclosed" },
   };
 
@@ -1705,6 +1717,34 @@
 
   render();
 
+  /* ---- panel navigation ---- */
+  (function buildPanelNav() {
+    const panels = [...document.querySelectorAll(".panel")];
+    const navLinks = [...document.querySelectorAll("[data-goto]")];
+
+    function showPanel(id) {
+      panels.forEach(p => p.classList.toggle("active", p.id === id));
+      navLinks.forEach(a => a.classList.toggle("active", a.dataset.goto === id));
+      window.scrollTo(0, 0);
+      history.replaceState(null, "", "#" + id);
+    }
+
+    document.addEventListener("click", e => {
+      const link = e.target.closest("[data-goto]");
+      if (!link) return;
+      e.preventDefault();
+      showPanel(link.dataset.goto);
+    });
+
+    window.showPanel = showPanel;
+
+    const initial = (location.hash || "#overview").slice(1);
+    const initialEl = document.getElementById(initial);
+    if (initialEl && initialEl.classList.contains("panel")) {
+      showPanel(initial);
+    }
+  })();
+
   /* ---- product detail overlay ---- */
   const pdetailOverlay = document.getElementById("pdetailOverlay");
   const pdetailModal = document.getElementById("pdetailModal");
@@ -1782,6 +1822,25 @@
       return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
     });
 
+    const KNOWN_LOCATIONS = [...new Set(DATA.map(d => d.hq.split(",").pop().trim()))];
+    // also allow matching on the city part (e.g. "singapore", "denver")
+    const KNOWN_CITIES = [...new Set(DATA.map(d => d.hq.split(",")[0].trim()))];
+
+    function findLocationInQuery(q) {
+      const hay = q.toLowerCase();
+      const all = [...KNOWN_LOCATIONS, ...KNOWN_CITIES];
+      // prefer longer matches first so "United States" beats "US" etc.
+      const sorted = all.slice().sort((a, b) => b.length - a.length);
+      for (const loc of sorted) {
+        if (hay.includes(loc.toLowerCase())) return loc;
+      }
+      return null;
+    }
+
+    function isJobsQuery(q) {
+      return /\bjob|career|hiring|role\b/i.test(q);
+    }
+
     function openSearch() {
       overlay.classList.add("open");
       input.value = "";
@@ -1790,16 +1849,48 @@
     }
     function closeSearch() { overlay.classList.remove("open"); }
 
+    function jumpToJobs(location) {
+      closeSearch();
+      window.showPanel("careers");
+      if (location) {
+        setTimeout(() => {
+          const locSelect = document.getElementById("careerLocationFilter");
+          const match = [...locSelect.options].find(o => o.value.toLowerCase() === location.toLowerCase());
+          if (match) {
+            locSelect.value = match.value;
+            locSelect.dispatchEvent(new Event("change"));
+          }
+        }, 0);
+      }
+    }
+
     function renderResults(q) {
       const query = q.trim().toLowerCase();
+      let jobsRow = "";
+      if (query && isJobsQuery(query)) {
+        const loc = findLocationInQuery(query);
+        jobsRow = `
+          <div class="gsearch-section-label">Jump to</div>
+          <button class="gsearch-row" id="gsearchJobsJump">
+            <span class="gsearch-thumb" title="Careers">${ICON_SVG_OPEN}<path d="M4 7h16v13H4z"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg></span>
+            <span>
+              <div class="gsearch-row-name">${loc ? `Jobs in ${loc}` : "All open roles"}</div>
+              <div class="gsearch-row-meta">Careers · ${loc ? "filtered by location" : "aggregated roles table"}</div>
+            </span>
+          </button>
+        `;
+      }
+
       const list = query
         ? INDEX.filter(r => r.product.toLowerCase().includes(query) || r.company.toLowerCase().includes(query) || r.cat.toLowerCase().includes(query))
         : INDEX;
-      if (!list.length) {
+
+      if (!list.length && !jobsRow) {
         resultsEl.innerHTML = `<div class="gsearch-empty">No products match "${q}".</div>`;
         return;
       }
-      resultsEl.innerHTML = `<div class="gsearch-section-label">Products</div>` + list.slice(0, 30).map(r => `
+
+      resultsEl.innerHTML = jobsRow + (list.length ? `<div class="gsearch-section-label">Products</div>` + list.slice(0, 30).map(r => `
         <button class="gsearch-row" data-company="${r.company}">
           <span class="gsearch-thumb" title="${r.cat}">${categoryIcon(r.cat)}</span>
           <span>
@@ -1807,8 +1898,12 @@
             <div class="gsearch-row-meta">Product · ${r.cat} · ${r.company}</div>
           </span>
         </button>
-      `).join("");
-      resultsEl.querySelectorAll(".gsearch-row").forEach(row => {
+      `).join("") : "");
+
+      const jumpBtn = document.getElementById("gsearchJobsJump");
+      if (jumpBtn) jumpBtn.addEventListener("click", () => jumpToJobs(findLocationInQuery(query)));
+
+      resultsEl.querySelectorAll(".gsearch-row[data-company]").forEach(row => {
         row.addEventListener("click", () => {
           closeSearch();
           openProductDetail(row.dataset.company);
@@ -1963,12 +2058,12 @@
       title: "Builders & operators",
       desc: "Founders and execs actually shipping robots — highest signal, also the most bias.",
       people: [
-        { name: "Brett Adcock", role: "Founder/CEO, Figure AI", url: WEBSITES["Figure AI"] },
-        { name: "Marc Raibert", role: "Founder, Boston Dynamics; head of Boston Dynamics AI Institute", url: WEBSITES["Boston Dynamics"] },
-        { name: "Bernt Bornich", role: "CEO, 1X Technologies", url: WEBSITES["1X Technologies"] },
-        { name: "RJ Scaringe", role: "Co-founder/Chairman, Mind Robotics (Rivian founder)", url: WEBSITES["Mind Robotics"] },
-        { name: "Peter Chen", role: "Co-founder, Covariant", url: WEBSITES["Covariant"] },
-        { name: "Russ Tedrake", role: "MIT professor; leads Walden Robotics", url: WEBSITES["Walden Robotics"] },
+        { name: "Brett Adcock", role: "Founder/CEO, Figure AI", url: WEBSITES["Figure AI"], bio: "Serial founder (previously built Vettery and Hire) who pivoted into humanoid robotics with Figure AI in 2022, quickly becoming the most visible voice pushing warehouse and logistics humanoids toward commercial deployment." },
+        { name: "Marc Raibert", role: "Founder, Boston Dynamics; head of Boston Dynamics AI Institute", url: WEBSITES["Boston Dynamics"], bio: "Founded Boston Dynamics out of MIT in 1992 and spent three decades pushing dynamic legged locomotion (BigDog, Atlas, Spot) before founding the AI Institute to push learning-based control further." },
+        { name: "Bernt Bornich", role: "CEO, 1X Technologies", url: WEBSITES["1X Technologies"], bio: "Leads 1X (formerly Halodi Robotics), the Norway-founded, OpenAI-backed company building NEO, one of the more aggressively priced home-humanoid bets in the market." },
+        { name: "RJ Scaringe", role: "Co-founder/Chairman, Mind Robotics (Rivian founder)", url: WEBSITES["Mind Robotics"], bio: "Founder and CEO of Rivian who co-founded and chairs Mind Robotics, applying Rivian's manufacturing-automation research to a standalone AI-robotics company that raised over $1B within its first year." },
+        { name: "Peter Chen", role: "Co-founder, Covariant", url: WEBSITES["Covariant"], bio: "Co-founded Covariant to bring foundation-model-style learning to warehouse robotic manipulation, building one of the earlier commercially deployed robotics foundation models (RFM-1)." },
+        { name: "Russ Tedrake", role: "MIT professor; leads Walden Robotics", url: WEBSITES["Walden Robotics"], bio: "Longtime MIT robotics professor known for work on underactuated robotics and motion planning, now leading Toyota-backed Walden Robotics after it emerged from stealth with $300M in funding." },
       ],
     },
     {
@@ -1976,10 +2071,10 @@
       title: "Researchers & academics",
       desc: "Technical depth on robot learning and embodied AI, less hype-driven.",
       people: [
-        { name: "Sergey Levine", role: "Co-founder, Physical Intelligence; UC Berkeley", url: WEBSITES["Physical Intelligence"] },
-        { name: "Chelsea Finn", role: "Co-founder, Physical Intelligence; Stanford", url: WEBSITES["Physical Intelligence"] },
-        { name: "Rodney Brooks", role: "Co-founder, iRobot & Rethink Robotics; MIT professor emeritus", url: "https://rodneybrooks.com" },
-        { name: "Gill Pratt", role: "CEO, Toyota Research Institute", url: null },
+        { name: "Sergey Levine", role: "Co-founder, Physical Intelligence; UC Berkeley", url: WEBSITES["Physical Intelligence"], bio: "UC Berkeley professor and a leading voice in deep reinforcement learning for robotics, co-founded Physical Intelligence to build general-purpose robot foundation models." },
+        { name: "Chelsea Finn", role: "Co-founder, Physical Intelligence; Stanford", url: WEBSITES["Physical Intelligence"], bio: "Stanford professor known for meta-learning and imitation-learning research, co-founder of Physical Intelligence alongside Sergey Levine." },
+        { name: "Rodney Brooks", role: "Co-founder, iRobot & Rethink Robotics; MIT professor emeritus", url: "https://rodneybrooks.com", bio: "Co-founded iRobot (Roomba) and Rethink Robotics, and is widely regarded as the field's most credible skeptic — his blog regularly pushes back on overhyped robotics and AI timelines." },
+        { name: "Gill Pratt", role: "CEO, Toyota Research Institute", url: null, bio: "Former DARPA program manager who now leads Toyota Research Institute, frequently quoted on why physical-world robotics is harder to scale than software AI." },
       ],
     },
     {
@@ -1987,9 +2082,9 @@
       title: "Media & commentary",
       desc: "Curate and interpret the space rather than build in it.",
       people: [
-        { name: "The Robot Report", role: "Trade press covering robotics deals and product news", url: "https://www.therobotreport.com" },
-        { name: "Robots & Startups", role: "Newsletter tracking monthly robotics funding rounds", url: "https://robotsandstartups.substack.com" },
-        { name: "Humanoid Index", role: "Funding tracker dedicated to humanoid robotics", url: "https://humanoidindex.org" },
+        { name: "The Robot Report", role: "Trade press covering robotics deals and product news", url: "https://www.therobotreport.com", bio: "Long-running trade publication covering robotics funding, product launches, and industry news — the closest thing the sector has to a paper of record." },
+        { name: "Robots & Startups", role: "Newsletter tracking monthly robotics funding rounds", url: "https://robotsandstartups.substack.com", bio: "Newsletter that compiles monthly robotics funding rounds into a running log — a useful raw feed for tracking who's raising and how much." },
+        { name: "Humanoid Index", role: "Funding tracker dedicated to humanoid robotics", url: "https://humanoidindex.org", bio: "A tracker specifically dedicated to humanoid robotics deals, useful for narrower category-level trend-spotting than general robotics coverage." },
       ],
     },
   ];
@@ -2002,14 +2097,45 @@
       </div>
       <div class="voice-grid">
         ${lane.people.map(p => `
-          <div class="voice-card">
-            <div class="v-name">${p.url ? `<a href="${p.url}" target="_blank" rel="noopener">${p.name}</a>` : p.name}</div>
+          <button class="voice-card" type="button" data-lane="${lane.key}" data-person="${p.name}">
+            <div class="v-name">${p.name}</div>
             <div class="v-role">${p.role}</div>
-          </div>
+          </button>
         `).join("")}
       </div>
     </div>
   `).join("");
+
+  document.getElementById("voicesGroups").addEventListener("click", e => {
+    const card = e.target.closest(".voice-card");
+    if (!card) return;
+    const lane = VOICE_LANES.find(l => l.key === card.dataset.lane);
+    const person = lane && lane.people.find(p => p.name === card.dataset.person);
+    if (person) openPersonDetail(person, lane.title);
+  });
+
+  function openPersonDetail(p, laneTitle) {
+    pdetailModal.innerHTML = `
+      <div class="pdetail-head">
+        <div class="pdetail-head-main">
+          <span class="pdetail-icon" title="${laneTitle}">${ICON_SVG_OPEN}<circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg></span>
+          <div>
+            <div class="eyebrow2">${laneTitle}</div>
+            <h2>${p.name}</h2>
+            <div class="company-line">${p.role}</div>
+          </div>
+        </div>
+        <button class="gsearch-close" id="pdetailCloseBtn" type="button">✕</button>
+      </div>
+      <div class="pdetail-body">
+        <p class="pdetail-tagline">${p.bio}</p>
+        ${p.url ? `<div class="pdetail-facts"><div class="pdetail-fact"><div class="label">Link</div><div class="val"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗</a></div></div></div>` : ""}
+        <p class="pdetail-disclaimer">Bio is a brief original summary compiled from public reporting, not sourced from the person's own writing.</p>
+      </div>
+    `;
+    document.getElementById("pdetailCloseBtn").addEventListener("click", closeProductDetail);
+    pdetailOverlay.classList.add("open");
+  }
 
   /* ---- news ---- */
   document.getElementById("newsList").innerHTML = NEWS.map(n => `
@@ -2137,7 +2263,7 @@
         searchClear.classList.add("show");
         setActiveFilter(hq);
         render();
-        document.getElementById("table").scrollIntoView({ behavior: "smooth" });
+        window.showPanel("table");
       });
     });
   })();
