@@ -434,8 +434,14 @@
   }
   .map-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
   .map-head p { color: var(--ink-soft); font-size: 0.85rem; margin: 0.25rem 0 0; max-width: 480px; }
-  .map-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; color: var(--ink-soft); }
-  .map-legend .swatch { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  .map-legend { display: flex; align-items: center; gap: 0.5rem; font-size: 0.76rem; color: var(--ink-soft); }
+  .map-legend .scale {
+    width: 90px;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #2563eb 0%, #06b6d4 22%, #22c55e 45%, #eab308 68%, #f97316 85%, #ef4444 100%);
+    display: inline-block;
+  }
   .map-wrap {
     position: relative;
     border: 1px solid var(--line);
@@ -444,15 +450,19 @@
     overflow: hidden;
   }
   .map-wrap svg { display: block; width: 100%; height: auto; }
-  .map-dot { fill: var(--ink-dim); opacity: 0.55; }
+  .map-dot { fill: var(--ink-dim); opacity: 0.4; }
+  .map-marker circle.glow {
+    stroke: none;
+    filter: blur(6px);
+    opacity: 0.55;
+    mix-blend-mode: screen;
+  }
   .map-marker circle.ring {
     fill: none;
-    stroke: var(--accent);
     stroke-width: 1;
-    opacity: 0.35;
+    opacity: 0.4;
   }
   .map-marker circle.core {
-    fill: var(--accent);
     stroke: var(--bg-panel);
     stroke-width: 1;
     cursor: pointer;
@@ -460,13 +470,15 @@
   .map-marker text {
     font-size: 6px;
     font-weight: 700;
-    fill: var(--accent-ink);
+    fill: #fff;
     text-anchor: middle;
     dominant-baseline: central;
     pointer-events: none;
     font-family: "SF Mono", "Menlo", monospace;
+    text-shadow: 0 0 2px rgba(0,0,0,0.6);
   }
-  .map-marker:hover circle.core { filter: brightness(1.15); }
+  .map-marker:hover circle.core { filter: brightness(1.2); }
+  .map-marker:hover circle.glow { opacity: 0.85; }
 
   .map-tip {
     position: absolute;
@@ -1018,7 +1030,7 @@
       <h2>Where robotics companies are based</h2>
       <p>Dot size scales with how many companies share a headquarters city. Click a dot to filter the table below.</p>
     </div>
-    <div class="map-legend"><span class="swatch"></span> Company HQ</div>
+    <div class="map-legend">Fewer <span class="scale"></span> More companies</div>
   </div>
   <div class="map-wrap" id="mapWrap">
     <svg id="worldMap" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg"></svg>
@@ -2371,16 +2383,45 @@
       byHQ[d.hq].companies.push(d.name);
     });
 
+    // heatmap color scale: blue (low density) -> cyan -> green -> yellow -> orange -> red (high density)
+    const HEAT_STOPS = [
+      [0.00, [37, 99, 235]],   // blue
+      [0.22, [6, 182, 212]],   // cyan
+      [0.45, [34, 197, 94]],   // green
+      [0.68, [234, 179, 8]],   // yellow
+      [0.85, [249, 115, 22]],  // orange
+      [1.00, [239, 68, 68]],   // red
+    ];
+    function heatColor(t) {
+      t = Math.max(0, Math.min(1, t));
+      for (let i = 0; i < HEAT_STOPS.length - 1; i++) {
+        const [t0, c0] = HEAT_STOPS[i];
+        const [t1, c1] = HEAT_STOPS[i + 1];
+        if (t >= t0 && t <= t1) {
+          const f = (t - t0) / (t1 - t0 || 1);
+          const c = c0.map((v, idx) => Math.round(v + (c1[idx] - v) * f));
+          return `rgb(${c[0]},${c[1]},${c[2]})`;
+        }
+      }
+      return `rgb(${HEAT_STOPS[HEAT_STOPS.length - 1][1].join(",")})`;
+    }
+
+    const maxN = Math.max(1, ...Object.values(byHQ).map(info => info.companies.length));
+    const logMax = Math.log(maxN + 1);
+
     let markers = "";
     Object.entries(byHQ).forEach(([hq, info]) => {
       const [lat, lon] = info.coords;
       const [x, y] = project(lat, lon);
       const n = info.companies.length;
+      const t = logMax ? Math.log(n + 1) / logMax : 0;
+      const color = heatColor(t);
       const r = Math.min(11, 5 + Math.sqrt(n) * 2.2);
       markers += `
         <g class="map-marker" data-hq="${hq}" data-x="${x.toFixed(1)}" data-y="${y.toFixed(1)}">
-          ${n > 1 ? `<circle class="ring" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r + 4).toFixed(1)}"/>` : ""}
-          <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>
+          <circle class="glow" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r + 6).toFixed(1)}" fill="${color}"/>
+          ${n > 1 ? `<circle class="ring" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r + 4).toFixed(1)}" stroke="${color}"/>` : ""}
+          <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${color}"/>
           ${n > 1 ? `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}">${n}</text>` : ""}
         </g>`;
     });
