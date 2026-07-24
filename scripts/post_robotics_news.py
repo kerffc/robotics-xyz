@@ -160,11 +160,10 @@ def main():
                 formatted = call_claude(item["title"], item["summary"], item["link"])
             except Exception as e:
                 print(f"claude call failed for {item['link']}: {e}")
-                continue
-
-            posted.add(item["link"])  # mark seen regardless, so we don't retry bad items forever
+                continue  # transient failure, retry next run — do not mark seen
 
             if formatted.strip() == "SKIP":
+                posted.add(item["link"])  # not news we want, don't reconsider it
                 continue
 
             try:
@@ -173,8 +172,9 @@ def main():
                 new_posts += 1
             except Exception as e:
                 print(f"telegram post failed for {item['link']}: {e}")
-                continue
+                continue  # transient failure, retry next run — do not mark seen
 
+            posted.add(item["link"])  # only mark seen once actually posted
             date = time.strftime("%Y-%m-%d")
             headline = formatted.split("\n")[0].strip()
             append_to_news_array(headline, item["link"], date, item["summary"])
