@@ -1,11 +1,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Robotics.xyz</title>
-<meta name="description" content="A manually curated market map of the robotics industry — companies, funding, open roles, a glossary, and good reads, all in one place.">
-<meta property="og:title" content="Robotics.xyz">
-<meta property="og:description" content="A manually curated market map of the robotics industry — companies, funding, open roles, a glossary, and good reads, all in one place.">
+<title>Physical AI Companies — The Market Map | Robotics.xyz</title>
+<meta name="description" content="The market map of physical AI: every company building robots and embodied AI, with funding, investors, open roles, a glossary, and curated reads — in one place.">
+<link rel="canonical" href="https://kerffc.github.io/robotics-xyz/">
+<meta name="keywords" content="physical AI, embodied AI, robotics companies, robotics funding, humanoid robots, robotics foundation models, robotics market map">
+<meta property="og:title" content="Physical AI Companies — The Market Map">
+<meta property="og:description" content="Every company building physical AI and robots, with funding, investors, and open roles — a living market map.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://kerffc.github.io/robotics-xyz/">
+<meta property="og:site_name" content="Robotics.xyz">
+<meta property="og:image" content="https://kerffc.github.io/robotics-xyz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Physical AI Companies — The Market Map">
+<meta name="twitter:description" content="Every company building physical AI and robots, with funding, investors, and open roles — a living market map.">
+<meta name="twitter:image" content="https://kerffc.github.io/robotics-xyz/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Physical AI & Robotics Company Market Map",
+  "description": "A curated, regularly updated directory of companies building physical AI and robots, including funding raised, key investors, headquarters, and open roles.",
+  "url": "https://kerffc.github.io/robotics-xyz/",
+  "keywords": ["physical AI", "embodied AI", "robotics companies", "robotics funding", "humanoid robots"],
+  "creator": { "@type": "Organization", "name": "Robotics.xyz", "url": "https://kerffc.github.io/robotics-xyz/" },
+  "license": "https://kerffc.github.io/robotics-xyz/"
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23a8541c'/%3E%3Ctext x='12' y='17' font-size='14' font-family='Georgia,serif' fill='white' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root {
@@ -1021,9 +1043,9 @@
   <div class="hero">
     <div class="hero-inner">
       <div>
-        <div class="eyebrow">Robotics market map</div>
-        <h1>Every robot builder, mapped in one place</h1>
-        <p>A living directory of the companies building robots today.</p>
+        <div class="eyebrow">Physical AI market map</div>
+        <h1>Every physical AI company, mapped in one place</h1>
+        <p>A living directory of the companies building physical AI and robots — the embodied intelligence moving from labs into the real world.</p>
       </div>
       <button class="cta" data-goto="table">View directory →</button>
     </div>
@@ -1082,7 +1104,7 @@
 </div>
 
 <div class="panel wrap" id="table">
-  <h1 class="title">Robotics company landscape</h1>
+  <h1 class="title">Physical AI &amp; robotics company landscape</h1>
   <p class="lede">Every major robotics company, grouped by what it actually ships, with the roles it's typically hiring for. Search by name, filter by category, or click a dot on the map above.</p>
 
   <div class="search-row">
@@ -1894,43 +1916,88 @@
 
   render();
 
-  /* ---- panel navigation ---- */
+  /* ---- deep-linkable routing ---- */
+  const SITE_NAME = "Robotics.xyz";
+  const PANEL_TITLES = {
+    overview: "Physical AI Companies — The Market Map",
+    table: "Company directory — Physical AI & robotics",
+    map: "World map — where physical AI is built",
+    hardware: "Robot hardware 101",
+    glossary: "Physical AI & robotics glossary",
+    careers: "Open roles across physical AI companies",
+    monitor: "Fundraising monitor — physical AI & robotics",
+    voices: "Notable voices in physical AI",
+    reads: "Reading list — physical AI & robotics",
+    news: "Latest physical AI & robotics news"
+  };
+  function setDocTitle(text) {
+    document.title = text ? `${text} | ${SITE_NAME}` : SITE_NAME;
+  }
+  function slugify(name) {
+    return name.replace(/\(.*?\)/g, "").trim().toLowerCase()
+      .replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+  const SLUG_TO_COMPANY = {};
+  DATA.forEach(d => { SLUG_TO_COMPANY[slugify(d.name)] = d.name; });
+
   (function buildPanelNav() {
     const panels = [...document.querySelectorAll(".panel")];
     const navLinks = [...document.querySelectorAll("[data-goto]")];
 
-    function showPanel(id) {
+    function showPanel(id, push) {
       panels.forEach(p => p.classList.toggle("active", p.id === id));
       navLinks.forEach(a => a.classList.toggle("active", a.dataset.goto === id));
       window.scrollTo(0, 0);
-      history.replaceState(null, "", "#" + id);
+      setDocTitle(PANEL_TITLES[id] || "");
+      const url = "#" + id;
+      if (push) history.pushState({ panel: id }, "", url);
+      else history.replaceState({ panel: id }, "", url);
     }
 
     document.addEventListener("click", e => {
       const link = e.target.closest("[data-goto]");
       if (!link) return;
       e.preventDefault();
-      showPanel(link.dataset.goto);
+      showPanel(link.dataset.goto, true);
     });
 
     window.showPanel = showPanel;
 
-    const initial = (location.hash || "#overview").slice(1);
-    const initialEl = document.getElementById(initial);
-    if (initialEl && initialEl.classList.contains("panel")) {
-      showPanel(initial);
+    function routeFromHash(push) {
+      const raw = (location.hash || "#overview").slice(1);
+      const companySlug = raw.startsWith("company/") ? raw.slice("company/".length) : null;
+      if (companySlug && SLUG_TO_COMPANY[companySlug]) {
+        showPanel("table", false);
+        openProductDetail(SLUG_TO_COMPANY[companySlug], false);
+        return;
+      }
+      closeProductDetail(false);
+      const el = document.getElementById(raw);
+      showPanel(el && el.classList.contains("panel") ? raw : "overview", push);
     }
+
+    window.routeFromHash = routeFromHash;
+    window.addEventListener("popstate", () => routeFromHash(false));
+    // initial route runs at end of script, once detail-overlay consts are initialized
   })();
 
   /* ---- product detail overlay ---- */
   const pdetailOverlay = document.getElementById("pdetailOverlay");
   const pdetailModal = document.getElementById("pdetailModal");
 
-  function closeProductDetail() {
+  function closeProductDetail(push) {
+    const wasOpen = pdetailOverlay.classList.contains("open");
     pdetailOverlay.classList.remove("open");
+    if (wasOpen && push !== false) {
+      // return URL/title to the underlying panel
+      const panel = document.querySelector(".panel.active");
+      const id = panel ? panel.id : "table";
+      setDocTitle(PANEL_TITLES[id] || "");
+      history.pushState({ panel: id }, "", "#" + id);
+    }
   }
 
-  function openProductDetail(companyName) {
+  function openProductDetail(companyName, push) {
     const d = DATA.find(x => x.name === companyName);
     if (!d) return;
     const p = PRODUCTS[d.name] || { product: d.name, tagline: "", price: "Not publicly disclosed" };
@@ -1980,6 +2047,12 @@
 
     document.getElementById("gsearchOverlay").classList.remove("open");
     pdetailOverlay.classList.add("open");
+
+    setDocTitle(`${d.name} — ${d.cat}`);
+    const url = "#company/" + slugify(d.name);
+    if (push !== false && location.hash !== url) {
+      history.pushState({ company: d.name }, "", url);
+    }
   }
 
   pdetailOverlay.addEventListener("click", e => {
@@ -2045,7 +2118,7 @@
 
     function jumpToGlossary(term) {
       closeSearch();
-      window.showPanel("glossary");
+      window.showPanel("glossary", true);
       renderGlossaryGrid("");
       if (glossarySearchInput) glossarySearchInput.value = "";
       setTimeout(() => {
@@ -2109,7 +2182,7 @@
 
     function jumpToJobs(location) {
       closeSearch();
-      window.showPanel("careers");
+      window.showPanel("careers", true);
       if (location && location.code) {
         setTimeout(() => {
           const locSelect = document.getElementById("careerLocationFilter");
@@ -2610,8 +2683,11 @@
         searchClear.classList.add("show");
         setActiveFilter(hq);
         render();
-        window.showPanel("table");
+        window.showPanel("table", true);
       });
     });
   })();
+
+  /* initial deep-link route — runs last, after all overlay consts are initialized */
+  window.routeFromHash(false);
 </script>
