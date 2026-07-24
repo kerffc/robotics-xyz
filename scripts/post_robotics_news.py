@@ -150,7 +150,10 @@ Article URL: {link}"""
     )
     with urllib.request.urlopen(req, timeout=30) as r:
         resp = json.loads(r.read())
-    return resp["content"][0]["text"].strip()
+    text_blocks = [b["text"] for b in resp["content"] if b.get("type") == "text"]
+    if not text_blocks:
+        raise ValueError(f"no text block in response: {resp}")
+    return text_blocks[0].strip()
 
 
 def append_to_reads_array(source, title, link, summary):
@@ -207,16 +210,17 @@ def main():
 
             if not FUNDING_KEYWORDS.search(item["title"] + " " + item["summary"]):
                 # not funding/routine news — consider it for the Good Reads section instead
-                posted.add(item["link"])
                 try:
                     verdict = call_claude_reads(item["title"], item["summary"], item["link"])
                 except Exception as e:
                     print(f"claude reads call failed for {item['link']}: {e}")
-                    continue
+                    continue  # transient failure, retry next run — do not mark seen
                 if verdict.strip() == "SKIP" or "\n" not in verdict:
+                    posted.add(item["link"])  # not a good read either, don't reconsider it
                     continue
                 summary_line, source_line = verdict.strip().split("\n", 1)
                 append_to_reads_array(source_line.strip(), item["title"], item["link"], summary_line.strip())
+                posted.add(item["link"])  # only mark seen once actually added
                 print(f"added to reads: {item['title']}")
                 time.sleep(2)
                 continue
