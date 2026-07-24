@@ -877,6 +877,7 @@
   .learn-card h3 { font-size: 0.98rem; font-weight: 800; margin: 0 0 0.5rem; }
   .learn-card p { color: var(--ink-soft); font-size: 0.83rem; line-height: 1.55; margin: 0; }
   .learn-card p strong { color: var(--ink); }
+  .learn-card.glossary-highlight { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); transition: box-shadow 0.3s, border-color 0.3s; }
 
   /* ---- voices to follow ---- */
   .voice-lane { margin-bottom: 1.6rem; }
@@ -950,6 +951,7 @@
     <a href="#overview" data-goto="overview" class="active"><span class="dot"></span>Overview</a>
     <a href="#map-section" data-goto="map-section"><span class="dot"></span>World map</a>
     <a href="#learn" data-goto="learn"><span class="dot"></span>Learn: hardware 101</a>
+    <a href="#glossary" data-goto="glossary"><span class="dot"></span>Glossary</a>
     <a href="#table" data-goto="table"><span class="dot"></span>Companies</a>
     <div class="sidebar-subnav" id="sidebarSubcats"></div>
     <a href="#careers" data-goto="careers"><span class="dot"></span>Careers</a>
@@ -1042,6 +1044,18 @@
     </div>
   </div>
   <p class="section-footnote">Simplified summary — for the full technical deep-dive (PID tuning, transmission types, sensor fusion, a real hardware teardown), read the original at <a href="https://interlatent.com" target="_blank" rel="noopener" class="job-link">Interlatent</a>.</p>
+</div>
+
+<div class="panel news-section" id="glossary">
+  <h2>Glossary</h2>
+  <p>The terms that come up constantly in robotics coverage, explained in plain language. Search any of these from the global search (⌘K) and you'll land here on the right entry.</p>
+  <div class="search-row tight">
+    <label class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="glossarySearch" placeholder="Search a term…" autocomplete="off" />
+    </label>
+  </div>
+  <div class="learn-grid" id="glossaryGrid"></div>
 </div>
 
 <div class="panel wrap" id="table">
@@ -1868,6 +1882,41 @@
       return null;
     }
 
+    function glossarySlug(term) { return "gloss-" + term.toLowerCase().replace(/[^a-z0-9]+/g, "-"); }
+
+    function renderGlossaryGrid(filterQ) {
+      const grid = document.getElementById("glossaryGrid");
+      if (!grid) return;
+      const q = (filterQ || "").trim().toLowerCase();
+      const terms = q
+        ? GLOSSARY.filter(g => g.term.toLowerCase().includes(q) || g.aliases.some(a => a.includes(q)) || g.def.toLowerCase().includes(q))
+        : GLOSSARY;
+      grid.innerHTML = terms.length ? terms.map(g => `
+        <div class="learn-card" id="${glossarySlug(g.term)}">
+          <h3>${g.term}</h3>
+          <p>${g.def}</p>
+        </div>
+      `).join("") : `<div class="gsearch-empty">No terms match "${filterQ}".</div>`;
+    }
+    renderGlossaryGrid("");
+    const glossarySearchInput = document.getElementById("glossarySearch");
+    if (glossarySearchInput) glossarySearchInput.addEventListener("input", e => renderGlossaryGrid(e.target.value));
+
+    function jumpToGlossary(term) {
+      closeSearch();
+      window.showPanel("glossary");
+      renderGlossaryGrid("");
+      if (glossarySearchInput) glossarySearchInput.value = "";
+      setTimeout(() => {
+        const el = document.getElementById(glossarySlug(term));
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          el.classList.add("glossary-highlight");
+          setTimeout(() => el.classList.remove("glossary-highlight"), 1800);
+        }
+      }, 30);
+    }
+
     const COUNTRY_NAMES = {
       US: "United States", CN: "China", SG: "Singapore", JP: "Japan", CH: "Switzerland",
       DE: "Germany", DK: "Denmark", CA: "Canada", FR: "France", UK: "United Kingdom",
@@ -1958,13 +2007,13 @@
       const glossaryHit = query ? findGlossaryMatch(query) : null;
       const glossaryRow = glossaryHit ? `
         <div class="gsearch-section-label">What is this?</div>
-        <div class="gsearch-row" style="cursor: default; align-items: flex-start;">
+        <button class="gsearch-row" id="gsearchGlossaryJump" style="align-items: flex-start;">
           <span class="gsearch-thumb" title="Glossary">${ICON_SVG_OPEN}<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
           <span>
             <div class="gsearch-row-name">${glossaryHit.term}</div>
             <div class="gsearch-row-meta">${glossaryHit.def}</div>
           </span>
-        </div>
+        </button>
       ` : "";
 
       if (!list.length && !jobsRow && !glossaryRow) {
@@ -1984,6 +2033,9 @@
 
       const jumpBtn = document.getElementById("gsearchJobsJump");
       if (jumpBtn) jumpBtn.addEventListener("click", () => jumpToJobs(locMatch));
+
+      const glossJumpBtn = document.getElementById("gsearchGlossaryJump");
+      if (glossJumpBtn) glossJumpBtn.addEventListener("click", () => jumpToGlossary(glossaryHit.term));
 
       resultsEl.querySelectorAll(".gsearch-row[data-company]").forEach(row => {
         row.addEventListener("click", () => {
