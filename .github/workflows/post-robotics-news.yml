@@ -1,0 +1,32 @@
+name: Post robotics news to Telegram
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # ~9pm SGT daily
+  workflow_dispatch: {}
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run scraper + poster
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/post_robotics_news.py
+
+      - name: Commit updated news + dedup log
+        run: |
+          git config user.name "robotics-news-bot"
+          git config user.email "actions@github.com"
+          git add index.html scripts/posted.json
+          git diff --staged --quiet || git commit -m "Auto: robotics news update"
+          git push
