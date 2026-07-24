@@ -855,6 +855,25 @@
   }
   .monitor-count { color: var(--ink-dim); font-size: 0.76rem; margin: 1rem 0 0; }
 
+  /* ---- learn ---- */
+  .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .learn-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.2rem;
+    background: var(--bg-panel);
+  }
+  .learn-num {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .learn-card h3 { font-size: 0.98rem; font-weight: 800; margin: 0 0 0.5rem; }
+  .learn-card p { color: var(--ink-soft); font-size: 0.83rem; line-height: 1.55; margin: 0; }
+  .learn-card p strong { color: var(--ink); }
+
   /* ---- voices to follow ---- */
   .voice-lane { margin-bottom: 1.6rem; }
   .voice-lane:last-child { margin-bottom: 0; }
@@ -922,6 +941,7 @@
   <nav>
     <a href="#top" class="active"><span class="dot"></span>Overview</a>
     <a href="#map-section"><span class="dot"></span>World map</a>
+    <a href="#learn"><span class="dot"></span>Learn: hardware 101</a>
     <a href="#table"><span class="dot"></span>Companies</a>
     <div class="sidebar-subnav" id="sidebarSubcats"></div>
     <a href="#careers"><span class="dot"></span>Careers</a>
@@ -969,9 +989,9 @@
     <div>
       <div class="eyebrow">Robotics market map</div>
       <h1>Every robot builder, mapped in one place</h1>
-      <p>Track who's building what across humanoids, industrial arms, AVs, and more — with funding, investors, and open roles.</p>
+      <p>A living directory of the companies building robots today.</p>
     </div>
-    <button class="cta" onclick="document.getElementById('table').scrollIntoView({behavior:'smooth'})">View full directory →</button>
+    <button class="cta" onclick="document.getElementById('table').scrollIntoView({behavior:'smooth'})">View directory →</button>
   </div>
 </div>
 
@@ -989,6 +1009,29 @@
     <svg id="worldMap" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg"></svg>
     <div class="map-tip" id="mapTip"></div>
   </div>
+</div>
+
+<div class="news-section" id="learn">
+  <h2>Learn: robot hardware in three parts</h2>
+  <p>A quick primer if you're new to the space — every robot's hardware boils down to three cooperating systems.</p>
+  <div class="learn-grid">
+    <div class="learn-card">
+      <div class="learn-num">01</div>
+      <h3>Movement</h3>
+      <p>Motors alone just spin. A <strong>servo</strong> pairs a motor with a position sensor and a small controller so it can hold a target angle, constantly comparing "where am I" against "where should I be" and correcting the gap — the same loop (often a <strong>PID controller</strong>) shows up anywhere a robot has to hit and hold a position. Between the motor and the joint sits a <strong>gearbox</strong>: it trades speed for torque, so a fast, weak motor becomes a slow, strong joint.</p>
+    </div>
+    <div class="learn-card">
+      <div class="learn-num">02</div>
+      <h3>Body</h3>
+      <p>The frame and joints set the robot's physical limits — reach, stability, load capacity — and how many independent ways it can move (its <strong>degrees of freedom</strong>). The body isn't passive: if it flexes or vibrates, the robot's internal sense of where its own parts are stops matching reality. Material choice (plastic for fast prototyping, aluminum or carbon fiber for strength and stiffness) is a real engineering tradeoff, not just cosmetics.</p>
+    </div>
+    <div class="learn-card">
+      <div class="learn-num">03</div>
+      <h3>Sensors</h3>
+      <p>Sensors split into two jobs: <strong>proprioceptive</strong> ones look inward (encoders for joint angle, an IMU for orientation), and <strong>exteroceptive</strong> ones look outward (cameras, depth/LiDAR, touch). A robot needs both — seeing an object is only useful once the robot also knows where its own arm is relative to it. None of this works without <strong>calibration</strong>, which maps raw sensor numbers into one shared coordinate system the robot can trust.</p>
+    </div>
+  </div>
+  <p class="section-footnote">Simplified summary — for the full technical deep-dive (PID tuning, transmission types, sensor fusion, a real hardware teardown), read the original at <a href="https://interlatent.com" target="_blank" rel="noopener" class="job-link">Interlatent</a>.</p>
 </div>
 
 <div class="wrap">
