@@ -1146,7 +1146,7 @@
     { name: "Neura Robotics", cat: "Humanoid", hq: "Metzingen, DE", raised: "~€120M Series B (reported)", investors: "Lingotto, Fizimo, EIC Fund (reported)", roles: ["Robot Learning Engineer", "Mechatronics Engineer", "Applied Machine Learning Engineer"] },
     { name: "Walden Robotics", cat: "Humanoid", hq: "Cambridge, US", raised: "$300M seed", investors: "Toyota Motor Corp, Toyota Invention Partners, Toyota Ventures, Deviation Capital", roles: ["Robot Learning Engineer", "Controls Engineer", "Applied Machine Learning Engineer"] },
     { name: "Zeroth", cat: "Humanoid", hq: "Suzhou, CN", raised: "~$137M total (~$74M recent round)", investors: "Ant Group, Geely Capital, Monolith, 37 Interactive Entertainment, Hua Capital", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Manufacturing Engineer"] },
-    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot Learning Engineer", "Hardware Engineer", "Embedded software Engineer"], verified: false },
+    { name: "Yingzhi XBOT", cat: "Humanoid", hq: "China", raised: "¥300–500M Series B; ¥200M Series A (prior)", investors: "GPTX (Series A); government/industrial funds (Series B)", roles: ["Robot Learning Engineer", "Hardware Engineer", "Embedded software Engineer"], unverified: ["raised", "HQ"] },
     { name: "Galbot", cat: "Humanoid", hq: "Beijing, CN", lead: true, raised: "~$1B+ total (incl. ¥2.5B/~$350M round)", investors: "Meituan, IDG Capital, SAIC, SenseTime, CATL, Sinopec, National AI Industry Fund", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applied Machine Learning Engineer"] },
     { name: "AgiBot (Zhiyuan Robotics)", cat: "Humanoid", hq: "Shanghai, CN", raised: "~$1B+ total", investors: "Not fully itemized in public reporting", roles: ["Robot Learning Engineer", "Manufacturing Engineer", "Applied Machine Learning Engineer"] },
     { name: "UBTECH Robotics", cat: "Humanoid", hq: "Shenzhen, CN", raised: "Public (HKEX: 9880)", investors: "Public shareholders", roles: ["Robot Learning Engineer", "Mechanical Engineer", "Applications Engineer"] },
@@ -1210,7 +1210,7 @@
     { name: "Eureka Robotics", cat: "Robotics AI / foundation models", hq: "Singapore, SG", raised: "$15M total ($10.5M Series A)", investors: "B Capital (lead), Airbus Ventures, Maruka, G.K. Goh Ventures, UTEC, ATEQ", roles: ["Computer vision Engineer", "Applied Machine Learning Engineer", "Robotics Engineer"] },
     { name: "SiMa.ai", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$355M total (Series C, ~$960M valuation)", investors: "Fidelity Investments, Maverick Capital, VentureTech Alliance", roles: ["ASIC/chip design Engineer", "Embedded Machine Learning Engineer", "Applied Machine Learning Engineer"] },
     { name: "Generalist AI", cat: "Robotics AI / foundation models", hq: "San Mateo, US", lead: true, raised: "$400M Series C ($2B valuation, $500M+ total)", investors: "Radical Ventures (lead), NVIDIA (NVentures), Bezos Expeditions, 8VC, Union Square Ventures, Spark Capital", roles: ["Robot Learning Engineer", "Applied Machine Learning Engineer", "Simulation Engineer"] },
-    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Applied Machine Learning Engineer"] },
+    { name: "Rhoda AI", cat: "Robotics AI / foundation models", hq: "San Jose, US", raised: "$450M Series A ($1.7B valuation)", investors: "Khosla Ventures (lead), John Doerr, Samsung NEXT, Temasek (among 20+ listed)", roles: ["Machine Learning Research Engineer", "Robot Learning Engineer", "Applied Machine Learning Engineer"], unverified: ["HQ"] },
     { name: "Mind Robotics", cat: "Robotics AI / foundation models", hq: "Palo Alto, US", lead: true, raised: "$1B+ total ($115M seed, $500M Series A, $400M follow-on)", investors: "Accel, Andreessen Horowitz, Rivian (strategic)", roles: ["Robotics Engineer", "Applied Machine Learning Engineer", "Manufacturing automation Engineer"] },
     { name: "HOPE Technik", cat: "Aerial & drone", hq: "Singapore, SG", raised: "Undisclosed", investors: "Private", roles: ["Mechanical Engineer", "Robotics Engineer", "Systems Engineer"] },
 
@@ -1608,6 +1608,12 @@
     });
   }
 
+  function unverifiedBadge(d) {
+    if (!d.unverified || !d.unverified.length) return "";
+    const fields = d.unverified.join(" and ");
+    return `<span class="unverified-flag" title="Best-effort data — ${fields} not independently verified">!</span>`;
+  }
+
   function initials(name) {
     return name.replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 2).map(w => w[0]).join("").toUpperCase();
   }
@@ -1652,7 +1658,7 @@
     rowsEl.innerHTML = list.length ? list.map((d, i) => `
       <tr>
         <td class="rank num" data-label="#">${i + 1}</td>
-        <td class="company" data-label="Company"><span class="logo" title="${d.cat}">${categoryIcon(d.cat)}</span><button type="button" class="co-link-btn" data-company="${d.name}">${d.name}</button>${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""} ${WEBSITES[d.name] ? `<a href="${WEBSITES[d.name]}" target="_blank" rel="noopener" class="co-link" title="Visit website">↗</a>` : ""}</td>
+        <td class="company" data-label="Company"><span class="logo" title="${d.cat}">${categoryIcon(d.cat)}</span><button type="button" class="co-link-btn" data-company="${d.name}">${d.name}</button>${unverifiedBadge(d)} ${WEBSITES[d.name] ? `<a href="${WEBSITES[d.name]}" target="_blank" rel="noopener" class="co-link" title="Visit website">↗</a>` : ""}</td>
         <td data-label="Category"><span class="cat-tag">${d.cat}</span></td>
         <td class="hq" data-label="HQ">${d.hq}</td>
         <td class="raised num" data-label="Raised">${d.raised}</td>
@@ -1783,7 +1789,7 @@
           <div>
             <div class="eyebrow2">${d.cat}</div>
             <h2>${p.product}</h2>
-            <div class="company-line">by ${d.name}${d.verified === false ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+            <div class="company-line">by ${d.name}${unverifiedBadge(d)}</div>
           </div>
         </div>
         <button class="gsearch-close" id="pdetailCloseBtn" type="button">✕</button>
@@ -1835,7 +1841,7 @@
 
     const INDEX = DATA.map(d => {
       const p = PRODUCTS[d.name] || { product: d.name, tagline: "" };
-      return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
+      return { company: d.name, product: p.product, cat: d.cat, unverified: d.unverified || [] };
     });
 
     const GLOSSARY = [
@@ -1970,7 +1976,7 @@
         <button class="gsearch-row" data-company="${r.company}">
           <span class="gsearch-thumb" title="${r.cat}">${categoryIcon(r.cat)}</span>
           <span>
-            <div class="gsearch-row-name">${r.product}${!r.verified ? `<span class="unverified-flag" title="Best-effort data — not independently verified">!</span>` : ""}</div>
+            <div class="gsearch-row-name">${r.product}${r.unverified.length ? `<span class="unverified-flag" title="Best-effort data — ${r.unverified.join(" and ")} not independently verified">!</span>` : ""}</div>
             <div class="gsearch-row-meta">Product · ${r.cat} · ${r.company}</div>
           </span>
         </button>
