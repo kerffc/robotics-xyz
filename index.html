@@ -717,8 +717,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px; height: 22px;
-    border-radius: 6px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
     background: var(--chip-bg);
     border: 1px solid var(--line);
     color: var(--accent);
@@ -1065,7 +1065,7 @@
       <thead>
         <tr>
           <th class="num-col">#</th>
-          <th>Company</th>
+          <th id="nameHeader" class="sortable-th">Company <span id="nameSortIcon" class="sort-icon">↕</span></th>
           <th>Category</th>
           <th>HQ</th>
           <th id="raisedHeader" class="sortable-th">Raised <span id="raisedSortIcon" class="sort-icon">↕</span></th>
@@ -1585,6 +1585,7 @@
   let active = "All";
   let query = "";
   let raisedSort = 0; // 0 = off, 1 = desc, -1 = asc
+  let nameSort = 0; // 0 = off, 1 = A-Z, -1 = Z-A
 
   const activeFilterRow = document.getElementById("activeFilterRow");
   const activeFilterChip = document.getElementById("activeFilterChip");
@@ -1643,6 +1644,8 @@
     }
     if (raisedSort !== 0) {
       list = [...list].sort((a, b) => raisedSort * (parseRaised(b.raised) - parseRaised(a.raised)));
+    } else if (nameSort !== 0) {
+      list = [...list].sort((a, b) => nameSort * a.name.localeCompare(b.name));
     }
     rowsEl.innerHTML = list.length ? list.map((d, i) => `
       <tr>
@@ -1709,9 +1712,20 @@
 
   const raisedHeader = document.getElementById("raisedHeader");
   const raisedSortIcon = document.getElementById("raisedSortIcon");
+  const nameHeader = document.getElementById("nameHeader");
+  const nameSortIcon = document.getElementById("nameSortIcon");
   raisedHeader.addEventListener("click", () => {
     raisedSort = raisedSort === 1 ? -1 : raisedSort === -1 ? 0 : 1;
     raisedSortIcon.textContent = raisedSort === 1 ? "↓" : raisedSort === -1 ? "↑" : "↕";
+    nameSort = 0;
+    nameSortIcon.textContent = "↕";
+    render();
+  });
+  nameHeader.addEventListener("click", () => {
+    nameSort = nameSort === 1 ? -1 : nameSort === -1 ? 0 : 1;
+    nameSortIcon.textContent = nameSort === 1 ? "↓" : nameSort === -1 ? "↑" : "↕";
+    raisedSort = 0;
+    raisedSortIcon.textContent = "↕";
     render();
   });
 
@@ -1822,17 +1836,39 @@
       return { company: d.name, product: p.product, cat: d.cat, verified: d.verified !== false };
     });
 
-    const KNOWN_LOCATIONS = [...new Set(DATA.map(d => d.hq.split(",").pop().trim()))];
+    const COUNTRY_NAMES = {
+      US: "United States", CN: "China", SG: "Singapore", JP: "Japan", CH: "Switzerland",
+      DE: "Germany", DK: "Denmark", CA: "Canada", FR: "France", UK: "United Kingdom",
+      IE: "Ireland", NO: "Norway",
+    };
+    const KNOWN_CODES = [...new Set(DATA.map(d => d.hq.split(",").pop().trim()))];
     // also allow matching on the city part (e.g. "singapore", "denver")
     const KNOWN_CITIES = [...new Set(DATA.map(d => d.hq.split(",")[0].trim()))];
 
     function findLocationInQuery(q) {
       const hay = q.toLowerCase();
-      const all = [...KNOWN_LOCATIONS, ...KNOWN_CITIES];
-      // prefer longer matches first so "United States" beats "US" etc.
-      const sorted = all.slice().sort((a, b) => b.length - a.length);
-      for (const loc of sorted) {
-        if (hay.includes(loc.toLowerCase())) return loc;
+      // check full country names first (e.g. "china" -> code "CN")
+      const nameEntries = Object.entries(COUNTRY_NAMES)
+        .filter(([code]) => KNOWN_CODES.includes(code))
+        .sort((a, b) => b[1].length - a[1].length);
+      for (const [code, name] of nameEntries) {
+        if (hay.includes(name.toLowerCase())) return { code, label: name };
+      }
+      // then check cities
+      const sortedCities = KNOWN_CITIES.slice().sort((a, b) => b.length - a.length);
+      for (const city of sortedCities) {
+        if (hay.includes(city.toLowerCase())) {
+          const hit = DATA.find(d => d.hq.startsWith(city));
+          const code = hit ? hit.hq.split(",").pop().trim() : null;
+          return { code, label: city };
+        }
+      }
+      // then check raw codes as a last resort (e.g. "us", "cn")
+      const sortedCodes = KNOWN_CODES.slice().sort((a, b) => b.length - a.length);
+      for (const code of sortedCodes) {
+        if (new RegExp("\\b" + code.toLowerCase() + "\\b").test(hay)) {
+          return { code, label: COUNTRY_NAMES[code] || code };
+        }
       }
       return null;
     }
@@ -1852,10 +1888,10 @@
     function jumpToJobs(location) {
       closeSearch();
       window.showPanel("careers");
-      if (location) {
+      if (location && location.code) {
         setTimeout(() => {
           const locSelect = document.getElementById("careerLocationFilter");
-          const match = [...locSelect.options].find(o => o.value.toLowerCase() === location.toLowerCase());
+          const match = [...locSelect.options].find(o => o.value.toLowerCase() === location.code.toLowerCase());
           if (match) {
             locSelect.value = match.value;
             locSelect.dispatchEvent(new Event("change"));
@@ -1867,8 +1903,10 @@
     function renderResults(q) {
       const query = q.trim().toLowerCase();
       let jobsRow = "";
+      let locMatch = null;
       if (query && isJobsQuery(query)) {
-        const loc = findLocationInQuery(query);
+        locMatch = findLocationInQuery(query);
+        const loc = locMatch ? locMatch.label : null;
         jobsRow = `
           <div class="gsearch-section-label">Jump to</div>
           <button class="gsearch-row" id="gsearchJobsJump">
@@ -1901,7 +1939,7 @@
       `).join("") : "");
 
       const jumpBtn = document.getElementById("gsearchJobsJump");
-      if (jumpBtn) jumpBtn.addEventListener("click", () => jumpToJobs(findLocationInQuery(query)));
+      if (jumpBtn) jumpBtn.addEventListener("click", () => jumpToJobs(locMatch));
 
       resultsEl.querySelectorAll(".gsearch-row[data-company]").forEach(row => {
         row.addEventListener("click", () => {
