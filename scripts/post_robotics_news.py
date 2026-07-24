@@ -96,15 +96,17 @@ Rules: no em dashes, no marketing language, be factual and slightly skeptical li
     )
     with urllib.request.urlopen(req, timeout=30) as r:
         resp = json.loads(r.read())
-    return resp["content"][0]["text"].strip()
+    text_blocks = [b["text"] for b in resp["content"] if b.get("type") == "text"]
+    if not text_blocks:
+        raise ValueError(f"no text block in response: {resp}")
+    return text_blocks[0].strip()
 
 
 def post_to_telegram(text, link):
-    full_text = f"{text}\n\n[Source]({link})"
+    full_text = f"{text}\n\nSource: {link}"
     body = json.dumps({
         "chat_id": TG_CHAT,
         "text": full_text,
-        "parse_mode": "Markdown",
         "disable_web_page_preview": False,
     }).encode()
     req = urllib.request.Request(
