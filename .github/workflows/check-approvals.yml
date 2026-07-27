@@ -20,6 +20,7 @@ jobs:
       - name: Check for approvals
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/check_approvals.py
 
       - name: Commit resolved state
