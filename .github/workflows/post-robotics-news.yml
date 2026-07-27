@@ -2,7 +2,7 @@ name: Post robotics news to Telegram
 
 on:
   schedule:
-    - cron: "0 13 * * *"  # ~9pm SGT daily
+    - cron: "0 */3 * * *"  # every 3 hours
   workflow_dispatch: {}
 
 jobs:
