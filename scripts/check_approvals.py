@@ -228,6 +228,11 @@ def main():
                         "from_chat_id": msg["chat"]["id"],
                         "message_id": msg["message_id"],
                     })
+                    if text.strip():
+                        lines = text.strip().split("\n", 1)
+                        title = lines[0].strip()
+                        summary = lines[1].strip() if len(lines) > 1 else ""
+                        append_to_news_array(title, link or "", time.strftime("%Y-%m-%d"), summary)
                     if link:
                         posted.add(link)
                 checkpoint()
