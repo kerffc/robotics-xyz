@@ -1,0 +1,34 @@
+name: Sync careers data
+
+on:
+  schedule:
+    - cron: "0 15 * * *"  # ~11pm SGT daily
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch live postings from company ATS APIs
+        run: python scripts/sync_careers.py
+
+      - name: Commit updated careers data
+        run: |
+          git config user.name "robotics-news-bot"
+          git config user.email "actions@github.com"
+          git add data/careers.json
+          git diff --staged --quiet && exit 0
+          git commit -m "Auto: sync careers data"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((RANDOM % 10 + 1))
+          done
+          exit 1

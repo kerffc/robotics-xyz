@@ -1,0 +1,7 @@
+{
+  "Agility Robotics": { "provider": "greenhouse", "token": "agilityrobotics" },
+  "Kodiak Robotics": { "provider": "greenhouse", "token": "kodiak" },
+  "1X Technologies": { "provider": "ashby", "token": "1x" },
+  "Applied Intuition": { "provider": "ashby", "token": "applied" },
+  "Standard Bots": { "provider": "ashby", "token": "StandardBots" }
+}

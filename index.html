@@ -1162,6 +1162,8 @@
       </label>
       <select id="careerLocationFilter" class="career-select"><option value="">All locations</option></select>
       <select id="careerCatFilter" class="career-select"><option value="">All categories</option></select>
+      <select id="careerRoleTypeFilter" class="career-select"><option value="">All role types</option></select>
+      <select id="careerEmploymentFilter" class="career-select"><option value="">All employment types</option></select>
     </div>
     <div class="table-wrap">
       <table>
@@ -1171,12 +1173,13 @@
             <th>Company</th>
             <th>Category</th>
             <th>Location</th>
+            <th>Type</th>
           </tr>
         </thead>
         <tbody id="careersRows"></tbody>
       </table>
     </div>
-    <p class="section-footnote">Company links go to each company's general careers/jobs page, not a live posting for this specific role — search that page once you're there. Every URL was checked and resolves; a "*" means the direct careers-page path couldn't be confirmed, so it links to the company homepage instead.</p>
+    <p class="section-footnote">Roles marked "Live" come from that company's real job board (title, location, employment type all pulled directly, refreshed daily). Everything else is a generic role category with a link to that company's careers page to search yourself — a "*" means the direct careers-page path couldn't be confirmed, so it links to the company homepage instead.</p>
 </div>
 
 <div class="panel news-section" id="monitor">
@@ -2298,35 +2301,66 @@
 
   /* ---- careers ---- */
   (function buildCareers() {
+    function roleType(title) {
+      const t = title.toLowerCase();
+      if (/\bsales\b|business development|\bbd\b|account executive/.test(t)) return "Sales";
+      if (/product manager|\bpm\b|program manager/.test(t)) return "Product";
+      if (/designer|design\b/.test(t)) return "Design";
+      if (/research|scientist/.test(t)) return "Research";
+      if (/clinical/.test(t)) return "Clinical";
+      if (/recruiter|people ops|hr\b|talent/.test(t)) return "People";
+      if (/finance|accounting|accountant|controller/.test(t)) return "Finance";
+      if (/legal|counsel/.test(t)) return "Legal";
+      if (/marketing|communications/.test(t)) return "Marketing";
+      if (/operations|\bops\b|supply chain|logistics coordinator/.test(t)) return "Operations";
+      if (/engineer|engineering|developer|technician/.test(t)) return "Engineering";
+      return "Other";
+    }
+
     const JOBS = [];
     DATA.forEach(d => {
       const country = d.hq.split(",").pop().trim();
-      d.roles.forEach(r => JOBS.push({ role: r, company: d.name, cat: d.cat, hq: d.hq, country }));
+      d.roles.forEach(r => JOBS.push({
+        role: r, company: d.name, cat: d.cat, hq: d.hq, country,
+        roleType: roleType(r), employmentType: null, live: false,
+      }));
     });
 
     const rowsEl = document.getElementById("careersRows");
     const searchEl = document.getElementById("careerSearch");
     const locEl = document.getElementById("careerLocationFilter");
     const catEl = document.getElementById("careerCatFilter");
+    const roleTypeEl = document.getElementById("careerRoleTypeFilter");
+    const employmentEl = document.getElementById("careerEmploymentFilter");
 
-    const countries = [...new Set(JOBS.map(j => j.country))].sort();
-    locEl.innerHTML += countries.map(c => `<option value="${c}">${c}</option>`).join("");
-    catEl.innerHTML += CATS.map(c => `<option value="${c}">${c}</option>`).join("");
+    function populateFilters() {
+      const countries = [...new Set(JOBS.map(j => j.country))].sort();
+      const roleTypes = [...new Set(JOBS.map(j => j.roleType))].sort();
+      const employmentTypes = [...new Set(JOBS.map(j => j.employmentType).filter(Boolean))].sort();
+      locEl.innerHTML = `<option value="">All locations</option>` + countries.map(c => `<option value="${c}">${c}</option>`).join("");
+      catEl.innerHTML = `<option value="">All categories</option>` + CATS.map(c => `<option value="${c}">${c}</option>`).join("");
+      roleTypeEl.innerHTML = `<option value="">All role types</option>` + roleTypes.map(c => `<option value="${c}">${c}</option>`).join("");
+      employmentEl.innerHTML = `<option value="">All employment types</option>` + employmentTypes.map(c => `<option value="${c}">${c}</option>`).join("") +
+        (JOBS.some(j => j.live && !j.employmentType) ? `<option value="__unknown">Unspecified</option>` : "");
+    }
 
     function renderJobs() {
       const q = searchEl.value.trim().toLowerCase();
       const loc = locEl.value;
       const cat = catEl.value;
+      const rt = roleTypeEl.value;
+      const et = employmentEl.value;
       const list = JOBS.filter(j =>
         (!q || j.role.toLowerCase().includes(q) || j.company.toLowerCase().includes(q)) &&
         (!loc || j.country === loc) &&
-        (!cat || j.cat === cat)
-      ).sort((a, b) => a.role.localeCompare(b.role));
+        (!cat || j.cat === cat) &&
+        (!rt || j.roleType === rt) &&
+        (!et || (et === "__unknown" ? (j.live && !j.employmentType) : j.employmentType === et))
+      ).sort((a, b) => (b.live - a.live) || a.role.localeCompare(b.role));
 
       rowsEl.innerHTML = list.length ? list.map(j => {
-        const careersUrl = CAREERS_URLS[j.company];
-        const url = careersUrl || WEBSITES[j.company];
-        const isFallback = !careersUrl && !!url;
+        const url = j.url || CAREERS_URLS[j.company] || WEBSITES[j.company];
+        const isFallback = !j.live && !CAREERS_URLS[j.company] && !!url;
         const fallbackTitle = isFallback ? 'title="Careers page not confirmed — linking to company homepage"' : "";
         const roleCell = url
           ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.role}</a>`
@@ -2334,26 +2368,55 @@
         const companyCell = url
           ? `<a href="${url}" target="_blank" rel="noopener" class="job-link" ${fallbackTitle}>${j.company}${isFallback ? " *" : ""}</a>`
           : j.company;
+        const typeCell = j.live ? (j.employmentType || "Unspecified") : "";
         return `
         <tr class="${url ? "job-row" : ""}" ${url ? `data-job-url="${url}"` : ""}>
-          <td class="role-name">${roleCell}</td>
+          <td class="role-name">${roleCell}${j.live ? ' <span class="cat-tag" title="Real posting from company job board, synced daily">Live</span>' : ""}</td>
           <td>${companyCell}</td>
           <td><span class="cat-tag">${j.cat}</span></td>
-          <td class="hq">${j.hq}</td>
+          <td class="hq">${j.live ? j.role_location : j.hq}</td>
+          <td>${typeCell}</td>
         </tr>
       `;
-      }).join("") : `<tr><td colspan="4" class="table-empty">No open roles match these filters.</td></tr>`;
+      }).join("") : `<tr><td colspan="5" class="table-empty">No open roles match these filters.</td></tr>`;
     }
 
     searchEl.addEventListener("input", renderJobs);
     locEl.addEventListener("change", renderJobs);
     catEl.addEventListener("change", renderJobs);
+    roleTypeEl.addEventListener("change", renderJobs);
+    employmentEl.addEventListener("change", renderJobs);
     rowsEl.addEventListener("click", e => {
       if (e.target.closest("a")) return; // let the link itself handle it
       const row = e.target.closest("tr.job-row");
       if (row) window.open(row.dataset.jobUrl, "_blank", "noopener");
     });
+
+    populateFilters();
     renderJobs();
+
+    // Layer in real live postings where we have them (data/careers.json,
+    // synced daily by .github/workflows/sync-careers.yml). Companies not in
+    // that file keep their generic fallback roles above.
+    fetch("data/careers.json").then(r => r.ok ? r.json() : null).then(data => {
+      if (!data) return;
+      const liveCompanies = new Set(Object.keys(data.companies));
+      const remaining = JOBS.filter(j => !liveCompanies.has(j.company));
+      JOBS.length = 0;
+      JOBS.push(...remaining);
+      Object.entries(data.companies).forEach(([company, jobs]) => {
+        const d = DATA.find(x => x.name === company);
+        if (!d) return;
+        const country = d.hq.split(",").pop().trim();
+        jobs.forEach(j => JOBS.push({
+          role: j.title, company, cat: d.cat, hq: d.hq, country,
+          roleType: roleType(j.title), employmentType: j.employmentType,
+          live: true, url: j.url, role_location: j.location,
+        }));
+      });
+      populateFilters();
+      renderJobs();
+    }).catch(() => {});
   })();
 
   /* ---- fundraising monitor ---- */
