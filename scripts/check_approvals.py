@@ -198,15 +198,19 @@ def main():
     for u in updates:
         offset_data["offset"] = u["update_id"] + 1
         msg = u.get("message")
-        if msg and msg.get("from", {}).get("id") == KERF_CHAT_ID and "text" in msg:
-            m = URL_RE.search(msg["text"])
-            if m:
-                link = m.group(0)
-                if link in posted:
-                    safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": "Already posted, skipping."})
-                    checkpoint()
-                    continue
-                try:
+        if msg and msg.get("from", {}).get("id") == KERF_CHAT_ID:
+            text = msg.get("text", "") or msg.get("caption", "")
+            m = URL_RE.search(text) if text else None
+            link = m.group(0) if m else None
+
+            if link and link in posted:
+                safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": "Already posted, skipping."})
+                checkpoint()
+                continue
+
+            try:
+                if link and text.strip() == link:
+                    # bare link: summarize via Claude + log to the site's NEWS array
                     title = fetch_title(link)
                     formatted = call_claude(title, link)
                     tg_call("sendMessage", {
@@ -217,16 +221,23 @@ def main():
                     })
                     append_to_news_array(title, link, time.strftime("%Y-%m-%d"), formatted)
                     posted.add(link)
-                    checkpoint()
-                    safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": "Posted to @dailyrobotics."})
-                    print(f"manual post: {link}")
-                    resolved += 1
-                except Exception as e:
-                    print(f"manual post failed for {link}: {e}")
-                    safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Failed to post: {e}"})
-                time.sleep(1)
-                continue
-            checkpoint()
+                else:
+                    # anything else (text with commentary, photo, video, etc.) — forward as-is
+                    tg_call("copyMessage", {
+                        "chat_id": TG_CHAT,
+                        "from_chat_id": msg["chat"]["id"],
+                        "message_id": msg["message_id"],
+                    })
+                    if link:
+                        posted.add(link)
+                checkpoint()
+                safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": "Posted to @dailyrobotics."})
+                print(f"manual post from message {msg['message_id']}")
+                resolved += 1
+            except Exception as e:
+                print(f"manual post failed for message {msg['message_id']}: {e}")
+                safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Failed to post: {e}"})
+            time.sleep(1)
             continue
 
         cq = u.get("callback_query")
