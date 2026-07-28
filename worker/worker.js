@@ -1,12 +1,24 @@
 /**
- * Public entry point for the "Add a company" form on robotics.xyz.
- * Validates the submitted URL, rate-limits by IP, and fires a GitHub
- * repository_dispatch event. GitHub Actions then does the actual research +
- * Telegram approval step — this worker only ever queues, never writes.
+ * Public entry point for robotics.xyz's Cloudflare-side glue. Two routes:
+ *
+ *   POST /              - "Add a company" form submission. Validates the
+ *                          URL, rate-limits by IP, fires a GitHub
+ *                          repository_dispatch event. GitHub Actions then
+ *                          does the actual research + Telegram approval step
+ *                          - this worker only ever queues, never writes.
+ *
+ *   POST /telegram-webhook - Telegram calls this the instant Kerf taps an
+ *                          Approve/Reject button, instead of check-approvals.yml
+ *                          waiting for its next (GitHub-throttled) 10-min cron
+ *                          tick. Validated via the X-Telegram-Bot-Api-Secret-Token
+ *                          header, then just wakes check-approvals.yml via
+ *                          repository_dispatch - check_approvals.py's own
+ *                          getUpdates call does the actual resolving.
  *
  * Secrets/vars to set (wrangler secret put / wrangler.toml [vars]):
- *   GH_TOKEN   - fine-grained PAT, Contents: Read & Write on the repo, secret
- *   GH_REPO    - "kerffc/robotics-xyz"
+ *   GH_TOKEN            - fine-grained PAT, Contents: Read & Write on the repo, secret
+ *   GH_REPO             - "kerffc/robotics-xyz"
+ *   TG_WEBHOOK_SECRET   - random token, must match Telegram's setWebhook secret_token, secret
  */
 
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
@@ -14,6 +26,12 @@ const RATE_LIMIT_MAX = 3; // submissions per IP per window
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/telegram-webhook") {
+      return handleTelegramWebhook(request, env);
+    }
+
     const cors = {
       "Access-Control-Allow-Origin": "https://kerffc.github.io",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -85,6 +103,45 @@ export default {
     );
   },
 };
+
+async function handleTelegramWebhook(request, env) {
+  if (request.method !== "POST") {
+    return new Response("Method not allowed", { status: 405 });
+  }
+
+  const secret = request.headers.get("X-Telegram-Bot-Api-Secret-Token");
+  if (!env.TG_WEBHOOK_SECRET || secret !== env.TG_WEBHOOK_SECRET) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
+  // Fire-and-forget wake-up: check_approvals.py's own getUpdates call does the
+  // actual work of resolving whatever Telegram just sent (button tap or DM).
+  // We deliberately don't parse/forward the update body - keeps this worker
+  // dumb and avoids duplicating check_approvals.py's logic in two languages.
+  const ghResp = await fetch(
+    `https://api.github.com/repos/${env.GH_REPO}/dispatches`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.GH_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "User-Agent": "robotics-xyz-worker",
+      },
+      body: JSON.stringify({ event_type: "telegram-update" }),
+    }
+  );
+
+  if (!ghResp.ok) {
+    // Telegram retries webhooks that don't return 200 promptly, and the 10-min
+    // cron is still running as a fallback - so a dropped dispatch here isn't fatal.
+    console.log(`dispatch failed: ${ghResp.status} ${await ghResp.text()}`);
+  }
+
+  // Always 200 to Telegram regardless of the dispatch outcome - the fallback
+  // cron will pick up the update on its own within 10 minutes either way.
+  return new Response("ok", { status: 200 });
+}
 
 function json(obj, status, headers) {
   return new Response(JSON.stringify(obj), {

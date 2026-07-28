@@ -14,3 +14,7 @@ GH_REPO = "kerffc/robotics-xyz"
 
 # GH_TOKEN is set as a secret, not a var:
 #   wrangler secret put GH_TOKEN
+
+# TG_WEBHOOK_SECRET gates the /telegram-webhook route (must match the
+# secret_token Telegram's setWebhook was registered with):
+#   wrangler secret put TG_WEBHOOK_SECRET

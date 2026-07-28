@@ -1,0 +1,32 @@
+name: Set Telegram webhook
+
+# One-off: run this manually (Actions tab -> Run workflow) after deploying
+# the Cloudflare Worker with the /telegram-webhook route, to point Telegram's
+# bot API at it instead of relying only on check-approvals.yml's cron poll.
+on:
+  workflow_dispatch:
+    inputs:
+      worker_url:
+        description: "Deployed worker URL, e.g. https://robotics-xyz-add-company.<subdomain>.workers.dev"
+        required: true
+
+jobs:
+  set-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Telegram setWebhook
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_WEBHOOK_SECRET: ${{ secrets.TG_WEBHOOK_SECRET }}
+          WORKER_URL: ${{ inputs.worker_url }}
+        run: |
+          resp=$(curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/setWebhook" \
+            -H 'content-type: application/json' \
+            -d "{\"url\": \"${WORKER_URL}/telegram-webhook\", \"secret_token\": \"${TG_WEBHOOK_SECRET}\"}")
+          echo "$resp"
+          echo "$resp" | grep -q '"ok":true' || (echo "setWebhook failed" && exit 1)
+
+      - name: Verify
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        run: curl -s "https://api.telegram.org/bot${TG_BOT_TOKEN}/getWebhookInfo"

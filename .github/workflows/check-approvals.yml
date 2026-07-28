@@ -2,8 +2,10 @@ name: Check robotics-news approvals
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/30 * * * *"  # fallback safety net; the Telegram webhook (worker/) does the real-time wake-up
   workflow_dispatch: {}
+  repository_dispatch:
+    types: [telegram-update]
 
 jobs:
   check:
