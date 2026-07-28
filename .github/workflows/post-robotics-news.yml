@@ -35,3 +35,12 @@ jobs:
             sleep $((RANDOM % 10 + 1))
           done
           exit 1
+
+      - name: Alert on lost commit
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -H 'content-type: application/json' \
+            -d '{"chat_id": 221930844, "text": "post-robotics-news: git push failed after 5 retries. A draft/news update may have been sent but not saved to pending.json/posted.json — check the Actions log."}'

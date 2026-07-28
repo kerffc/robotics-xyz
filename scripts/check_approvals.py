@@ -272,6 +272,9 @@ def main():
                     "message_id": cq["message"]["message_id"],
                     "reply_markup": {"inline_keyboard": [[{"text": "✅ Added", "callback_data": "noop"}]]},
                 })
+                # UI-only calls above can silently fail (stale callback_query_id) with no
+                # visible sign to Kerf that anything happened — this plain DM can't be blocked by that
+                safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Added {company['name']} to the site."})
                 print(f"added company: {company['name']}")
             else:
                 del pending_companies[pending_id]
@@ -282,6 +285,7 @@ def main():
                     "message_id": cq["message"]["message_id"],
                     "reply_markup": {"inline_keyboard": [[{"text": "❌ Rejected", "callback_data": "noop"}]]},
                 })
+                safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Rejected {company['name']}."})
                 print(f"rejected company: {company['name']}")
             resolved += 1
             time.sleep(1)
@@ -311,6 +315,9 @@ def main():
                 "message_id": cq["message"]["message_id"],
                 "reply_markup": {"inline_keyboard": [[{"text": "✅ Posted", "callback_data": "noop"}]]},
             })
+            # UI-only calls above can silently fail (stale callback_query_id) with no
+            # visible sign to Kerf that anything happened — this plain DM can't be blocked by that
+            safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Posted to @dailyrobotics: {item['title']}"})
             print(f"approved + posted: {item['title']}")
             resolved += 1
         elif action == "reject":
@@ -323,6 +330,7 @@ def main():
                 "message_id": cq["message"]["message_id"],
                 "reply_markup": {"inline_keyboard": [[{"text": "❌ Rejected", "callback_data": "noop"}]]},
             })
+            safe_tg_call("sendMessage", {"chat_id": KERF_CHAT_ID, "text": f"Rejected: {item['title']}"})
             print(f"rejected: {item['title']}")
             resolved += 1
         else:
