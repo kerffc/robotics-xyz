@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27T17:58:05Z",
+  "updated": "2026-07-28T16:44:03Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -31,12 +31,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5856850004"
-      },
-      {
-        "title": "Engineering Support Technician",
-        "location": "Onsite- Pittsburgh, PA",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5997167004"
       },
       {
         "title": "Financial Planning and Analysis Lead",
@@ -105,10 +99,10 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6032175004"
       },
       {
-        "title": "Senior Counsel, Technology Transactions",
-        "location": "Remote",
+        "title": "Senior AI Software Engineer, AI Controls",
+        "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6110909004"
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127693004"
       },
       {
         "title": "Senior Director, AI",
@@ -354,15 +348,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A Safety Driver",
@@ -426,15 +420,15 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "San Francisco Bay Area",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "San Francisco Bay Area",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -785,12 +779,6 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/d718036a-530c-40cd-bfed-63ce8e64dc75"
-      },
-      {
-        "title": "Quality Engineer Manufacturing",
-        "location": "Hayward, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/1fc6f14f-2ecc-4ceb-a988-5d5f7ca041d1"
       },
       {
         "title": "Robot Assembly Technician, Body",
@@ -1169,6 +1157,18 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/fb9e6beb-e4b8-4b1a-bc0a-beab5b9f86b8"
+      },
+      {
+        "title": "Senior Frontend Engineer",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/3a11df7b-b5d6-4fc1-a8f9-a6c7d042b4d1"
+      },
+      {
+        "title": "Staff Mechanical Engineer, Robot Head",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/fda0ba2e-d1eb-4a21-a666-7e7ee6e20763"
       }
     ],
     "Applied Intuition": [
@@ -1197,7 +1197,7 @@
         "url": "https://jobs.ashbyhq.com/applied/0eeae9df-3f27-4d10-8ad3-f38ee6187198"
       },
       {
-        "title": "HR Generalist - EMEA",
+        "title": "HR Business & Operations Lead - EMEA",
         "location": "Munich",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/88ac465c-29f4-495c-b76f-9eda8bb9ff07"
@@ -1401,12 +1401,6 @@
         "url": "https://jobs.ashbyhq.com/applied/64caedfc-bdb9-4fb0-8c83-befb3a1d2a9d"
       },
       {
-        "title": "Senior Embedded Software Engineer",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/862391fe-4d3e-463d-b891-aaef71601a26"
-      },
-      {
         "title": "Engineering Manager - Data Intelligence",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -1455,7 +1449,7 @@
         "url": "https://jobs.ashbyhq.com/applied/07475dc9-9819-4072-8f12-3949adc0d411"
       },
       {
-        "title": "Software Engineer - Prediction and Planning ML",
+        "title": "Machine Learning Engineer - Prediction and Planning",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/129325ce-77e6-4d2a-a24a-6726acb53749"
@@ -2019,12 +2013,6 @@
         "url": "https://jobs.ashbyhq.com/applied/2d428add-0d4c-4bdb-97b5-7b37e91b9526"
       },
       {
-        "title": "Administrative Assistant \u2013 EMEA Finance & Operations",
-        "location": "Stuttgart",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/4c1ed190-6468-4117-9057-11abaa0de0d2"
-      },
-      {
         "title": "Engineer Manager - Perception, Self-Driving Systems",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2065,12 +2053,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/e26974e6-a0aa-4143-90c1-22396bcc38dd"
-      },
-      {
-        "title": "Senior Technical Recruiter (Defense)",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/22dea741-d1c8-418d-824f-fc8b5986d799"
       },
       {
         "title": "Brand Designer",
@@ -2643,12 +2625,6 @@
         "url": "https://jobs.ashbyhq.com/applied/d73194ea-b60b-4695-add7-ef7639c1eee1"
       },
       {
-        "title": "LVC Simulation Integration Engineer",
-        "location": "North America",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/ae6e9474-e4e2-4297-b91e-ae406c7deb2d"
-      },
-      {
         "title": "Senior Machine Learning Data Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2785,12 +2761,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/567cabbd-bff7-46d6-af5c-ed2143656726"
-      },
-      {
-        "title": "Defense Software Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/89b329e4-a5ab-487d-ac41-703aa91b9c1e"
       }
     ],
     "Standard Bots": [
