@@ -27,7 +27,7 @@ jobs:
         run: |
           git config user.name "robotics-news-bot"
           git config user.email "actions@github.com"
-          git add index.html scripts/posted.json
+          git add index.html scripts/posted.json scripts/pending.json scripts/pending_companies.json
           git diff --staged --quiet && exit 0
           git commit -m "Auto: robotics news update"
           for i in 1 2 3 4 5; do
