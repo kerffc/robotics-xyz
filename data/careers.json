@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28T16:44:03Z",
+  "updated": "2026-07-29T16:25:03Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -33,10 +33,22 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5856850004"
       },
       {
+        "title": "Engineering Support Technician",
+        "location": "Onsite- Fremont, CA",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6126850004"
+      },
+      {
         "title": "Financial Planning and Analysis Lead",
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5985355004"
+      },
+      {
+        "title": "Lead Data Scientist, Robotics",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127729004"
       },
       {
         "title": "Manager, Direct Procurement",
@@ -87,10 +99,10 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5996525004"
       },
       {
-        "title": "Robotics Software Engineer II",
-        "location": "Hybrid- Pittsburgh, PA or Salem, OR",
+        "title": "Robot Operator II",
+        "location": "Onsite- Fremont, CA",
         "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6008698004"
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6014586004"
       },
       {
         "title": "Senior AI Research Engineer",
@@ -141,6 +153,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6104722004"
       },
       {
+        "title": "Senior Manager, Simulation",
+        "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA); Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127736004"
+      },
+      {
         "title": "Senior Manager, SQE",
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
@@ -187,6 +205,12 @@
         "location": "Hybrid- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6113722004"
+      },
+      {
+        "title": "Senior Staff Software Engineer, Calibration",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127713004"
       },
       {
         "title": "Senior Staff Software Engineer, Motion Planning",
@@ -255,12 +279,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6107280004"
       },
       {
-        "title": "Staff NPI Manufacturing Engineer",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6033730004"
-      },
-      {
         "title": "Staff PLM Architect",
         "location": "Remote",
         "employmentType": "Full-time",
@@ -283,12 +301,6 @@
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5842489004"
-      },
-      {
-        "title": "Staff Supplier Quality Engineer",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6101011004"
       },
       {
         "title": "Staff Systems Engineer, Functional Safety",
@@ -383,10 +395,16 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4302898009"
       },
       {
+        "title": "Electrical Engineering Technician",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4335993009"
+      },
+      {
         "title": "Engineering Technician",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203902009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4335998009"
       },
       {
         "title": "Field Integration Engineer",
@@ -420,15 +438,15 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -579,6 +597,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4246360009"
+      },
+      {
+        "title": "Senior Software Engineer, Controls (Simulation)",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4337363009"
       },
       {
         "title": "Senior Software Engineer Full-Stack",
@@ -1153,16 +1177,40 @@
         "url": "https://jobs.ashbyhq.com/1x/fe801c98-3344-47d0-8b8f-3958fc453fc0"
       },
       {
+        "title": "Senior Build Engineer, CI/CD Efficiency",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/8de56770-ec14-4625-a9c4-ee23bffeef60"
+      },
+      {
+        "title": "Senior Build Engineer, Automated Build & Release",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/06f50940-79db-4505-8bcd-ddc2b739fb81"
+      },
+      {
         "title": "Senior/Staff Loads & Dynamics Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/fb9e6beb-e4b8-4b1a-bc0a-beab5b9f86b8"
       },
       {
+        "title": "Senior to Staff Gameplay Engineer",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/59edfa1d-e1e0-468b-9995-9d863d08def1"
+      },
+      {
         "title": "Senior Frontend Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/3a11df7b-b5d6-4fc1-a8f9-a6c7d042b4d1"
+      },
+      {
+        "title": "Senior to Staff Graphics Engineer, VR Teleoperation",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/826a14af-fe83-43c9-a9e3-27c8956d7fc6"
       },
       {
         "title": "Staff Mechanical Engineer, Robot Head",
@@ -2055,6 +2103,12 @@
         "url": "https://jobs.ashbyhq.com/applied/e26974e6-a0aa-4143-90c1-22396bcc38dd"
       },
       {
+        "title": "Senior Technical Recruiter - Defense Physical AI",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/22dea741-d1c8-418d-824f-fc8b5986d799"
+      },
+      {
         "title": "Brand Designer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2415,12 +2469,6 @@
         "url": "https://jobs.ashbyhq.com/applied/20ca8365-8984-4816-afdf-c5a7dde1a7f7"
       },
       {
-        "title": "Senior Accountant, GL Operations",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/619679fb-148c-44d9-b7b7-6bafef34e21c"
-      },
-      {
         "title": "Senior Software Engineer - Simulation Orchestration",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2751,16 +2799,16 @@
         "url": "https://jobs.ashbyhq.com/applied/020b495c-3505-47cd-a75d-e399ab7b605c"
       },
       {
-        "title": "Software Engineer - Cloud Infrastructure",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/18a7ded6-4bf8-4f64-bb25-4b3eba37ef97"
-      },
-      {
         "title": "Senior Software Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/567cabbd-bff7-46d6-af5c-ed2143656726"
+      },
+      {
+        "title": "HIL Electrical System Integration Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/3588ef33-1505-4f8c-85c7-57f2985f8005"
       }
     ],
     "Standard Bots": [
