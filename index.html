@@ -5,7 +5,9 @@
 <meta property="og:title" content="Robotics.xyz">
 <meta property="og:description" content="A self-updating market map of the robotics industry — companies, funding, open roles, a glossary, and good reads, synced daily.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://kerffc.github.io/robotics-xyz/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kerffc.github.io/robotics-xyz/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23a8541c'/%3E%3Ctext x='12' y='17' font-size='14' font-family='Georgia,serif' fill='white' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root {
@@ -425,6 +427,22 @@
     font-weight: 600;
     cursor: pointer;
     font-family: inherit;
+    flex-shrink: 0;
+  }
+  .hero .sync-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+    font-size: 0.7rem;
+    color: #6b7684;
+    font-family: "SF Mono", "Menlo", monospace;
+  }
+  .hero .sync-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3fb950;
     flex-shrink: 0;
   }
   .hero .cta:hover { background: rgba(168, 84, 28, 0.12); filter: brightness(1.08); }
@@ -1049,6 +1067,7 @@
         <div class="eyebrow">Robotics market map</div>
         <h1>Every robot builder, mapped in one place</h1>
         <p>A living directory of the companies building robots today — news, careers, and new entries sync automatically, agent-researched and human-approved.</p>
+        <div class="sync-badge" id="syncBadge"></div>
       </div>
       <button class="cta" data-goto="table">View directory →</button>
     </div>
@@ -2400,6 +2419,12 @@
     // that file keep their generic fallback roles above.
     fetch("data/careers.json").then(r => r.ok ? r.json() : null).then(data => {
       if (!data) return;
+      if (data.updated) {
+        const badge = document.getElementById("syncBadge");
+        const hrsAgo = Math.max(0, Math.round((Date.now() - new Date(data.updated)) / 36e5));
+        const label = hrsAgo < 1 ? "just now" : hrsAgo === 1 ? "1 hour ago" : hrsAgo < 48 ? `${hrsAgo} hours ago` : `${Math.round(hrsAgo / 24)} days ago`;
+        badge.innerHTML = `<span class="dot"></span> Careers &amp; roles last synced ${label}`;
+      }
       const liveCompanies = new Set(Object.keys(data.companies));
       const remaining = JOBS.filter(j => !liveCompanies.has(j.company));
       JOBS.length = 0;
