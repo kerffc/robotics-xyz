@@ -1024,8 +1024,9 @@
     <a href="#voices" data-goto="voices"><span class="dot"></span>Voices to follow</a>
     <a href="#reads" data-goto="reads"><span class="dot"></span>Good reads</a>
     <a href="#news" data-goto="news"><span class="dot"></span>News</a>
+    <a href="#about" data-goto="about"><span class="dot"></span>How it works</a>
   </nav>
-  <div class="side-foot">Robotics market map<br/>Manually curated</div>
+  <div class="side-foot">Robotics market map<br/>Synced daily, agent-researched</div>
 </aside>
 <div class="main">
 
@@ -1226,6 +1227,29 @@
   <h2>Latest funding news</h2>
   <p>Recent robotics fundraising headlines, added as they surface.</p>
   <div class="news-list" id="newsList"></div>
+</div>
+
+<div class="panel news-section" id="about">
+  <h2>How it works</h2>
+  <p>This page is static — no backend, no database. The dataset lives directly inside <code>index.html</code>, and a set of scheduled agents keep it current by editing and committing it themselves.</p>
+  <div class="learn-grid">
+    <div class="learn-card">
+      <div class="learn-num">01</div>
+      <h3>News, every 3 hours</h3>
+      <p>A GitHub Action scrapes robotics press, asks <strong>Claude</strong> to draft a summary, and posts it as a Telegram approval card. Nothing is added to the site until it's approved.</p>
+    </div>
+    <div class="learn-card">
+      <div class="learn-num">02</div>
+      <h3>Careers, daily</h3>
+      <p>Live job postings are pulled directly from each company's ATS (Greenhouse, Lever, etc.) rather than scraped or guessed, so the "Live" roles in the careers table are always real, current postings.</p>
+    </div>
+    <div class="learn-card">
+      <div class="learn-num">03</div>
+      <h3>New companies, on demand</h3>
+      <p>Paste a URL in the directory above and a Cloudflare Worker fires a GitHub Action that has Claude research the company (category, HQ, funding, roles) and skip it if it's a duplicate or off-topic. You get a Telegram Approve/Reject card — a tap on Approve commits it straight into the site.</p>
+    </div>
+  </div>
+  <p class="section-footnote">Every write to the dataset goes through a human approval step — agents propose, a person decides. Full architecture and source: <a href="https://github.com/kerffc/robotics-xyz" target="_blank" rel="noopener" class="job-link">github.com/kerffc/robotics-xyz</a>.</p>
 </div>
 
 <footer>Categories aren't mutually exclusive — some companies span more than one line of business, listed under their primary product. Funding figures are approximate cumulative totals from public reporting (or ownership status for subsidiaries/public companies) and may be out of date — verify before citing. News and careers data sync automatically; new companies are researched by Claude from a submitted URL and go live only after manual approval.</footer>
