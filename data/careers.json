@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T16:38:45Z",
+  "updated": "2026-07-31T16:48:23Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -97,6 +97,12 @@
         "location": "Onsite- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6014586004"
+      },
+      {
+        "title": "Senior Administrative Assistant",
+        "location": "Hybrid- Salem, OR",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6131041004"
       },
       {
         "title": "Senior AI Research Engineer",
@@ -455,12 +461,6 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4139797009"
       },
       {
-        "title": "Learning & Development Coordinator",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4302663009"
-      },
-      {
         "title": "Logistics Specialist",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
@@ -585,12 +585,6 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4337363009"
-      },
-      {
-        "title": "Senior Software Engineer Full-Stack",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4202103009"
       },
       {
         "title": "Senior Software Engineer, Localization",
@@ -883,7 +877,7 @@
         "url": "https://jobs.ashbyhq.com/1x/569e303c-db06-4d99-beaa-f0f546f2339f"
       },
       {
-        "title": "Senior Cloud Security Architect - Security Engineering",
+        "title": "Senior Staff - Cloud Security Architect - Security Engineering",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/adce36fb-4e3a-4e54-be20-daea9a9ec7c5"
@@ -1129,6 +1123,12 @@
         "url": "https://jobs.ashbyhq.com/1x/d6c59043-7a78-48ba-8f35-6d47b987a871"
       },
       {
+        "title": "Software Engineer - Robotic Controls",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/a02d07dc-851d-4246-bc1d-1f50412015c0"
+      },
+      {
         "title": "Head of Intellectual Property",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -1205,6 +1205,54 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/a7e8ba31-8369-4b44-ae26-efd4a23f7118"
+      },
+      {
+        "title": "Inventory Control Supervisor",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/2b4c5ac6-d4af-4cb4-8e68-cf0cf698cba5"
+      },
+      {
+        "title": "Inventory Control Analyst",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/454f7d55-7bbd-405d-bf9c-4b3a24018392"
+      },
+      {
+        "title": "Global Trade Compliance Analyst",
+        "location": "Hayward, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/7d06c7cc-54fa-4765-bb7f-433e0097295b"
+      },
+      {
+        "title": "Tech Lead, Autonomy Systems",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/506eb2de-4d64-46fa-b33e-f666f1bc836f"
+      },
+      {
+        "title": "Research Engineer, Robotic Learning",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/d8bcb06b-7cde-40ff-8c63-dc456f747fc1"
+      },
+      {
+        "title": "Software Engineer - NEO Reliability",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/12bd4be7-4b9d-4bae-8239-e1a9df11b19d"
+      },
+      {
+        "title": "Lead or Head of Core, Systems Software Engineer",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/4d79b1a6-b405-455f-b2c5-13ca5df20638"
+      },
+      {
+        "title": "Lead or Head of Embedded, Firmware/Systems Software Engineer",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/eff555ab-c37f-4590-a26f-fe6370100c85"
       }
     ],
     "Applied Intuition": [
@@ -1317,12 +1365,6 @@
         "url": "https://jobs.ashbyhq.com/applied/4c8f7dd9-57b2-48df-9905-283e477de2d8"
       },
       {
-        "title": "Senior Neural Rendering Software Engineer",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/3d17f8d9-f9b6-4f17-b0c9-20f25004e6b5"
-      },
-      {
         "title": "Account Manager (J-OEM)",
         "location": "Tokyo",
         "employmentType": "Full-time",
@@ -1417,12 +1459,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/72925d40-f970-4c3e-8317-9daf6fc6be21"
-      },
-      {
-        "title": "Senior Software Engineer, AOSP - Core OS",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/5894844b-9c79-4550-b8bf-2eb2d61fa6d6"
       },
       {
         "title": "Software Engineer - Kafka",
@@ -2019,7 +2055,7 @@
         "url": "https://jobs.ashbyhq.com/applied/d2d783c1-ec46-446f-92fa-88f7460e9be8"
       },
       {
-        "title": "Senior Accountant, Project & Cost Accounting",
+        "title": "Cost Accountant",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3963a5a2-1ccb-478c-9e81-672f302b6c48"
@@ -2619,6 +2655,12 @@
         "url": "https://jobs.ashbyhq.com/applied/a2ddad24-2147-406f-81c9-a88f8acc77c2"
       },
       {
+        "title": "Embedded Firmware Validation Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/01dba94d-34b9-4d30-a7d3-82344bab609c"
+      },
+      {
         "title": "Build & Release Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2809,6 +2851,18 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/9c597f99-d350-4406-b137-db1d806ceade"
+      },
+      {
+        "title": "System Validation Engineer - Stuttgart",
+        "location": "Stuttgart",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/76126018-847f-4b0e-9447-3f12fe06d3fb"
+      },
+      {
+        "title": "UX Validation Lead",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/644c5c52-f88e-49d9-aa4d-445fcbb8bb1f"
       }
     ],
     "Standard Bots": [
@@ -2840,7 +2894,7 @@
         "title": "AI Applications Engineer (Glen Cove, NY)",
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/1266ad8f-b2a8-41f9-ba83-8a54b9c022f2"
+        "url": "https://jobs.ashbyhq.com/StandardBots/6d34a165-179d-4bb2-a862-82d6f450eca1"
       },
       {
         "title": "AI Research Engineer",
@@ -2991,12 +3045,6 @@
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/b6df890e-7a1f-4105-ac38-0e0e55f4e9b9"
-      },
-      {
-        "title": "Executive Assistant",
-        "location": "Glen Cove, NY",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/5f1668ca-c44d-469e-aef4-122d822da408"
       },
       {
         "title": "Sr. Manufacturing Program Manager, Vertical Integration",
