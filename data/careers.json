@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T16:48:23Z",
+  "updated": "2026-08-01T16:04:16Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -689,12 +689,6 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4226655009"
       },
       {
-        "title": "Staff Manufacturing Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4285251009"
-      },
-      {
         "title": "Staff Product Analyst",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
@@ -762,12 +756,6 @@
       }
     ],
     "1X Technologies": [
-      {
-        "title": "Lead Technical Product Manager - Data",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/87a3faf1-2f78-4022-9c3d-949b476d51bf"
-      },
       {
         "title": "Robot Operations Manager PM",
         "location": "San Carlos, CA",
@@ -1827,12 +1815,6 @@
         "url": "https://jobs.ashbyhq.com/applied/73163939-127b-4fb4-8b2b-0cc5138bc1cd"
       },
       {
-        "title": "Full-Stack Engineer - C2 Command & Control",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/cb3ae67c-49d8-43e8-8acf-1cd94e3f2354"
-      },
-      {
         "title": "Technical Lead, Identity & Access Management",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -1975,12 +1957,6 @@
         "location": "Tokyo",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/246337d2-264c-4cd7-a87e-9b105e5094f1"
-      },
-      {
-        "title": "Senior Software Engineer - ML Training Pipelines",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/28866f20-1388-41dc-a861-440c322e6e17"
       },
       {
         "title": "Electrical Systems Integration Engineer",
@@ -2547,18 +2523,6 @@
         "url": "https://jobs.ashbyhq.com/applied/b7c4b248-94fc-41ad-b4de-662a35a56a75"
       },
       {
-        "title": "3D Visualization Engineer - Autonomous Systems (Cesium/WebGL)",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/81ecc9b1-5b46-40c1-b69e-ffc20a4a53f9"
-      },
-      {
-        "title": "Software Engineer - Real-Time Vehicle Telemetry & Visualization",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/6e8e1c23-e470-4419-b06e-88197b448cb3"
-      },
-      {
         "title": "Recruiting Operations Manager",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2697,22 +2661,10 @@
         "url": "https://jobs.ashbyhq.com/applied/d73194ea-b60b-4695-add7-ef7639c1eee1"
       },
       {
-        "title": "Senior Machine Learning Data Engineer",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/b010aa97-edba-461d-9bf0-1ba3b2fe0fe9"
-      },
-      {
         "title": "Perception & Fusion Engineer",
         "location": "Poway, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/92fcf1bf-5a29-46fb-bc86-fee1ad310a34"
-      },
-      {
-        "title": "Full-Stack Engineer - Autonomy HMI",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/341f8193-19ab-4261-bd20-da7d530fbf9c"
       },
       {
         "title": "Solutions Architect - Modeling & Simulation (Defense)",
