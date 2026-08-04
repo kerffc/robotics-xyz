@@ -1,10 +1,10 @@
 {
-  "updated": "2026-08-03T17:11:32Z",
+  "updated": "2026-08-04T16:56:17Z",
   "companies": {
     "Agility Robotics": [
       {
         "title": "Accountant III",
-        "location": "Hybrid- Pittsburgh, PA",
+        "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5986011004"
       },
@@ -43,6 +43,12 @@
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5985355004"
+      },
+      {
+        "title": "Head of Investor Relations",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6133124004"
       },
       {
         "title": "Lead Data Scientist, Robotics",
@@ -479,12 +485,6 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4259892009"
       },
       {
-        "title": "Operations Specialist",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4305391009"
-      },
-      {
         "title": "Operations Technician Lead",
         "location": "Kermit, TX",
         "employmentType": "Full-time",
@@ -871,12 +871,6 @@
         "url": "https://jobs.ashbyhq.com/1x/569e303c-db06-4d99-beaa-f0f546f2339f"
       },
       {
-        "title": "Senior Staff - Cloud Security Architect - Security Engineering",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/adce36fb-4e3a-4e54-be20-daea9a9ec7c5"
-      },
-      {
         "title": "Simulation Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -919,7 +913,7 @@
         "url": "https://jobs.ashbyhq.com/1x/084c8153-d7c3-4a0c-92f3-597389ad8740"
       },
       {
-        "title": "Embedded Firmware Engineer - NEO",
+        "title": "Staff Embedded Firmware Engineer - NEO",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/ea9614dd-94e8-4a3a-a714-645957a298d0"
@@ -935,6 +929,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/a3313f83-4475-4f87-a1b9-02eac694acf9"
+      },
+      {
+        "title": "Operator - Data Collection (Swing Shift)",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/84efa580-016a-431c-aaa3-1a744bdef6d7"
       },
       {
         "title": "Staff/Senior Staff Autonomy Safety Engineer - Robot Safety",
@@ -967,7 +967,7 @@
         "url": "https://jobs.ashbyhq.com/1x/3398e992-b02a-4d39-aabe-f4ac2bb6591d"
       },
       {
-        "title": "Embedded Firmware Engineer - Battery",
+        "title": "Staff Embedded Firmware Engineer - Battery",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/19004256-4253-41d3-baa7-1f25bbd125be"
@@ -1049,12 +1049,6 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/017c1181-959d-4a76-998b-c0d220b94a4f"
-      },
-      {
-        "title": "Director of Security",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/29517228-f5f0-4f7b-81ad-899d9223a31c"
       },
       {
         "title": "Supplier Development Engineer- Motors and Magnets",
@@ -1243,16 +1237,16 @@
         "url": "https://jobs.ashbyhq.com/1x/e7b4aaf5-5c55-4e2f-abcd-5c250657bede"
       },
       {
-        "title": "Lead or Head of Core, Systems Software Engineer",
+        "title": "Lead of Core - Systems Software",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/4d79b1a6-b405-455f-b2c5-13ca5df20638"
       },
       {
-        "title": "Lead or Head of Embedded, Firmware/Systems Software Engineer",
+        "title": "Staff Software Engineer - Applied AI",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/eff555ab-c37f-4590-a26f-fe6370100c85"
+        "url": "https://jobs.ashbyhq.com/1x/0ac33259-1b12-447c-95a3-d2d0c6b1a996"
       }
     ],
     "Applied Intuition": [
@@ -1261,6 +1255,18 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d8b7286e-bd47-407b-859d-f2b7f5822a8c"
+      },
+      {
+        "title": "Technical Recruiter [6 Month Contract]",
+        "location": "Sunnyvale",
+        "employmentType": "Contract",
+        "url": "https://jobs.ashbyhq.com/applied/f355df91-0865-4808-82a3-8c089d30aa8f"
+      },
+      {
+        "title": "G&A Recruiter [6 Month Contract]",
+        "location": "Sunnyvale",
+        "employmentType": "Contract",
+        "url": "https://jobs.ashbyhq.com/applied/2d3fd355-9a70-4b15-893a-2ce719054d0b"
       },
       {
         "title": "Software Engineer - Motion Planning (Fallback Stack)",
@@ -1671,12 +1677,6 @@
         "url": "https://jobs.ashbyhq.com/applied/e015ce66-91c0-4361-a789-70ddbccc4e06"
       },
       {
-        "title": "Senior Technical Recruiter",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/1a123456-a863-4c06-a5e1-95d3b40ac99f"
-      },
-      {
         "title": "Research Engineer - Reinforcement Learning, Self-Driving",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -1953,18 +1953,6 @@
         "url": "https://jobs.ashbyhq.com/applied/3783c384-117a-4849-804b-82b2e35a8c8d"
       },
       {
-        "title": "Kfz-Mechatroniker f\u00fcr Prototypen (m/w/d)",
-        "location": "Stuttgart",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/fe8ca043-fdbd-46d7-ad3e-9f9c1ac3d0f3"
-      },
-      {
-        "title": "Technical Recruiter",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/5abda384-0442-4cab-8422-7542ae85d7ff"
-      },
-      {
         "title": "Solution Engineer - Trucking",
         "location": "Gothenburg",
         "employmentType": "Full-time",
@@ -2061,22 +2049,10 @@
         "url": "https://jobs.ashbyhq.com/applied/3963a5a2-1ccb-478c-9e81-672f302b6c48"
       },
       {
-        "title": "Recruiter, GTM",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/28f5f860-11b5-4cac-aba6-a609287e26f0"
-      },
-      {
         "title": "Government Contracts Manager",
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d9111644-556f-4074-9966-608233678469"
-      },
-      {
-        "title": "Software Engineer - Embedded Systems",
-        "location": "Stuttgart",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/1c08cc1e-646a-425b-bc2a-874ebade37be"
       },
       {
         "title": "Product Manager - Drone Stack",
@@ -2125,12 +2101,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/e26974e6-a0aa-4143-90c1-22396bcc38dd"
-      },
-      {
-        "title": "Senior Technical Recruiter - Physical AI",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/22dea741-d1c8-418d-824f-fc8b5986d799"
       },
       {
         "title": "Brand Designer",
@@ -2313,19 +2283,13 @@
         "url": "https://jobs.ashbyhq.com/applied/6cce20b1-2250-4350-9952-9691f58fb074"
       },
       {
-        "title": "Technical Recruiter - EMEA",
-        "location": "Munich",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/87410056-819d-406e-b36a-fa8201bcdfcb"
-      },
-      {
         "title": "Technical Project Manager",
         "location": "Tokyo",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/622b68bf-0097-4642-a4ee-ac4a637e4fd0"
       },
       {
-        "title": "Technical Recruiter - EMEA [1 year contract]",
+        "title": "Technical Recruiter - EMEA [1 Year Contract]",
         "location": "Munich",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/63f2d3d9-4e3e-4c10-a1dc-c7ee4e264857"
@@ -2343,19 +2307,13 @@
         "url": "https://jobs.ashbyhq.com/applied/b235a75b-d43d-485f-8e7a-36467db0ed2f"
       },
       {
-        "title": "Technical Sourcer",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/7e548eda-924d-4b85-b22d-e86ca3481ff6"
-      },
-      {
         "title": "Head of Total Rewards",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/0b80f475-991d-4d3e-a365-4632f01227f7"
       },
       {
-        "title": "Legal Operations Analyst",
+        "title": "Legal Operations Generalist",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d55130bc-eeca-4c82-973c-d92a25da4fc7"
@@ -2865,10 +2823,10 @@
         "url": "https://jobs.ashbyhq.com/applied/644c5c52-f88e-49d9-aa4d-445fcbb8bb1f"
       },
       {
-        "title": "Senior Technical Recruiter/Sourcer - Physical AI",
-        "location": "Washington, D.C.",
+        "title": "Software Engineer - Vehicle OS",
+        "location": "Stuttgart",
         "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0a7b8f79-db6a-41b4-adce-b05301ce70fb"
+        "url": "https://jobs.ashbyhq.com/applied/3f40814e-0b1d-414a-a62b-5c7288223a4e"
       }
     ],
     "Standard Bots": [
@@ -2889,12 +2847,6 @@
         "location": "Philadelphia, PA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/22f3f040-7c21-478b-9ebc-ed285beb6156"
-      },
-      {
-        "title": "Senior Firmware Engineer, Controls Systems",
-        "location": "Glen Cove, NY",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/e210ec6f-dac5-4258-ae24-874f3b349240"
       },
       {
         "title": "AI Applications Engineer (Glen Cove, NY)",
