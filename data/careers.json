@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04T16:56:17Z",
+  "updated": "2026-08-05T16:44:36Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -117,7 +117,7 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6032175004"
       },
       {
-        "title": "Senior AI Software Engineer, AI Controls",
+        "title": "Senior AI Software Engineer, Reinforcement Learning",
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127693004"
@@ -207,12 +207,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5830827004"
       },
       {
-        "title": "Senior Software Engineer, Hardware Interface",
-        "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5777967004"
-      },
-      {
         "title": "Senior Software Engineer, Navigation",
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
@@ -253,6 +247,12 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5833390004"
+      },
+      {
+        "title": "Senior Technical Program Manager, Robot Skills Development",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127703004"
       },
       {
         "title": "Sr. Supplier Quality Engineer",
@@ -343,12 +343,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6123652004"
-      },
-      {
-        "title": "Vice President, Strategy & Corporate Development",
-        "location": "Remote",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5981468004"
       }
     ],
     "Kodiak Robotics": [
@@ -521,7 +515,7 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4139994009"
       },
       {
-        "title": "Senior Autonomy Systems Software Engineer",
+        "title": "Senior Autonomy Safety Software Engineer",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4204664009"
@@ -549,12 +543,6 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4308079009"
-      },
-      {
-        "title": "Senior Onboard Infrastructure Software Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4185919009"
       },
       {
         "title": "Senior Product Analyst",
@@ -615,12 +603,6 @@
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203236009"
-      },
-      {
-        "title": "Senior Vehicle Integration Engineer - Field Support",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4173378009"
       },
       {
         "title": "Senior Verification Engineer",
@@ -747,6 +729,12 @@
         "location": "Odessa, Tx",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4313137009"
+      },
+      {
+        "title": "Vehicle Integration Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4173886009"
       },
       {
         "title": "Vice President of Commercialization",
@@ -1213,18 +1201,6 @@
         "url": "https://jobs.ashbyhq.com/1x/7d06c7cc-54fa-4765-bb7f-433e0097295b"
       },
       {
-        "title": "Tech Lead, Autonomy Systems",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/506eb2de-4d64-46fa-b33e-f666f1bc836f"
-      },
-      {
-        "title": "Research Engineer, Robotic Learning",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/d8bcb06b-7cde-40ff-8c63-dc456f747fc1"
-      },
-      {
         "title": "Software Engineer - NEO Reliability",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -1241,6 +1217,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/4d79b1a6-b405-455f-b2c5-13ca5df20638"
+      },
+      {
+        "title": "Camera Hardware Engineer, Robot Head",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/99980e95-f006-46bf-9ecb-d37161291a92"
       },
       {
         "title": "Staff Software Engineer - Applied AI",
@@ -2139,18 +2121,6 @@
         "url": "https://jobs.ashbyhq.com/applied/f5de3234-a5d2-4c4c-9c79-3ae803807c63"
       },
       {
-        "title": "Defense - Senior Forward Deployed Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/8ab8b28e-b62a-4a92-88ee-773015a01a87"
-      },
-      {
-        "title": "Lead Software Engineer - Physical AI (Defense)",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/4221f076-0e01-4fd7-8b20-77a7c3589f8a"
-      },
-      {
         "title": "Research Intern - 3D Vision and Generation, Self-Driving",
         "location": "Sunnyvale",
         "employmentType": "Intern",
@@ -2458,12 +2428,6 @@
       },
       {
         "title": "Autonomy Integration Software Engineer",
-        "location": "Poway, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/1850af61-f5f0-4030-8f12-31828f0d6983"
-      },
-      {
-        "title": "Autonomy Integration Software Engineer",
         "location": "Freeport, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/8b14ce3c-1c80-4399-ab13-555961dd6813"
@@ -2593,12 +2557,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d69de442-1d05-4241-9128-ffaa8b735de0"
-      },
-      {
-        "title": "C++ Software Engineer \u2013 Autonomous Systems",
-        "location": "Poway, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/6f301d5a-457e-4d4b-bf9b-ed8a1ed2d05b"
       },
       {
         "title": "C++ Software Engineer \u2013 Autonomous Systems",
@@ -2827,6 +2785,24 @@
         "location": "Stuttgart",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3f40814e-0b1d-414a-a62b-5c7288223a4e"
+      },
+      {
+        "title": "Senior Technical Recruiter/Sourcer - Physical AI",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/0a7b8f79-db6a-41b4-adce-b05301ce70fb"
+      },
+      {
+        "title": "Senior HRIS Analyst",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/2bce594f-db38-46cc-864a-ab0079c0067f"
+      },
+      {
+        "title": "Senior Technical Recruiter - Physical AI",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/22dea741-d1c8-418d-824f-fc8b5986d799"
       }
     ],
     "Standard Bots": [
