@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T15:59:57Z",
+  "updated": "2026-08-08T15:34:07Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -91,6 +91,12 @@
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5990022004"
+      },
+      {
+        "title": "Principal Robotics Functional Safety Engineer",
+        "location": "Hybrid- Fremont, CA",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6138236004"
       },
       {
         "title": "Principal Technical Program Manager",
@@ -253,6 +259,18 @@
         "location": "Remote",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127703004"
+      },
+      {
+        "title": "Senior Technical Recruiter",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6139069004"
+      },
+      {
+        "title": "Senior Technical Sourcer (Contract)",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6134461004"
       },
       {
         "title": "Sr. Supplier Quality Engineer",
@@ -557,6 +575,12 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4288973009"
       },
       {
+        "title": "Senior Software Engineer, Controls (MATLAB)",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4246360009"
+      },
+      {
         "title": "Senior Software Engineer, Controls (Simulation)",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
@@ -857,12 +881,6 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/89fd2de7-8ed7-44ab-86cb-bb8a9d18f410"
-      },
-      {
-        "title": "Senior Identity and Access Management (IAM) Engineer",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/569e303c-db06-4d99-beaa-f0f546f2339f"
       },
       {
         "title": "Simulation Engineer",
@@ -1249,6 +1267,18 @@
         "location": "Sunnyvale",
         "employmentType": "Contract",
         "url": "https://jobs.ashbyhq.com/applied/2d3fd355-9a70-4b15-893a-2ce719054d0b"
+      },
+      {
+        "title": "Lead Software Engineer - Physical AI (Defense)",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/aa272549-acb3-4677-b37e-e95f3b1317b8"
+      },
+      {
+        "title": "Senior Software Engineer - Defense Simulation",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/517cfaa8-6c2f-4403-8e23-5202ed615d2b"
       },
       {
         "title": "Software Engineer - Motion Planning (Fallback Stack)",
@@ -1947,7 +1977,7 @@
         "url": "https://jobs.ashbyhq.com/applied/31b72657-e00a-4ec2-888b-da1787db6570"
       },
       {
-        "title": "Senior Systems Integration Engineer - Autonomous",
+        "title": "Senior Systems Integration Engineer - Defense Autonomy",
         "location": "Fort Walton Beach, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/36df3851-dd50-4f07-a8e2-5b0e845258b5"
@@ -2095,6 +2125,12 @@
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/f5de3234-a5d2-4c4c-9c79-3ae803807c63"
+      },
+      {
+        "title": "Senior Forward Deployed Engineer - Defense",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/8ab8b28e-b62a-4a92-88ee-773015a01a87"
       },
       {
         "title": "Research Intern - 3D Vision and Generation, Self-Driving",
@@ -2397,12 +2433,6 @@
         "url": "https://jobs.ashbyhq.com/applied/9f926c5c-1a95-4099-b6c4-1c8351f60837"
       },
       {
-        "title": "Program Manager - Global Mobility",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/e6fc97d9-14cf-498d-a688-c25f7304851c"
-      },
-      {
         "title": "Legal Counsel - Commercial",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2547,7 +2577,7 @@
         "url": "https://jobs.ashbyhq.com/applied/d73194ea-b60b-4695-add7-ef7639c1eee1"
       },
       {
-        "title": "LVC Simulation Integration Engineer",
+        "title": "Senior Simulation Engineer",
         "location": "Fort Walton Beach, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/ae6e9474-e4e2-4297-b91e-ae406c7deb2d"
@@ -2679,12 +2709,6 @@
         "url": "https://jobs.ashbyhq.com/applied/020b495c-3505-47cd-a75d-e399ab7b605c"
       },
       {
-        "title": "Robotic Software Engineer (Drone Stack)",
-        "location": "Poway, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/3af70bc2-bcf1-4dc8-ac7b-6e796ccb1175"
-      },
-      {
         "title": "HIL Electrical System Integration Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2719,12 +2743,6 @@
         "location": "Stuttgart",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3f40814e-0b1d-414a-a62b-5c7288223a4e"
-      },
-      {
-        "title": "Senior Technical Recruiter/Sourcer - Physical AI",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0a7b8f79-db6a-41b4-adce-b05301ce70fb"
       },
       {
         "title": "Senior HRIS Analyst",
@@ -2791,6 +2809,18 @@
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/7b5b0d18-6da9-4e53-8e12-4a4e612d3246"
+      },
+      {
+        "title": "Operations Safety Lead",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/2c45c865-093c-412b-9bab-4f1e625f5a4d"
+      },
+      {
+        "title": "Software Engineer - HIL CI Infra",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4183f0f2-1623-4a92-8cef-cf36b3bc5624"
       }
     ],
     "Standard Bots": [
@@ -2991,6 +3021,12 @@
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/f83d8d80-bae9-4e51-8fec-9166322ecbee"
+      },
+      {
+        "title": "Senior Controls Engineer",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/7a6d5b7f-9210-41c7-b7b5-c32bd7d95bc9"
       }
     ]
   }
