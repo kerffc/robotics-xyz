@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T15:36:07Z",
+  "updated": "2026-08-10T16:02:51Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -13,12 +13,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6101794004"
-      },
-      {
-        "title": "Buyer II",
-        "location": "Hybrid- Fremont, CA",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6034760004"
       },
       {
         "title": "Change and Configuration Control Manager",
@@ -2043,6 +2037,12 @@
         "url": "https://jobs.ashbyhq.com/applied/3963a5a2-1ccb-478c-9e81-672f302b6c48"
       },
       {
+        "title": "Government Contracts Manager",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/d9111644-556f-4074-9966-608233678469"
+      },
+      {
         "title": "Software Engineer - Embedded Systems",
         "location": "Stuttgart",
         "employmentType": "Full-time",
@@ -2819,12 +2819,6 @@
     ],
     "Standard Bots": [
       {
-        "title": "Associate Electrical Engineer (On-site)",
-        "location": "Glen Cove, NY",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/d76f7109-578b-48b5-9ee1-b0526e43e718"
-      },
-      {
         "title": "Senior Software Engineer, Motion Planning",
         "location": "New York City, NY",
         "employmentType": "Full-time",
@@ -2841,12 +2835,6 @@
         "location": "New York City, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/a3cd1d01-66a1-4d2d-9017-876532f4f68c"
-      },
-      {
-        "title": "Field Service Technician",
-        "location": "US (Remote)",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/e962b87e-3e20-4c87-8344-29e97ac92881"
       },
       {
         "title": "Robotics Technical Support Specialist",
@@ -2889,12 +2877,6 @@
         "location": "New York City, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/78a0305b-d274-4631-9c63-7e6b6bf58469"
-      },
-      {
-        "title": "Janitor",
-        "location": "Glen Cove, NY",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/284003eb-60c9-424f-8eea-d529a6fe325f"
       },
       {
         "title": "Manufacturing Program Manager",
