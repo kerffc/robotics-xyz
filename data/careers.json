@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-12T16:01:22Z",
+  "updated": "2026-08-13T16:01:53Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -55,12 +55,6 @@
         "location": "Remote",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127729004"
-      },
-      {
-        "title": "Manager, Direct Procurement",
-        "location": "Hybrid- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6101778004"
       },
       {
         "title": "Manager, Robot Diagnostics & Analysis",
@@ -402,12 +396,6 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, Texas",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
@@ -417,6 +405,12 @@
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A Safety Driver",
@@ -1283,6 +1277,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/fba70e1c-0c7f-482c-97e5-1492df69ef0a"
+      },
+      {
+        "title": "Sr. Buyer- Structures",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/fd2f9a2a-f90a-450d-bb47-3b85d9ae5341"
       }
     ],
     "Applied Intuition": [
@@ -1717,6 +1717,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/8da87c90-49ff-4b75-97c5-337882f63a00"
+      },
+      {
+        "title": "Technical Business Development Lead, Korea Market (US-based)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4d8e8e1f-9145-4625-8aad-1d53ba4cc7b6"
       },
       {
         "title": "Technical Business Development  - Automotive",
@@ -2547,6 +2553,12 @@
         "url": "https://jobs.ashbyhq.com/applied/a2ddad24-2147-406f-81c9-a88f8acc77c2"
       },
       {
+        "title": "Technical Lead Software Engineer - Autonomy Mission Systems",
+        "location": "Ann Arbor",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/d3f475c4-b13d-4445-bef3-292791f0350e"
+      },
+      {
         "title": "Build & Release Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2715,12 +2727,6 @@
         "url": "https://jobs.ashbyhq.com/applied/020b495c-3505-47cd-a75d-e399ab7b605c"
       },
       {
-        "title": "HIL Electrical System Integration Engineer",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/3588ef33-1505-4f8c-85c7-57f2985f8005"
-      },
-      {
         "title": "Product Manager - Platform",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2857,6 +2863,30 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/430b1bce-58d2-4c37-9a50-55e1d6ace619"
+      },
+      {
+        "title": "Social Community Manager",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4047e219-8512-4b66-997f-8f3b3924e22a"
+      },
+      {
+        "title": "Product Designer, Defense",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/3036d5f2-5723-4ffb-8599-269435b35200"
+      },
+      {
+        "title": "Machine Learning Performance Engineer - Offboard Training & Inference",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/23c60c30-8329-443a-8297-73cfc529c103"
+      },
+      {
+        "title": "Software Engineer - Prediction and Planning ML",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/1b268893-9c79-4d59-abc2-4ab0e769f5b5"
       }
     ],
     "Standard Bots": [
