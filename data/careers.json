@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13T16:01:53Z",
+  "updated": "2026-08-14T15:56:27Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -15,16 +15,22 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6110896004"
       },
       {
-        "title": "Chief of Staff to the Chief Executive Officer",
+        "title": "CAD Administrator",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5856850004"
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6138024004"
       },
       {
         "title": "Continuous Improvement Analyst",
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5990022004"
+      },
+      {
+        "title": "Director of Technical Accounting & Reporting",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6142438004"
       },
       {
         "title": "Engineering Support Technician",
@@ -229,6 +235,12 @@
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5850335004"
+      },
+      {
+        "title": "Senior Solutions Engineer",
+        "location": "Hybrid- Salem, OR",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6132323004"
       },
       {
         "title": "Senior Staff Mfg. Design Engineer",
@@ -1947,12 +1959,6 @@
         "url": "https://jobs.ashbyhq.com/applied/ad48ec73-2f2e-4e11-8322-5f68624d18ab"
       },
       {
-        "title": "Solutions Architect - Modeling & Simulation (Defense)",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/fa31df91-9b55-42a9-8853-731d5cb3f3eb"
-      },
-      {
         "title": "Autonomy Integration Software Engineer",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
@@ -2559,6 +2565,12 @@
         "url": "https://jobs.ashbyhq.com/applied/d3f475c4-b13d-4445-bef3-292791f0350e"
       },
       {
+        "title": "Embedded Firmware Validation Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/01dba94d-34b9-4d30-a7d3-82344bab609c"
+      },
+      {
         "title": "Build & Release Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2673,12 +2685,6 @@
         "url": "https://jobs.ashbyhq.com/applied/52a070cf-4e1b-4fcc-bf73-727da8fb6d46"
       },
       {
-        "title": "Software Engineer - Backend",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/43580003-a156-4334-bce4-e6852f49913f"
-      },
-      {
         "title": "Software Engineer - Mapping and Localization",
         "location": "Stuttgart",
         "employmentType": "Full-time",
@@ -2757,6 +2763,12 @@
         "url": "https://jobs.ashbyhq.com/applied/3f40814e-0b1d-414a-a62b-5c7288223a4e"
       },
       {
+        "title": "Robotics Integration Engineer (TL)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/1c449549-175a-4e69-8fde-5c7d2038988e"
+      },
+      {
         "title": "Senior HRIS Analyst",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2773,12 +2785,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/0729bb29-4b52-48f5-9833-989608684c61"
-      },
-      {
-        "title": "Legal Operations Generalist",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/3e60769c-1dac-4713-90df-1a4323227e77"
       },
       {
         "title": "Mission Director - SOCOM",
@@ -2853,12 +2859,6 @@
         "url": "https://jobs.ashbyhq.com/applied/a562b9d6-ae82-4ef2-8086-5a00dad53230"
       },
       {
-        "title": "HR Generalist - EMEA",
-        "location": "Munich",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/ea8c3345-d847-423f-b7cc-4c8dd316d4b4"
-      },
-      {
         "title": "Firmware HIL Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2887,6 +2887,48 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/1b268893-9c79-4d59-abc2-4ab0e769f5b5"
+      },
+      {
+        "title": "Software Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/43286c63-937d-4384-a5ff-12cb31baa225"
+      },
+      {
+        "title": "Software Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/e03f3b3a-d8eb-40f1-b84d-c035c54a0dda"
+      },
+      {
+        "title": "Software Engineer - Stack (SDS) Tooling",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/bf5a0c08-a3cc-4c6f-a6fa-e4eb9661b5ff"
+      },
+      {
+        "title": "HR Generalist - EMEA",
+        "location": "Munich",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/dd23e851-a30b-40de-9bc3-9d95cf0a4f0b"
+      },
+      {
+        "title": "Legal Operations Analyst",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/73d7da2a-1db9-4e08-a8d8-32232dd9f49d"
+      },
+      {
+        "title": "Product Manager - Developer Tooling",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/84cd980d-ad01-4738-9cc8-ddc53d64f71d"
+      },
+      {
+        "title": "Data Engineer - Axion",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/d6582737-8d9d-4747-a7a2-92df0b3eda91"
       }
     ],
     "Standard Bots": [
