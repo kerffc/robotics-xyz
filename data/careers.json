@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14T15:56:27Z",
+  "updated": "2026-08-15T15:25:27Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -57,12 +57,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6133124004"
       },
       {
-        "title": "Lead Data Scientist, Robotics",
-        "location": "Remote",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127729004"
-      },
-      {
         "title": "Manager, Robot Diagnostics & Analysis",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -81,12 +75,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6139191004"
       },
       {
-        "title": "Mechanical Design Drafter",
-        "location": "Hybrid- Fremont, CA",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5833366004"
-      },
-      {
         "title": "Mechanical Engineer",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -103,12 +91,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5996525004"
-      },
-      {
-        "title": "Recruiting Coordinator (Contract)",
-        "location": "Remote",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6141052004"
       },
       {
         "title": "Robotics Software Engineer III, Manipulation",
@@ -243,6 +225,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6132323004"
       },
       {
+        "title": "Senior Staff Data Scientist, Robotics",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127729004"
+      },
+      {
         "title": "Senior Staff Mfg. Design Engineer",
         "location": "Hybrid- Salem, OR",
         "employmentType": "Full-time",
@@ -349,6 +337,12 @@
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5972788004"
+      },
+      {
+        "title": "Staff Software Engineer, Data Platform",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6144405004"
       },
       {
         "title": "Staff Systems Engineer, Functional Safety",
@@ -1743,12 +1737,6 @@
         "url": "https://jobs.ashbyhq.com/applied/82987cd2-3b68-4e2c-a9af-090a0cf38b2a"
       },
       {
-        "title": "System Safety Engineer, Vehicle OS",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/35fd2526-a92d-4ef1-ad6f-96cf086b4508"
-      },
-      {
         "title": "Technical Program Manager",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -1831,12 +1819,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/981054d6-d6d9-4553-9db8-38e56939d3b8"
-      },
-      {
-        "title": "Robotic Software Engineer (Drone Stack)",
-        "location": "Fort Walton Beach, FL",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/3a79b874-e530-4e58-a55a-fa2364c42663"
       },
       {
         "title": "Sensor Sim - ML Engineer",
@@ -2313,12 +2295,6 @@
         "url": "https://jobs.ashbyhq.com/applied/6cce20b1-2250-4350-9952-9691f58fb074"
       },
       {
-        "title": "Technical Project Manager",
-        "location": "Tokyo",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/622b68bf-0097-4642-a4ee-ac4a637e4fd0"
-      },
-      {
         "title": "Technical Recruiter - EMEA [1 Year Contract]",
         "location": "Munich",
         "employmentType": "Full-time",
@@ -2331,7 +2307,7 @@
         "url": "https://jobs.ashbyhq.com/applied/8967e4c5-ef26-4665-8d0c-2c7b0af4939e"
       },
       {
-        "title": "Robotic Software Engineer (Drone Stack)",
+        "title": "Drone Stack - Software Engineer",
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/b235a75b-d43d-485f-8e7a-36467db0ed2f"
@@ -2859,16 +2835,40 @@
         "url": "https://jobs.ashbyhq.com/applied/a562b9d6-ae82-4ef2-8086-5a00dad53230"
       },
       {
-        "title": "Firmware HIL Engineer",
+        "title": "Scenario Engineer - New Grad (2027)",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/430b1bce-58d2-4c37-9a50-55e1d6ace619"
+        "url": "https://jobs.ashbyhq.com/applied/f382de9d-d5e4-4dc8-85a0-0bae7125f8cf"
+      },
+      {
+        "title": "Software Engineer - New Grad (December 2026)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/a837cbd6-9fe4-4d74-a2dc-84f602c40694"
+      },
+      {
+        "title": "Software Integration Engineer - New Grad (2027)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/250080bd-10a8-4e5f-82b8-506029292d19"
       },
       {
         "title": "Social Community Manager",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/4047e219-8512-4b66-997f-8f3b3924e22a"
+      },
+      {
+        "title": "Research Engineer - New Grad (2027)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/45fc41cd-8280-4010-ba1f-def6114b3e39"
+      },
+      {
+        "title": "Embedded Software Engineer - New Grad (2027)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/6971d533-1536-448b-96b8-544ad5383f44"
       },
       {
         "title": "Product Designer, Defense",
@@ -2887,6 +2887,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/1b268893-9c79-4d59-abc2-4ab0e769f5b5"
+      },
+      {
+        "title": "Vehicle Test Engineer - New Grad (2027)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/0695a5b7-6823-4da5-b918-3b580d49662c"
       },
       {
         "title": "Software Engineer",
