@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-16T15:26:27Z",
+  "updated": "2026-08-17T15:29:09Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -31,6 +31,12 @@
         "location": "Remote",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6142438004"
+      },
+      {
+        "title": "Director, Operations Program Management",
+        "location": "Hybrid- Salem, OR",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6111228004"
       },
       {
         "title": "Engineering Support Technician",
@@ -2935,6 +2941,42 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d6582737-8d9d-4747-a7a2-92df0b3eda91"
+      },
+      {
+        "title": "Vehicle Operations Service Manager",
+        "location": "Tokyo",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/12721fe9-0e4e-4700-ae7b-0b32c7b3777f"
+      },
+      {
+        "title": "Senior Software Engineer",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/c423823a-74d8-4add-b73d-d980ccdf0ff3"
+      },
+      {
+        "title": "Software Engineer - Robotics",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/ddac70fe-ec44-485b-9066-29aac135b121"
+      },
+      {
+        "title": "Software Engineer",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/3d90d408-7a14-4fe1-861c-571435d92d8a"
+      },
+      {
+        "title": "GNC Engineer",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/0f63291f-b975-4dea-9a3c-1cb30f222550"
+      },
+      {
+        "title": "Senior Software Engineer - Robotics",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/a6a03e05-de18-41da-918f-d8f6f32f3a9b"
       }
     ],
     "Standard Bots": [
