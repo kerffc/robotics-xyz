@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18T15:35:42Z",
+  "updated": "2026-08-19T15:35:53Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -486,15 +486,15 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -555,6 +555,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4310775009"
+      },
+      {
+        "title": "Senior Autonomy Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4204664009"
       },
       {
         "title": "Senior Cloud Security Engineer",
@@ -624,9 +630,9 @@
       },
       {
         "title": "Senior Systems Engineer, Fault Management",
-        "location": "San Francisco Bay Area",
+        "location": "Mountain View, CA",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203236009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4375085009"
       },
       {
         "title": "Sensor Hardware Engineer",
@@ -696,9 +702,9 @@
       },
       {
         "title": "Staff Probabilistic Risk Assessment Engineer",
-        "location": "Mountain View, CA",
+        "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4204664009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203236009"
       },
       {
         "title": "Staff Product Analyst",
@@ -973,13 +979,13 @@
         "url": "https://jobs.ashbyhq.com/1x/b6743a34-6533-4e23-ad1a-ea98dd8dcd59"
       },
       {
-        "title": "Software Engineer - Core Systems",
+        "title": "Software Engineer - Core",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/664d3be4-5805-4062-b191-aa9b80f914af"
       },
       {
-        "title": "Software Engineer - Cloud and Infrastructure",
+        "title": "Software Engineer - Backend",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/3ad18b50-52b3-4fc0-995f-19cea501a6bd"
@@ -1247,6 +1253,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/fd2f9a2a-f90a-450d-bb47-3b85d9ae5341"
+      },
+      {
+        "title": "Electrical Engineer, Hands",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/14a3f92c-24ec-4722-8754-d0d1366c9ed7"
       }
     ],
     "Applied Intuition": [
@@ -2247,18 +2259,6 @@
         "url": "https://jobs.ashbyhq.com/applied/6cce20b1-2250-4350-9952-9691f58fb074"
       },
       {
-        "title": "Technical Recruiter - EMEA [1 Year Contract]",
-        "location": "Munich",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/63f2d3d9-4e3e-4c10-a1dc-c7ee4e264857"
-      },
-      {
-        "title": "Talent Operations - EMEA",
-        "location": "Munich",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/8967e4c5-ef26-4665-8d0c-2c7b0af4939e"
-      },
-      {
         "title": "Drone Stack - Software Engineer",
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
@@ -2799,7 +2799,7 @@
         "url": "https://jobs.ashbyhq.com/applied/250080bd-10a8-4e5f-82b8-506029292d19"
       },
       {
-        "title": "Social Community Manager",
+        "title": "Social Community Engagement Manager",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/4047e219-8512-4b66-997f-8f3b3924e22a"
@@ -2835,13 +2835,19 @@
         "url": "https://jobs.ashbyhq.com/applied/1b268893-9c79-4d59-abc2-4ab0e769f5b5"
       },
       {
+        "title": "Hardware Integration Engineer - New Grad (December 2026)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4c3cd892-2ef0-40b6-877a-39540a224a5c"
+      },
+      {
         "title": "Recruiting Systems Specialist [3 Month Contract]",
         "location": "California Remote",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/86d46272-2aab-4a76-b315-fd39aa406192"
       },
       {
-        "title": "Engineering Lead, Self-Driving System (SDS) \u2014 Tokyo",
+        "title": "Self-Driving System (SDS) Engineering Lead",
         "location": "Tokyo",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/e444bde2-0af2-4726-b892-aac1a2ee73d5"
@@ -2937,16 +2943,58 @@
         "url": "https://jobs.ashbyhq.com/applied/3d90d408-7a14-4fe1-861c-571435d92d8a"
       },
       {
-        "title": "GNC Engineer",
-        "location": "London",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0f63291f-b975-4dea-9a3c-1cb30f222550"
-      },
-      {
         "title": "Senior Software Engineer - Robotics",
         "location": "London",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/a6a03e05-de18-41da-918f-d8f6f32f3a9b"
+      },
+      {
+        "title": "Solution Engineer - Maritime",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/b5947328-d445-4016-a2f3-eea16011c6c0"
+      },
+      {
+        "title": "Solution Engineer, Land",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/64f6eb25-2824-41d4-b022-3bdd0ca4b80a"
+      },
+      {
+        "title": "Solution Engineer, Air",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/ec7dbafc-5160-4c29-b945-9e8e4f6e18ae"
+      },
+      {
+        "title": "Engineering Manager - Defense Systems",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/759af660-908e-47fa-a6b5-2d4cdde334f4"
+      },
+      {
+        "title": "Product Design - Tools",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/89ce3202-6b09-45db-8dc3-c0bac601f6cb"
+      },
+      {
+        "title": "Product Designer, Defense",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/9be0a3c4-4489-4392-9ceb-ac85ff3db3d5"
+      },
+      {
+        "title": "Senior GNC Engineer",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/93fc8969-cb34-4e67-a5cc-2afbe4d22af6"
+      },
+      {
+        "title": "Solution Architect",
+        "location": "London",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/99199418-b770-4524-93fe-6e5f6e641dcc"
       },
       {
         "title": "System Safety Engineer, Mining/Industrial",
