@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-19T15:35:53Z",
+  "updated": "2026-08-20T15:37:46Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -189,7 +189,7 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6113706004"
       },
       {
-        "title": "Senior Manufacturing Engineer, Electrical",
+        "title": "Senior Manufacturing Engineer",
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6131189004"
@@ -351,6 +351,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6144405004"
       },
       {
+        "title": "Staff Software Engineer, Hardware Interface",
+        "location": "Hybrid- Fremont, CA",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6146407004"
+      },
+      {
         "title": "Staff Systems Engineer, Functional Safety",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -408,15 +414,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
         "title": "Class A Safety Driver",
@@ -519,12 +525,6 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4332354009"
-      },
-      {
-        "title": "Operations Safety and Compliance Manager",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4259892009"
       },
       {
         "title": "Operations Specialist",
@@ -1165,7 +1165,7 @@
         "url": "https://jobs.ashbyhq.com/1x/fda0ba2e-d1eb-4a21-a666-7e7ee6e20763"
       },
       {
-        "title": "Senior to Staff Tools Engineer, Simulation",
+        "title": "Staff Tools Engineer, Simulation",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/a7e8ba31-8369-4b44-ae26-efd4a23f7118"
@@ -1779,7 +1779,7 @@
         "url": "https://jobs.ashbyhq.com/applied/32e39ce9-9c09-4dd9-9ad1-4ee0b0cf7907"
       },
       {
-        "title": "Senior Autonomy Engineer",
+        "title": "Senior Computer Vision Engineer",
         "location": "London",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/29e670cd-4096-4c18-abaa-515de6fb4650"
