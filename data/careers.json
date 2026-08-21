@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-20T15:37:46Z",
+  "updated": "2026-08-21T15:37:49Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -219,6 +219,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5830827004"
       },
       {
+        "title": "Senior Software Engineer, AI/ML Platform",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6148969004"
+      },
+      {
         "title": "Senior Software Engineer, Navigation",
         "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)",
         "employmentType": "Full-time",
@@ -363,12 +369,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5986772004"
       },
       {
-        "title": "Staff Systems Integration Engineer",
-        "location": "Hybrid- Fremont, CA",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6017810004"
-      },
-      {
         "title": "Staff Systems Validation Engineer",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -407,22 +407,22 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304159009"
       },
       {
-        "title": "AV Build Technician",
+        "title": "Class A CDL Driver",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4308154009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, Texas",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
       },
       {
         "title": "Class A CDL Driver",
         "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
-      },
-      {
-        "title": "Class A CDL Driver",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
         "title": "Class A Safety Driver",
@@ -461,12 +461,6 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4335998009"
       },
       {
-        "title": "Field Integration Engineer",
-        "location": "Odessa, Tx",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4294407009"
-      },
-      {
         "title": "Finance Manager",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
@@ -492,27 +486,27 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "Mountain View, CA",
+        "location": "Lancaster, Tx",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378057009"
       },
       {
         "title": "Hardware Technical Program Manager",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4254544009"
-      },
-      {
-        "title": "Head of Partnerships",
-        "location": "Remote, United States",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4208454009"
       },
       {
         "title": "Helpdesk Lead",
@@ -889,7 +883,7 @@
         "url": "https://jobs.ashbyhq.com/1x/655ea851-ff54-4da3-a912-ff471c5a1907"
       },
       {
-        "title": "Senior Device Management Engineer - Linux",
+        "title": "Device Management Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/89fd2de7-8ed7-44ab-86cb-bb8a9d18f410"
@@ -1971,7 +1965,7 @@
         "url": "https://jobs.ashbyhq.com/applied/5cf62afc-d9c4-4590-9fe8-f3f367ec5636"
       },
       {
-        "title": "Senior Systems Integration Engineer - Defense Autonomy",
+        "title": "Senior Hardware Engineer - Defense Autonomy",
         "location": "Fort Walton Beach, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/36df3851-dd50-4f07-a8e2-5b0e845258b5"
@@ -2217,12 +2211,6 @@
         "url": "https://jobs.ashbyhq.com/applied/852b1c5c-c5fb-48dd-bd28-f59847a8ff08"
       },
       {
-        "title": "Engineering Lead, Robotics",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0ec2042c-1949-4d8e-be43-d9ffc9f408ce"
-      },
-      {
         "title": "People Business Partner",
         "location": "Tokyo",
         "employmentType": "Full-time",
@@ -2257,12 +2245,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/6cce20b1-2250-4350-9952-9691f58fb074"
-      },
-      {
-        "title": "Drone Stack - Software Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/b235a75b-d43d-485f-8e7a-36467db0ed2f"
       },
       {
         "title": "Legal Operations Generalist",
@@ -2347,6 +2329,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/912ca678-a23b-46d5-9f99-8e226782907e"
+      },
+      {
+        "title": "Drone Stack - Hardware Engineer",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/86f99511-0b71-4731-a410-242b2bc6e4d1"
       },
       {
         "title": "Software Engineer - Controls",
@@ -3001,6 +2989,30 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/12fc5adf-1827-45d4-83d9-3856064dd25e"
+      },
+      {
+        "title": "Drone Stack - Software Engineer",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/32fdfd22-9bb9-4031-b211-87fa7b2157d4"
+      },
+      {
+        "title": "Drone Stack - Software Engineer",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/73cb2d6c-a2ae-4d50-83be-f63ee17d45a7"
+      },
+      {
+        "title": "Software Engineer (Drone Stack)",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/b7a499d8-d2a3-4458-baf6-4b43c2165558"
+      },
+      {
+        "title": "Software Engineer (Drone Stack)",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/f1808a1f-6952-4d34-a1bb-bf35aec29936"
       }
     ],
     "Standard Bots": [
@@ -3207,6 +3219,18 @@
         "location": "US-West Coast (remote)",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/75e22912-268d-4d2a-9531-986fb5ba34cd"
+      },
+      {
+        "title": "Senior Recruiter",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/8f4e79ba-2ef0-41ab-b1fa-4e4eebc6c4e0"
+      },
+      {
+        "title": "Assembly Technician",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/53160303-08dc-4ff6-a6c3-30e0c3c2bd3d"
       }
     ]
   }
