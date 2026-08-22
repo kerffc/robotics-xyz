@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-21T15:37:49Z",
+  "updated": "2026-08-22T15:25:50Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -67,12 +67,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6017803004"
-      },
-      {
-        "title": "Manufacturing Engineering Technician",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6113730004"
       },
       {
         "title": "Master Production Scheduler",
@@ -408,15 +402,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, Texas",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
         "title": "Class A CDL Driver",
@@ -473,16 +467,16 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304173009"
       },
       {
-        "title": "Functional Safety Engineer, Hardware",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4118785009"
-      },
-      {
         "title": "Functional Safety Engineer, Software",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4062289009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "Lancaster, Tx",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378057009"
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
@@ -495,12 +489,6 @@
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
-        "location": "Lancaster, Tx",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378057009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -1247,6 +1235,30 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/fd2f9a2a-f90a-450d-bb47-3b85d9ae5341"
+      },
+      {
+        "title": "Manufacturing Electrical Engineer, Hands",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/2044dfc6-bf8c-4356-a75d-9579a2c92c64"
+      },
+      {
+        "title": "Manufacturing Electrical Engineer, Joints & Body",
+        "location": "Hayward, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/178b0d2b-d9bd-4ed0-9e27-27ad4890649f"
+      },
+      {
+        "title": "Manufacturing Process Engineer, Hands",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/cfa7388e-0e79-447e-9359-e464ec11c5f8"
+      },
+      {
+        "title": "Manufacturing Engineer, Hands",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/e83e6f5b-0c56-4b50-ad2a-5d51a5f3219a"
       },
       {
         "title": "Electrical Engineer, Hands",
@@ -2769,6 +2781,12 @@
         "url": "https://jobs.ashbyhq.com/applied/a562b9d6-ae82-4ef2-8086-5a00dad53230"
       },
       {
+        "title": "Firmware HIL Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/430b1bce-58d2-4c37-9a50-55e1d6ace619"
+      },
+      {
         "title": "Scenario Engineer - New Grad (2027)",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2889,7 +2907,7 @@
         "url": "https://jobs.ashbyhq.com/applied/dd23e851-a30b-40de-9bc3-9d95cf0a4f0b"
       },
       {
-        "title": "Legal Operations Analyst",
+        "title": "Legal Operations Generalist",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/73d7da2a-1db9-4e08-a8d8-32232dd9f49d"
@@ -3013,6 +3031,12 @@
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/f1808a1f-6952-4d34-a1bb-bf35aec29936"
+      },
+      {
+        "title": "Research Scientist - Humanoid Robotics",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4cd7cf1d-717c-4887-93b4-520a40a906b1"
       }
     ],
     "Standard Bots": [
@@ -3171,6 +3195,12 @@
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/b6df890e-7a1f-4105-ac38-0e0e55f4e9b9"
+      },
+      {
+        "title": "Executive Assistant",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/5f1668ca-c44d-469e-aef4-122d822da408"
       },
       {
         "title": "Sr. Manufacturing Program Manager, Vertical Integration",
