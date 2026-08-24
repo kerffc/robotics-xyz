@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T15:26:33Z",
+  "updated": "2026-08-24T15:43:04Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -207,12 +207,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6008696004"
       },
       {
-        "title": "Senior Robot Software Triage & RCA Engineer",
-        "location": "Hybrid- Fremont, CA",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5830827004"
-      },
-      {
         "title": "Senior Software Engineer, AI/ML Platform",
         "location": "Remote",
         "employmentType": "Full-time",
@@ -402,6 +396,12 @@
       },
       {
         "title": "Class A CDL Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
+      },
+      {
+        "title": "Class A CDL Driver",
         "location": "Lancaster, Texas",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
@@ -413,10 +413,10 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
-        "title": "Class A CDL Driver",
+        "title": "Class A Safety Driver",
         "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4380113009"
       },
       {
         "title": "Class A Safety Driver",
@@ -480,15 +480,15 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -3261,6 +3261,12 @@
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/53160303-08dc-4ff6-a6c3-30e0c3c2bd3d"
+      },
+      {
+        "title": "Corporate Controller",
+        "location": "New York City, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/22e13eeb-5e07-48d6-b1ee-7c842f2e3ca6"
       }
     ]
   }
