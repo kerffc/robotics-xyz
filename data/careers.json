@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T00:18:32Z",
+  "updated": "2026-08-28T23:57:24Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -27,6 +27,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5990022004"
       },
       {
+        "title": "Director, Head of Editorial & Content",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6167499004"
+      },
+      {
         "title": "Director of Technical Accounting & Reporting",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -37,6 +43,12 @@
         "location": "Hybrid- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6111228004"
+      },
+      {
+        "title": "Engineering Support Supervisor",
+        "location": "Onsite- Fremont, CA",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6167562004"
       },
       {
         "title": "Engineering Support Technician",
@@ -169,12 +181,6 @@
         "location": "Remote",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6164697004"
-      },
-      {
-        "title": "Senior Manager, Simulation",
-        "location": "Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA); Remote",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127736004"
       },
       {
         "title": "Senior Manager, SQE",
@@ -925,22 +931,10 @@
         "url": "https://jobs.ashbyhq.com/1x/89fd2de7-8ed7-44ab-86cb-bb8a9d18f410"
       },
       {
-        "title": "Simulation Engineer",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/1859f30c-34c9-441b-abd3-f2ec9658bdb8"
-      },
-      {
         "title": "Senior Harness Manufacturing Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/873f836f-a4b6-4ef8-9500-b960cb1198f9"
-      },
-      {
-        "title": "Materials and Process Innovation Engineer",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/5a93bffa-fdc6-4059-b76e-e7c7acc29bbb"
       },
       {
         "title": "Hardware Technician - Hands",
@@ -1051,12 +1045,6 @@
         "url": "https://jobs.ashbyhq.com/1x/fe2aaee8-a1d7-48a9-9344-fa593f56d7ac"
       },
       {
-        "title": "Senior Technical Recruiter - Software",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/1147901f-b444-4473-825f-21d12e435bc1"
-      },
-      {
         "title": "Staff Manufacturing Recruiter",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -1073,12 +1061,6 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/edd41b07-52fa-43c6-a251-e92d07caedee"
-      },
-      {
-        "title": "Battery Test Engineer",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/81d4cbda-951d-4675-9650-9f62d6c21055"
       },
       {
         "title": "Electrical Engineer - Actuators and Drives",
@@ -1325,6 +1307,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/3fd289bc-12ba-4b85-b9a4-a565acd515fd"
+      },
+      {
+        "title": "NPI Engineering Technician",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/93402959-5e12-4eca-8db2-989ae469a322"
       }
     ],
     "Applied Intuition": [
@@ -2505,7 +2493,7 @@
         "url": "https://jobs.ashbyhq.com/applied/a2ddad24-2147-406f-81c9-a88f8acc77c2"
       },
       {
-        "title": "Technical Lead Software Engineer - Multi-Agent Mission Systems",
+        "title": "Lead Software Engineer - Multi-Agent Mission Systems",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d3f475c4-b13d-4445-bef3-292791f0350e"
@@ -2643,8 +2631,8 @@
         "url": "https://jobs.ashbyhq.com/applied/5df3e287-b422-4ff1-88d6-a1064dc444b0"
       },
       {
-        "title": "Technical Program Manager - Defense Autonomy",
-        "location": "Washington, D.C.",
+        "title": "Technical Program Manager - Maritime Defense",
+        "location": "Poway, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/5cf4594e-9c85-4396-9385-f91335971aa7"
       },
@@ -2949,6 +2937,12 @@
         "url": "https://jobs.ashbyhq.com/applied/3d90d408-7a14-4fe1-861c-571435d92d8a"
       },
       {
+        "title": "Software Engineer - Cloud Infrastructure",
+        "location": "Munich",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/c6991bb3-bb12-489c-bed2-424d8322fb58"
+      },
+      {
         "title": "Senior Software Engineer - Robotics",
         "location": "London",
         "employmentType": "Full-time",
@@ -3069,13 +3063,13 @@
         "url": "https://jobs.ashbyhq.com/applied/9534b49a-9feb-4063-ac33-a9c4d94a1352"
       },
       {
-        "title": "Technical Lead Software Engineer - Multi-Agent Mission Systems",
+        "title": "Lead Software Engineer - Multi-Agent Mission Systems",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/0ee01cce-c410-4098-b15f-7c46a1c20df7"
       },
       {
-        "title": "Technical Lead Software Engineer - Multi-Agent Mission Systems",
+        "title": "Lead Software Engineer - Multi-Agent Mission Systems",
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/0d145f71-d11d-4bdf-b2b1-fdb1f6ed77a8"
@@ -3115,6 +3109,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/b8084256-326e-45f4-9e47-6c20a575eb2d"
+      },
+      {
+        "title": "Product Counsel",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/315025c1-2d5f-48d7-8d52-48ac630b98d6"
       }
     ],
     "Standard Bots": [
