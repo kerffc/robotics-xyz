@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T18:14:05Z",
+  "updated": "2026-08-30T18:30:42Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -420,15 +420,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A Safety Driver",
@@ -492,12 +492,6 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
@@ -507,6 +501,12 @@
         "location": "Lancaster, Tx",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378057009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -1316,6 +1316,12 @@
       }
     ],
     "Applied Intuition": [
+      {
+        "title": "System Designer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/b2258b1e-336f-4412-aafb-7e5f4e612c7e"
+      },
       {
         "title": "Hardware Test Engineer",
         "location": "Sunnyvale",
