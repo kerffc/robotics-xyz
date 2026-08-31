@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T18:30:42Z",
+  "updated": "2026-08-31T20:43:17Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -414,9 +414,9 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, Texas",
+        "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A CDL Driver",
@@ -426,9 +426,9 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
+        "location": "Lancaster, Texas",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
       },
       {
         "title": "Class A Safety Driver",
@@ -492,12 +492,6 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "San Francisco Bay Area",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "Lancaster, Tx",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378057009"
@@ -507,6 +501,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "San Francisco Bay Area",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
       },
       {
         "title": "Hardware Technical Program Manager",
@@ -687,6 +687,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4328677009"
+      },
+      {
+        "title": "Staff, Harness Engineering Manager",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4388120009"
       },
       {
         "title": "Staff Machine Learning Engineer - Deployment",
@@ -1313,6 +1319,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/93402959-5e12-4eca-8db2-989ae469a322"
+      },
+      {
+        "title": "Facilities Technician",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/361a49ab-0350-44c8-88a0-ea6a647d51b5"
       }
     ],
     "Applied Intuition": [
@@ -1977,6 +1989,12 @@
         "url": "https://jobs.ashbyhq.com/applied/ad48ec73-2f2e-4e11-8322-5f68624d18ab"
       },
       {
+        "title": "Autonomy Integration Software Engineer",
+        "location": "Ann Arbor",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/5db42c47-dde8-44d6-9a93-5bcd83a829c7"
+      },
+      {
         "title": "Software Engineer",
         "location": "Tokyo",
         "employmentType": "Full-time",
@@ -2023,6 +2041,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/5cf62afc-d9c4-4590-9fe8-f3f367ec5636"
+      },
+      {
+        "title": "Senior Hardware Engineer - Defense",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/36df3851-dd50-4f07-a8e2-5b0e845258b5"
       },
       {
         "title": "Product Counsel",
@@ -2151,7 +2175,7 @@
         "url": "https://jobs.ashbyhq.com/applied/96a7e0e1-37c6-4ee6-9cb6-dddfa48e87ed"
       },
       {
-        "title": "Motion Planning Software Engineer",
+        "title": "Software Engineer - Motion Planning",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/f5de3234-a5d2-4c4c-9c79-3ae803807c63"
@@ -2365,6 +2389,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/912ca678-a23b-46d5-9f99-8e226782907e"
+      },
+      {
+        "title": "Drone Stack - Hardware Engineer",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/86f99511-0b71-4731-a410-242b2bc6e4d1"
       },
       {
         "title": "Software Engineer - Controls",
@@ -3105,10 +3135,16 @@
         "url": "https://jobs.ashbyhq.com/applied/4cee3e2f-3fec-42fd-a700-d570798d815a"
       },
       {
-        "title": "Electrical Intergration Engineer",
+        "title": "Electrical Integration Engineer",
         "location": "Bangalore",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/2ffcb384-3729-450c-8363-25818c76f2c7"
+      },
+      {
+        "title": "Learning Experience Designer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/4c00e632-aef0-4ea2-871b-3c76166d6095"
       },
       {
         "title": "Senior Technical Business Development, EU Automotive (Sunnyvale HQ)",
@@ -3121,6 +3157,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/315025c1-2d5f-48d7-8d52-48ac630b98d6"
+      },
+      {
+        "title": "Maritime Test Engineer - Autonomous Systems",
+        "location": "San Diego, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/9ed264dc-6e49-4dba-b851-7c198b4f7916"
       }
     ],
     "Standard Bots": [
