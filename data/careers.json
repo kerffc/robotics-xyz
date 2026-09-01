@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T20:43:17Z",
+  "updated": "2026-09-01T18:16:32Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -171,6 +171,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6002917004"
       },
       {
+        "title": "Senior Manager, Commercial Operations",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6174258004"
+      },
+      {
         "title": "Senior Manager, Field Quality",
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
@@ -238,7 +244,7 @@
       },
       {
         "title": "Senior Solutions Engineer",
-        "location": "Hybrid- Salem, OR",
+        "location": "Hybrid- Pittsburgh, PA; Hybrid- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6132323004"
       },
@@ -1325,6 +1331,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/361a49ab-0350-44c8-88a0-ea6a647d51b5"
+      },
+      {
+        "title": "Principal Safety Engineer",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/8ae5f10b-2e8c-4225-8d89-df1476c23b2d"
       }
     ],
     "Applied Intuition": [
@@ -1351,18 +1363,6 @@
         "location": "Sunnyvale",
         "employmentType": "Contract",
         "url": "https://jobs.ashbyhq.com/applied/2d3fd355-9a70-4b15-893a-2ce719054d0b"
-      },
-      {
-        "title": "Lead Software Engineer - Physical AI (Defense)",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/aa272549-acb3-4677-b37e-e95f3b1317b8"
-      },
-      {
-        "title": "Senior Software Engineer - Defense Simulation",
-        "location": "Fort Walton Beach, FL",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/517cfaa8-6c2f-4403-8e23-5202ed615d2b"
       },
       {
         "title": "Software Engineer - Multi-Agent UAV Autonomy (Defense)",
@@ -1803,12 +1803,6 @@
         "url": "https://jobs.ashbyhq.com/applied/290def1d-ade4-4f96-b106-494b51c7e046"
       },
       {
-        "title": "Technical Program Manager - Defense",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/e1113490-4217-41c5-b223-4afb78673c54"
-      },
-      {
         "title": "Field Deployment Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -1867,6 +1861,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/981054d6-d6d9-4553-9db8-38e56939d3b8"
+      },
+      {
+        "title": "Drone Stack - Software Engineer",
+        "location": "Fort Walton Beach, FL",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/3a79b874-e530-4e58-a55a-fa2364c42663"
       },
       {
         "title": "Sensor Sim - ML Engineer",
@@ -2043,7 +2043,7 @@
         "url": "https://jobs.ashbyhq.com/applied/5cf62afc-d9c4-4590-9fe8-f3f367ec5636"
       },
       {
-        "title": "Senior Hardware Engineer - Defense",
+        "title": "Senior Hardware Engineer - Drone Stack",
         "location": "Fort Walton Beach, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/36df3851-dd50-4f07-a8e2-5b0e845258b5"
@@ -2157,12 +2157,6 @@
         "url": "https://jobs.ashbyhq.com/applied/e1cb83ac-7326-410a-9f3f-be33ed575fbf"
       },
       {
-        "title": "Defense Software Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/df4cf6f5-61d3-47f1-b895-74aada79c492"
-      },
-      {
         "title": "Research Intern - Reinforcement Learning, Self-Driving",
         "location": "Sunnyvale",
         "employmentType": "Intern",
@@ -2179,12 +2173,6 @@
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/f5de3234-a5d2-4c4c-9c79-3ae803807c63"
-      },
-      {
-        "title": "Senior Forward Deployed Engineer - Defense",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/8ab8b28e-b62a-4a92-88ee-773015a01a87"
       },
       {
         "title": "Research Intern - 3D Vision and Generation, Self-Driving",
@@ -2211,12 +2199,6 @@
         "url": "https://jobs.ashbyhq.com/applied/edc2528d-6e6c-4a67-b871-bfe7d9c890b4"
       },
       {
-        "title": "Senior C++ Software Engineer (Defense Autonomy)",
-        "location": "Ann Arbor",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/32de9fa8-6cb1-462d-ae57-9b0ae8247b41"
-      },
-      {
         "title": "C++ Software Engineer \u2013 Autonomous Systems",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
@@ -2227,12 +2209,6 @@
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/efb1d3eb-388c-4908-be0a-8af78579db69"
-      },
-      {
-        "title": "Lead Software Engineer  (Defense Tech)",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/ffd26a73-2dc0-4479-ae07-4c0e74dd5983"
       },
       {
         "title": "Software Engineer - Physical AI",
@@ -2391,12 +2367,6 @@
         "url": "https://jobs.ashbyhq.com/applied/912ca678-a23b-46d5-9f99-8e226782907e"
       },
       {
-        "title": "Drone Stack - Hardware Engineer",
-        "location": "Fort Walton Beach, FL",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/86f99511-0b71-4731-a410-242b2bc6e4d1"
-      },
-      {
         "title": "Software Engineer - Controls",
         "location": "Tokyo",
         "employmentType": "Full-time",
@@ -2523,12 +2493,6 @@
         "url": "https://jobs.ashbyhq.com/applied/567062a4-578e-4d05-a175-4fff84dd07b5"
       },
       {
-        "title": "Perception & Fusion Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/a2ddad24-2147-406f-81c9-a88f8acc77c2"
-      },
-      {
         "title": "Lead Software Engineer - Multi-Agent Mission Systems",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
@@ -2553,19 +2517,7 @@
         "url": "https://jobs.ashbyhq.com/applied/ad1a12cd-1a15-44e1-a9e9-f71f74386086"
       },
       {
-        "title": "Senior Software Engineer, Game Engine & World Systems (Autonomy)",
-        "location": "Ann Arbor",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/b5c856c1-ed0d-4165-ab5b-3c858e3e8cf1"
-      },
-      {
-        "title": "Senior Software Engineer, World Modeling & Simulation",
-        "location": "Ann Arbor",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/d73194ea-b60b-4695-add7-ef7639c1eee1"
-      },
-      {
-        "title": "Senior Simulation Engineer",
+        "title": "Senior Software Engineer - Defense Air",
         "location": "Fort Walton Beach, FL",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/ae6e9474-e4e2-4297-b91e-ae406c7deb2d"
@@ -2605,12 +2557,6 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/4308e255-6028-4160-a3ac-40f035d3f4b5"
-      },
-      {
-        "title": "Head of Engineering, Defense OS",
-        "location": "Ann Arbor",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/5a8c9556-84f6-4bd9-a076-f66ec4cbf35d"
       },
       {
         "title": "Product Manager - DefenseOS",
@@ -2733,18 +2679,6 @@
         "url": "https://jobs.ashbyhq.com/applied/0729bb29-4b52-48f5-9833-989608684c61"
       },
       {
-        "title": "Mission Director - SOCOM",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/1b3cbc0a-30d1-4cae-824c-4b07e82302f0"
-      },
-      {
-        "title": "Mission Director - Aerial Combat",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/6cd40118-208c-4aa2-b6ce-528990dfd485"
-      },
-      {
         "title": "Chief Engineer - AHS",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2755,24 +2689,6 @@
         "location": "Munich",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/7548c975-a009-4227-b508-6b643f4f3164"
-      },
-      {
-        "title": "Proposal Writer - Defense",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/14b65487-03a0-4107-be93-9aff919d56f2"
-      },
-      {
-        "title": "Account Executive - Navy Mission Systems",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/eff5eff8-4b36-4157-b1d2-08c23a33d7cd"
-      },
-      {
-        "title": "Legal Counsel, Government and Defense",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/7b5b0d18-6da9-4e53-8e12-4a4e612d3246"
       },
       {
         "title": "Operations Safety Lead",
@@ -3003,12 +2919,6 @@
         "url": "https://jobs.ashbyhq.com/applied/ec7dbafc-5160-4c29-b945-9e8e4f6e18ae"
       },
       {
-        "title": "Engineering Manager - Defense Systems",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/759af660-908e-47fa-a6b5-2d4cdde334f4"
-      },
-      {
         "title": "Product Design - Tools",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -3039,40 +2949,10 @@
         "url": "https://jobs.ashbyhq.com/applied/12fc5adf-1827-45d4-83d9-3856064dd25e"
       },
       {
-        "title": "Embedded Drone Stack - Software Engineer",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/32fdfd22-9bb9-4031-b211-87fa7b2157d4"
-      },
-      {
-        "title": "Embedded Drone Stack - Software Engineer",
-        "location": "Fort Walton Beach, FL",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/73cb2d6c-a2ae-4d50-83be-f63ee17d45a7"
-      },
-      {
-        "title": "Embedded Software Engineer (Drone Stack)",
-        "location": "Fort Walton Beach, FL",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/b7a499d8-d2a3-4458-baf6-4b43c2165558"
-      },
-      {
-        "title": "Embedded Software Engineer (Drone Stack)",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/f1808a1f-6952-4d34-a1bb-bf35aec29936"
-      },
-      {
         "title": "Research Scientist - Humanoid Robotics",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/4cd7cf1d-717c-4887-93b4-520a40a906b1"
-      },
-      {
-        "title": "Embedded Software Engineer (Drone Stack)",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/51df9b5d-ce8d-425f-8dfe-bb94e6942a0f"
       },
       {
         "title": "Vehicle Controls- Technical Lead",
@@ -3099,28 +2979,10 @@
         "url": "https://jobs.ashbyhq.com/applied/9534b49a-9feb-4063-ac33-a9c4d94a1352"
       },
       {
-        "title": "Lead Software Engineer - Multi-Agent Mission Systems",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0ee01cce-c410-4098-b15f-7c46a1c20df7"
-      },
-      {
-        "title": "Lead Software Engineer - Multi-Agent Mission Systems",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/0d145f71-d11d-4bdf-b2b1-fdb1f6ed77a8"
-      },
-      {
         "title": "Perception & Fusion Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/4ca032d0-a8eb-4693-8564-659fd95f366c"
-      },
-      {
-        "title": "Perception & Fusion Engineer",
-        "location": "Ann Arbor",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/a023fc78-6c96-443a-b17d-f264056e9e4f"
       },
       {
         "title": "Software Engineer - Simulation, Game Engine & World Systems (Autonomy)",
@@ -3163,6 +3025,18 @@
         "location": "San Diego, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/9ed264dc-6e49-4dba-b851-7c198b4f7916"
+      },
+      {
+        "title": "Product Manager, Supply Chain Systems",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/2548bb56-b66c-4dc0-9385-27ea0c964d34"
+      },
+      {
+        "title": "Engineering Manager - Defense Physical AI",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/46a6e4bf-961c-4552-b2aa-0592fbc0913a"
       }
     ],
     "Standard Bots": [
