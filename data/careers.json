@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T18:29:34Z",
+  "updated": "2026-09-03T18:25:22Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -13,6 +13,12 @@
         "location": "Remote",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6110896004"
+      },
+      {
+        "title": "Business Intelligence Analyst",
+        "location": "Remote",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6139707004"
       },
       {
         "title": "CAD Administrator",
@@ -201,12 +207,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6113706004"
       },
       {
-        "title": "Senior Manufacturing Engineer",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6131189004"
-      },
-      {
         "title": "Senior Manufacturing Test Engineer",
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
@@ -297,6 +297,12 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6083311004"
       },
       {
+        "title": "Senior Supplier Quality Engineer",
+        "location": "Hybrid- Salem, OR or Fremont, CA",
+        "employmentType": "Full-time",
+        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5973865004"
+      },
+      {
         "title": "Senior Systems Engineer",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -325,12 +331,6 @@
         "location": "Onsite- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6127920004"
-      },
-      {
-        "title": "Sr. Supplier Quality Engineer",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=5973865004"
       },
       {
         "title": "Staff AI Engineer, Perception",
@@ -438,15 +438,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, Texas",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, Texas",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
       },
       {
         "title": "Class A Safety Driver",
@@ -489,6 +489,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4335998009"
+      },
+      {
+        "title": "Field Technician Lead",
+        "location": "Kermit, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4294603009"
       },
       {
         "title": "Finance Manager",
@@ -537,12 +543,6 @@
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4362418009"
-      },
-      {
-        "title": "Operations Technician Lead",
-        "location": "Kermit, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4294603009"
       },
       {
         "title": "Product Operations Specialist",
@@ -1225,12 +1225,6 @@
         "url": "https://jobs.ashbyhq.com/1x/e7b4aaf5-5c55-4e2f-abcd-5c250657bede"
       },
       {
-        "title": "Lead of Core - Systems Software",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/4d79b1a6-b405-455f-b2c5-13ca5df20638"
-      },
-      {
         "title": "Camera Hardware Engineer, Robot Head",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -1331,6 +1325,18 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/93402959-5e12-4eca-8db2-989ae469a322"
+      },
+      {
+        "title": "CAD Modeler",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/b72d011c-6a38-48f7-ada7-1f7ce76e66bf"
+      },
+      {
+        "title": "Test Engineer",
+        "location": "Hayward, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/1932c050-c00f-434a-85a4-3076ec613ac4"
       },
       {
         "title": "Facilities Technician",
@@ -1864,7 +1870,7 @@
       },
       {
         "title": "Drone Stack - Software Engineer",
-        "location": "Fort Walton Beach, FL",
+        "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3a79b874-e530-4e58-a55a-fa2364c42663"
       },
@@ -2227,12 +2233,6 @@
         "location": "Stuttgart",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/d58a932f-eb0d-43ff-a5fa-9f55531f085f"
-      },
-      {
-        "title": "Technical Program Manager - Vehicle OS",
-        "location": "Stuttgart",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/fe773ce3-3e1c-42e7-9201-3e30f8afc00d"
       },
       {
         "title": "Software Engineer, Robotics",
@@ -2649,10 +2649,22 @@
         "url": "https://jobs.ashbyhq.com/applied/7548c975-a009-4227-b508-6b643f4f3164"
       },
       {
+        "title": "Cybersecurity Software Engineer - New Grad (December 2027)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/a561fff8-aa38-4a5d-8b29-66c191f7328e"
+      },
+      {
         "title": "Operations Safety Lead",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/2c45c865-093c-412b-9bab-4f1e625f5a4d"
+      },
+      {
+        "title": "Forward Deployed Engineer - New Grad (December 2026)",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/31140958-d768-452c-8498-0b1c7f403943"
       },
       {
         "title": "Employment Counsel [6 Month Contract]",
@@ -2995,6 +3007,12 @@
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/46a6e4bf-961c-4552-b2aa-0592fbc0913a"
+      },
+      {
+        "title": "Recruiting Coordinator (Contract)",
+        "location": "Sunnyvale",
+        "employmentType": "Contract",
+        "url": "https://jobs.ashbyhq.com/applied/491c5761-ed72-4ea1-a371-984f0bffc4c6"
       }
     ],
     "Standard Bots": [
@@ -3119,12 +3137,6 @@
         "url": "https://jobs.ashbyhq.com/StandardBots/1f4837ed-9714-4eb6-a497-8d43f56210f5"
       },
       {
-        "title": "Plant Controller",
-        "location": "Glen Cove, NY",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/StandardBots/192304ff-243c-4a78-84d0-f715bd7ab70a"
-      },
-      {
         "title": "Product Manager",
         "location": "New York City, NY",
         "employmentType": "Full-time",
@@ -3225,6 +3237,12 @@
         "location": "US (Remote)",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/3d6559ab-9340-457f-8b75-f481bf50d296"
+      },
+      {
+        "title": "Plant Controller",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/2c20bf8e-156d-4db1-82f1-6d5a474f00fb"
       }
     ]
   }
