@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04T18:12:26Z",
+  "updated": "2026-09-05T17:13:32Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -438,12 +438,6 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, Texas",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
@@ -455,16 +449,22 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
-        "title": "Class A Safety Driver",
-        "location": "Kermit, TX or Odessa, TX",
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, Texas",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4380113009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
       },
       {
         "title": "Class A Safety Driver",
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304148009"
+      },
+      {
+        "title": "Class A Safety Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4380113009"
       },
       {
         "title": "Class A Safety Driver",
@@ -522,15 +522,15 @@
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
-        "location": "San Francisco Bay Area",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
-      },
-      {
-        "title": "Hardware Quality Industrialization Engineer",
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4321392009"
+      },
+      {
+        "title": "Hardware Quality Industrialization Engineer",
+        "location": "San Francisco Bay Area",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
       },
       {
         "title": "Hardware Quality Industrialization Engineer",
@@ -819,6 +819,12 @@
         "location": "Mountain View, CA",
         "employmentType": "Intern",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4378402009"
+      },
+      {
+        "title": "Winter 2027 Intern, Data Engineering",
+        "location": "Mountain View, CA",
+        "employmentType": "Intern",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4396622009"
       },
       {
         "title": "Winter 2027 Intern, Electrical Engineering",
@@ -1707,7 +1713,7 @@
         "url": "https://jobs.ashbyhq.com/applied/deeb8028-bd44-4bb3-ab30-583612879cfe"
       },
       {
-        "title": "Security Architect",
+        "title": "Software Engineer - Physical AI Security",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/65b42c8e-62ac-4db8-8e17-722a4c0b10e0"
