@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07T19:03:05Z",
+  "updated": "2026-09-08T18:24:36Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -1015,12 +1015,6 @@
         "url": "https://jobs.ashbyhq.com/1x/3398e992-b02a-4d39-aabe-f4ac2bb6591d"
       },
       {
-        "title": "Software Engineer - Operating Systems",
-        "location": "San Carlos, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/1x/a9c41bfd-5b06-4fb4-ae4e-50d82c3dbf7a"
-      },
-      {
         "title": "Electrical Harness Technician",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
@@ -1899,7 +1893,7 @@
         "url": "https://jobs.ashbyhq.com/applied/981054d6-d6d9-4553-9db8-38e56939d3b8"
       },
       {
-        "title": "Drone Stack - Software Engineer",
+        "title": "C++ Embedded Software Engineer - Drone Stack",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3a79b874-e530-4e58-a55a-fa2364c42663"
@@ -2193,13 +2187,7 @@
         "url": "https://jobs.ashbyhq.com/applied/ce58d9fd-f22b-4336-80b5-ba1e8d764526"
       },
       {
-        "title": "Director of Government Affairs",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/96a7e0e1-37c6-4ee6-9cb6-dddfa48e87ed"
-      },
-      {
-        "title": "Software Engineer - Motion Planning",
+        "title": "GNC Engineer (Guidance, Navigation & Control)",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/f5de3234-a5d2-4c4c-9c79-3ae803807c63"
@@ -2295,7 +2283,7 @@
         "url": "https://jobs.ashbyhq.com/applied/553deb3c-ebe2-484b-9f42-9b488911ccac"
       },
       {
-        "title": "Simulation Engineer",
+        "title": "Simulation Engineer - Vehiclesim",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/e9905141-0bfe-4e24-b83a-ebc9698ffe41"
@@ -2941,6 +2929,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/12fc5adf-1827-45d4-83d9-3856064dd25e"
+      },
+      {
+        "title": "C++ Software Engineer - Drone Stack",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/32fdfd22-9bb9-4031-b211-87fa7b2157d4"
       },
       {
         "title": "Research Scientist - Humanoid Robotics",
