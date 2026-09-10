@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09T18:23:56Z",
+  "updated": "2026-09-10T18:13:10Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -75,12 +75,6 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6133274004"
       },
       {
-        "title": "Head of Investor Relations",
-        "location": "Remote",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6133124004"
-      },
-      {
         "title": "Manager, Accounting",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
@@ -153,7 +147,7 @@
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6103178004"
       },
       {
-        "title": "Senior Hardware Test Engineer",
+        "title": "Senior Hardware Test Engineer - Mechatronics",
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6019178004"
@@ -292,7 +286,7 @@
       },
       {
         "title": "Senior Systems Administrator, IT",
-        "location": "Hybrid- Fremont, CA",
+        "location": "Hybrid- Salem, OR",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6180281004"
       },
@@ -420,15 +414,15 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
-      },
-      {
-        "title": "Class A CDL Driver",
         "location": "Lancaster, Texas",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304089009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Kermit, TX or Odessa, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A CDL Driver",
@@ -1325,6 +1319,12 @@
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/83b69d9f-d72c-4509-a438-19c0c16b672e"
+      },
+      {
+        "title": "Motor Test Technician",
+        "location": "San Carlos, CA",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/1x/1ff4c8fb-c6ce-4e5d-89e7-6d955aaa74e2"
       }
     ],
     "Applied Intuition": [
@@ -1945,12 +1945,6 @@
         "location": "London",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/925daeec-0431-4059-9edc-4e1801cacdfc"
-      },
-      {
-        "title": "Engineering Manager - Robotic Systems and Test",
-        "location": "Poway, CA",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/a8931086-ed16-4df8-8fbf-535a5004dd89"
       },
       {
         "title": "Solution Engineering Manager",
@@ -2607,6 +2601,12 @@
         "url": "https://jobs.ashbyhq.com/applied/2bce594f-db38-46cc-864a-ab0079c0067f"
       },
       {
+        "title": "Senior Technical Recruiter - Physical AI & Defense",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/22dea741-d1c8-418d-824f-fc8b5986d799"
+      },
+      {
         "title": "Senior Android Platform Engineer",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2745,7 +2745,7 @@
         "url": "https://jobs.ashbyhq.com/applied/0695a5b7-6823-4da5-b918-3b580d49662c"
       },
       {
-        "title": "Fleet Reliability Engineer",
+        "title": "Fleet Reliability Engineer (Mining)",
         "location": "Arizona",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/63287c99-302f-4b46-8acd-0fc78002466d"
@@ -3039,10 +3039,28 @@
         "url": "https://jobs.ashbyhq.com/applied/6e57a97e-62bb-46fb-92ec-dd12831fd6f9"
       },
       {
+        "title": "Customer Technical Program Manager, Vehicle OS",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/7e4f6635-1c5f-4244-a323-4ee37fafff62"
+      },
+      {
+        "title": "Legal Operations Manager",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/5010d552-e3fb-4818-93ba-5dc68daa2a03"
+      },
+      {
         "title": "Senior Software Engineer - Cloud Infrastructure",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/509f9bc1-970c-481b-8526-1879608ba063"
+      },
+      {
+        "title": "Software Engineering Manager - Simulation Products",
+        "location": "Ann Arbor",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/705c6aa4-bb7c-43cb-9d28-35f9fe28713f"
       }
     ],
     "Standard Bots": [
@@ -3207,6 +3225,12 @@
         "location": "US-West Coast (remote)",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/75e22912-268d-4d2a-9531-986fb5ba34cd"
+      },
+      {
+        "title": "AI Applications Engineer (Texas)",
+        "location": "US (Remote)",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/c6b014e5-a05b-4c32-997f-a41dfa2bfc82"
       },
       {
         "title": "Senior Recruiter",
