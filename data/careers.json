@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-10T18:13:10Z",
+  "updated": "2026-09-11T18:17:27Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -181,12 +181,6 @@
         "location": "Hybrid- Fremont, CA",
         "employmentType": "Full-time",
         "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6017803004"
-      },
-      {
-        "title": "Senior Manager, SQE",
-        "location": "Onsite- Salem, OR",
-        "employmentType": "Full-time",
-        "url": "https://www.agilityrobotics.com/about/job-post?gh_jid=6113706004"
       },
       {
         "title": "Senior Manufacturing Test Engineer",
@@ -407,10 +401,22 @@
     ],
     "Kodiak Robotics": [
       {
+        "title": "Accounting Manager",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4399694009"
+      },
+      {
         "title": "Autonomous Vehicle Test Specialist",
         "location": "Dallas, Texas",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304159009"
+      },
+      {
+        "title": "Class A CDL Driver",
+        "location": "Lancaster, TX",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
         "title": "Class A CDL Driver",
@@ -425,12 +431,6 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
-        "title": "Class A CDL Driver",
-        "location": "Lancaster, TX",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
-      },
-      {
         "title": "Class A Safety Driver",
         "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
@@ -441,12 +441,6 @@
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304148009"
-      },
-      {
-        "title": "Class A Safety Driver",
-        "location": "Lancaster, Tx",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4301226009"
       },
       {
         "title": "DevOps Engineer - Infrastructure",
@@ -509,16 +503,16 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4205810009"
       },
       {
-        "title": "Hardware Technical Program Manager",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4254544009"
-      },
-      {
         "title": "Operations Specialist",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4362418009"
+      },
+      {
+        "title": "Probabilistic Risk Assessment Engineer",
+        "location": "San Francisco Bay Area",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203236009"
       },
       {
         "title": "Product Operations Specialist",
@@ -623,6 +617,12 @@
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4375085009"
       },
       {
+        "title": "Senior Technical Program Manager",
+        "location": "Mountain View, CA",
+        "employmentType": "Full-time",
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4254544009"
+      },
+      {
         "title": "Senior Vehicle Integration Engineer",
         "location": "Lancaster, TX",
         "employmentType": "Full-time",
@@ -687,12 +687,6 @@
         "location": "San Francisco Bay Area",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4226655009"
-      },
-      {
-        "title": "Staff Probabilistic Risk Assessment Engineer",
-        "location": "San Francisco Bay Area",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4203236009"
       },
       {
         "title": "Staff Product Manager",
@@ -818,7 +812,7 @@
       },
       {
         "title": "Robot Assembly Technician",
-        "location": "Hayward, CA",
+        "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/d6f54e78-6ae0-47fd-bb2a-f93484d21a2c"
       },
@@ -2133,12 +2127,6 @@
         "url": "https://jobs.ashbyhq.com/applied/ce58d9fd-f22b-4336-80b5-ba1e8d764526"
       },
       {
-        "title": "Director of Government Affairs",
-        "location": "Washington, D.C.",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/96a7e0e1-37c6-4ee6-9cb6-dddfa48e87ed"
-      },
-      {
         "title": "GNC Engineer (Guidance, Navigation & Control)",
         "location": "Ann Arbor",
         "employmentType": "Full-time",
@@ -2715,12 +2703,6 @@
         "url": "https://jobs.ashbyhq.com/applied/23c60c30-8329-443a-8297-73cfc529c103"
       },
       {
-        "title": "Software Engineer - Prediction and Planning ML",
-        "location": "Sunnyvale",
-        "employmentType": "Full-time",
-        "url": "https://jobs.ashbyhq.com/applied/1b268893-9c79-4d59-abc2-4ab0e769f5b5"
-      },
-      {
         "title": "Hardware Integration Engineer - New Grad (December 2026)",
         "location": "Sunnyvale",
         "employmentType": "Full-time",
@@ -2985,16 +2967,10 @@
         "url": "https://jobs.ashbyhq.com/applied/2548bb56-b66c-4dc0-9385-27ea0c964d34"
       },
       {
-        "title": "Engineering Manager - Defense Physical AI",
+        "title": "Engineering Manager - Forward Deployment (Defense)",
         "location": "Washington, D.C.",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/46a6e4bf-961c-4552-b2aa-0592fbc0913a"
-      },
-      {
-        "title": "Recruiting Coordinator (Contract)",
-        "location": "Sunnyvale",
-        "employmentType": "Contract",
-        "url": "https://jobs.ashbyhq.com/applied/491c5761-ed72-4ea1-a371-984f0bffc4c6"
       },
       {
         "title": "Mapping Specialist",
@@ -3007,6 +2983,12 @@
         "location": "Sunnyvale",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/3ff4c0ee-c118-45e9-9669-8cf5b100f907"
+      },
+      {
+        "title": "Engineering Technician",
+        "location": "Australia Remote",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/bded8844-1f21-42ee-ab17-7a056440716a"
       },
       {
         "title": "Senior Validation Engineer (Sunnyvale, CA)",
@@ -3061,6 +3043,30 @@
         "location": "Ann Arbor",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/applied/705c6aa4-bb7c-43cb-9d28-35f9fe28713f"
+      },
+      {
+        "title": "Software Integration Engineer - Defense",
+        "location": "Ann Arbor",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/ecb90d7e-9609-4148-a23b-687bdd9fc6bd"
+      },
+      {
+        "title": "Prediction and Planning - Technical Lead",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/011adf06-ee08-4526-bef5-19b14207af70"
+      },
+      {
+        "title": "Forward Deployed Software Engineer",
+        "location": "Sunnyvale",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/fc347a26-172c-42e9-86c9-b662d0fbe0c4"
+      },
+      {
+        "title": "Systems Engineer - Robotics",
+        "location": "Washington, D.C.",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/applied/a6756597-b30b-497b-ae1c-da66dc2912ae"
       }
     ],
     "Standard Bots": [
@@ -3177,6 +3183,12 @@
         "location": "Glen Cove, NY",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/StandardBots/1f4837ed-9714-4eb6-a497-8d43f56210f5"
+      },
+      {
+        "title": "Manual QA Tester (Contract 3+ months)",
+        "location": "Glen Cove, NY",
+        "employmentType": "Full-time",
+        "url": "https://jobs.ashbyhq.com/StandardBots/f2863bb6-6938-4906-be71-31de9cf3fe2d"
       },
       {
         "title": "Product Manager",
