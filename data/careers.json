@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T18:17:27Z",
+  "updated": "2026-09-12T17:42:40Z",
   "companies": {
     "Agility Robotics": [
       {
@@ -414,9 +414,9 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Lancaster, TX",
+        "location": "Kermit, TX or Odessa, TX",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
       },
       {
         "title": "Class A CDL Driver",
@@ -426,9 +426,9 @@
       },
       {
         "title": "Class A CDL Driver",
-        "location": "Kermit, TX or Odessa, TX",
+        "location": "Lancaster, TX",
         "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4252011009"
+        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4304299009"
       },
       {
         "title": "Class A Safety Driver",
@@ -615,12 +615,6 @@
         "location": "Mountain View, CA",
         "employmentType": "Full-time",
         "url": "https://job-boards.greenhouse.io/kodiak/jobs/4375085009"
-      },
-      {
-        "title": "Senior Technical Program Manager",
-        "location": "Mountain View, CA",
-        "employmentType": "Full-time",
-        "url": "https://job-boards.greenhouse.io/kodiak/jobs/4254544009"
       },
       {
         "title": "Senior Vehicle Integration Engineer",
@@ -1111,7 +1105,7 @@
         "url": "https://jobs.ashbyhq.com/1x/fb9e6beb-e4b8-4b1a-bc0a-beab5b9f86b8"
       },
       {
-        "title": "Senior to Staff Gameplay Engineer",
+        "title": "Senior to Staff AI Product Engineer",
         "location": "San Carlos, CA",
         "employmentType": "Full-time",
         "url": "https://jobs.ashbyhq.com/1x/59edfa1d-e1e0-468b-9995-9d863d08def1"
